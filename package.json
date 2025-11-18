@@ -1,12 +1,12 @@
 {
-  "name": "shipany-template-two",
-  "version": "1.2.0",
+  "name": "{{PROJECT_NAME}}",
+  "version": "0.1.0",
   "private": true,
-  "author": "ShipAny.ai",
-  "homepage": "https://shipany.ai",
+  "author": "{{AUTHOR_NAME}}",
+  "homepage": "{{PROJECT_URL}}",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shipanyai/shipany-template-two"
+    "url": "{{GIT_REPOSITORY}}"
   },
   "keywords": [
     "shipany",

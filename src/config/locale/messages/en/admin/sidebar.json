@@ -1,10 +1,10 @@
 {
   "header": {
     "brand": {
-      "title": "ShipAny Two",
+      "title": "{{PROJECT_DISPLAY_NAME}} Two",
       "logo": {
         "src": "/logo.png",
-        "alt": "ShipAny Two"
+        "alt": "{{PROJECT_DISPLAY_NAME}} Two"
       },
       "url": "/admin"
     },
