@@ -2,10 +2,10 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "{{PROJECT_DISPLAY_NAME}} Two",
+      "title": "NanoBananaPro Two",
       "logo": {
         "src": "/logo.png",
-        "alt": "{{PROJECT_DISPLAY_NAME}} Two"
+        "alt": "NanoBananaPro Two"
       },
       "url": "/"
     },
@@ -88,10 +88,10 @@
     "id": "hero",
     "title": "Ship AI Startups in hours, not days",
     "highlight_text": "in hours",
-    "description": "{{PROJECT_DISPLAY_NAME}} is a NextJS boilerplate for building AI SaaS startups.<br/>Ship Fast with a variety of templates and components.",
+    "description": "NanoBananaPro is a NextJS boilerplate for building AI SaaS startups.<br/>Ship Fast with a variety of templates and components.",
     "announcement": {
       "badge": "New",
-      "title": "🎉 {{PROJECT_DISPLAY_NAME}} Template Two",
+      "title": "🎉 NanoBananaPro Template Two",
       "url": "/pricing"
     },
     "tip": "🎁 Special offer for the first 1000 users",
@@ -112,7 +112,7 @@
       }
     ],
     "show_avatars": true,
-    "avatars_tip": "999+ users are using {{PROJECT_DISPLAY_NAME}}",
+    "avatars_tip": "999+ users are using NanoBananaPro",
     "show_award": false,
     "image": {
       "src": "/imgs/features/admin.png",
@@ -124,7 +124,7 @@
     }
   },
   "logos": {
-    "title": "{{PROJECT_DISPLAY_NAME}} is built on the shoulders of giants",
+    "title": "NanoBananaPro is built on the shoulders of giants",
     "items": [
       {
         "title": "Next.js",
@@ -165,9 +165,9 @@
   },
   "introduce": {
     "id": "introduce",
-    "title": "What is {{PROJECT_DISPLAY_NAME}}",
+    "title": "What is NanoBananaPro",
     "label": "Introduce",
-    "description": "{{PROJECT_DISPLAY_NAME}} is a NextJS boilerplate for building AI SaaS startups, including templates, components, and documentation.",
+    "description": "NanoBananaPro is a NextJS boilerplate for building AI SaaS startups, including templates, components, and documentation.",
     "image": {
       "src": "/imgs/features/landing-page.png",
       "alt": "introduce"
@@ -213,7 +213,7 @@
   },
   "benefits": {
     "id": "benefits",
-    "title": "Why Choose {{PROJECT_DISPLAY_NAME}}",
+    "title": "Why Choose NanoBananaPro",
     "label": "Benefits",
     "description": "Get everything you need to launch your AI startup - from ready-to-use templates to technical support.",
     "items": [
@@ -248,7 +248,7 @@
   },
   "usage": {
     "id": "usage",
-    "title": "How to Launch with {{PROJECT_DISPLAY_NAME}}",
+    "title": "How to Launch with NanoBananaPro",
     "description": "Get your AI SaaS startup running in three simple steps:",
     "image": {
       "src": "/imgs/features/1.png",
@@ -258,8 +258,8 @@
     "text_align": "center",
     "items": [
       {
-        "title": "Get {{PROJECT_DISPLAY_NAME}}",
-        "description": "Buy {{PROJECT_DISPLAY_NAME}} with a one-time payment. Check your email for the code and documentation.",
+        "title": "Get NanoBananaPro",
+        "description": "Buy NanoBananaPro with a one-time payment. Check your email for the code and documentation.",
         "image": {
           "src": "/imgs/features/5.png",
           "alt": "usage"
@@ -267,7 +267,7 @@
       },
       {
         "title": "Start Your Project",
-        "description": "Read the documentation and clone the code of {{PROJECT_DISPLAY_NAME}}. Start building your AI SaaS startup.",
+        "description": "Read the documentation and clone the code of NanoBananaPro. Start building your AI SaaS startup.",
         "image": {
           "src": "/imgs/features/6.png",
           "alt": "usage"
@@ -293,7 +293,7 @@
   },
   "features": {
     "id": "features",
-    "title": "Key Features of {{PROJECT_DISPLAY_NAME}}",
+    "title": "Key Features of NanoBananaPro",
     "description": "Everything you need to launch your AI SaaS startup quickly and efficiently.",
     "items": [
       {
@@ -330,7 +330,7 @@
   },
   "stats": {
     "id": "stats",
-    "title": "People Love {{PROJECT_DISPLAY_NAME}}",
+    "title": "People Love NanoBananaPro",
     "description": "for it's easy to use and fast to ship.",
     "items": [
       {
@@ -349,13 +349,13 @@
   },
   "testimonials": {
     "id": "testimonials",
-    "title": "What Users Say About {{PROJECT_DISPLAY_NAME}}",
-    "description": "Hear from developers and founders who launched their AI startups with {{PROJECT_DISPLAY_NAME}}.",
+    "title": "What Users Say About NanoBananaPro",
+    "description": "Hear from developers and founders who launched their AI startups with NanoBananaPro.",
     "items": [
       {
         "name": "David Chen",
         "role": "Founder of AIWallpaper.shop",
-        "quote": "{{PROJECT_DISPLAY_NAME}} saved us months of development time. We launched our AI wallpaper business in just 2 days and got our first paying customer within a week!",
+        "quote": "NanoBananaPro saved us months of development time. We launched our AI wallpaper business in just 2 days and got our first paying customer within a week!",
         "image": {
           "src": "/imgs/avatars/1.png",
           "alt": "david"
@@ -373,7 +373,7 @@
       {
         "name": "Marcus Thompson",
         "role": "Solo Developer",
-        "quote": "As a solo developer, {{PROJECT_DISPLAY_NAME}} gave me everything I needed - auth, payments, AI integration, and beautiful UI. Launched my SaaS in a weekend!",
+        "quote": "As a solo developer, NanoBananaPro gave me everything I needed - auth, payments, AI integration, and beautiful UI. Launched my SaaS in a weekend!",
         "image": {
           "src": "/imgs/avatars/3.png",
           "alt": "marcus"
@@ -391,7 +391,7 @@
       {
         "name": "James Wilson",
         "role": "Tech Lead at GPTs.works",
-        "quote": "{{PROJECT_DISPLAY_NAME}}'s infrastructure is rock-solid. We scaled from 0 to 10k users without touching the backend. Best investment for our AI startup.",
+        "quote": "NanoBananaPro's infrastructure is rock-solid. We scaled from 0 to 10k users without touching the backend. Best investment for our AI startup.",
         "image": {
           "src": "/imgs/avatars/5.png",
           "alt": "james"
@@ -400,7 +400,7 @@
       {
         "name": "Anna Zhang",
         "role": "Startup Founder",
-        "quote": "From idea to launch in 3 days! {{PROJECT_DISPLAY_NAME}}'s templates and deployment tools made it possible to test our AI business concept incredibly fast.",
+        "quote": "From idea to launch in 3 days! NanoBananaPro's templates and deployment tools made it possible to test our AI business concept incredibly fast.",
         "image": {
           "src": "/imgs/avatars/6.png",
           "alt": "anna"
@@ -410,43 +410,43 @@
   },
   "faq": {
     "id": "faq",
-    "title": "Frequently Asked Questions About {{PROJECT_DISPLAY_NAME}}",
+    "title": "Frequently Asked Questions About NanoBananaPro",
     "description": "Have another question? Contact us on Discord or by email.",
     "tip": "Can't find what you're looking for? Contact our <a href='https://discord.gg/HQNnrzjZQS' target='_blank' class='text-primary font-medium hover:underline'>customer support team</a>",
     "items": [
       {
-        "question": "What exactly is {{PROJECT_DISPLAY_NAME}} and how does it work?",
-        "answer": "{{PROJECT_DISPLAY_NAME}} is a comprehensive NextJS boilerplate designed specifically for building AI SaaS startups. It provides ready-to-use templates, infrastructure setup, and deployment tools that help you launch your AI business in hours instead of days."
+        "question": "What exactly is NanoBananaPro and how does it work?",
+        "answer": "NanoBananaPro is a comprehensive NextJS boilerplate designed specifically for building AI SaaS startups. It provides ready-to-use templates, infrastructure setup, and deployment tools that help you launch your AI business in hours instead of days."
       },
       {
-        "question": "Do I need advanced technical skills to use {{PROJECT_DISPLAY_NAME}}?",
-        "answer": "While basic programming knowledge is helpful, {{PROJECT_DISPLAY_NAME}} is designed to be developer-friendly. Our templates and documentation make it easy to get started, even if you're not an expert in AI or cloud infrastructure."
+        "question": "Do I need advanced technical skills to use NanoBananaPro?",
+        "answer": "While basic programming knowledge is helpful, NanoBananaPro is designed to be developer-friendly. Our templates and documentation make it easy to get started, even if you're not an expert in AI or cloud infrastructure."
       },
       {
-        "question": "What types of AI SaaS can I build with {{PROJECT_DISPLAY_NAME}}?",
-        "answer": "{{PROJECT_DISPLAY_NAME}} supports a wide range of AI applications, from content generation to data analysis tools. Our templates cover popular use cases like AI chatbots, content generators, image processing apps, and more."
+        "question": "What types of AI SaaS can I build with NanoBananaPro?",
+        "answer": "NanoBananaPro supports a wide range of AI applications, from content generation to data analysis tools. Our templates cover popular use cases like AI chatbots, content generators, image processing apps, and more."
       },
       {
-        "question": "How long does it typically take to launch with {{PROJECT_DISPLAY_NAME}}?",
-        "answer": "With {{PROJECT_DISPLAY_NAME}}, you can have a working prototype in hours and a production-ready application in hours. Our one-click deployment and pre-configured infrastructure significantly reduce the traditional months-long development cycle."
+        "question": "How long does it typically take to launch with NanoBananaPro?",
+        "answer": "With NanoBananaPro, you can have a working prototype in hours and a production-ready application in hours. Our one-click deployment and pre-configured infrastructure significantly reduce the traditional months-long development cycle."
       },
       {
-        "question": "What's included in the {{PROJECT_DISPLAY_NAME}} infrastructure?",
-        "answer": "{{PROJECT_DISPLAY_NAME}} provides a complete infrastructure stack including authentication, database setup, API integration, payment processing, and scalable cloud deployment. Everything is pre-configured following industry best practices."
+        "question": "What's included in the NanoBananaPro infrastructure?",
+        "answer": "NanoBananaPro provides a complete infrastructure stack including authentication, database setup, API integration, payment processing, and scalable cloud deployment. Everything is pre-configured following industry best practices."
       },
       {
         "question": "Can I customize the templates to match my brand?",
-        "answer": "Absolutely! All {{PROJECT_DISPLAY_NAME}} templates are fully customizable. You can modify the design, features, and functionality to match your brand identity and specific business requirements while maintaining the robust underlying infrastructure."
+        "answer": "Absolutely! All NanoBananaPro templates are fully customizable. You can modify the design, features, and functionality to match your brand identity and specific business requirements while maintaining the robust underlying infrastructure."
       }
     ]
   },
   "cta": {
     "id": "cta",
     "title": "Ship your first AI SaaS Startup",
-    "description": "Start from here, ship with {{PROJECT_DISPLAY_NAME}}.",
+    "description": "Start from here, ship with NanoBananaPro.",
     "buttons": [
       {
-        "title": "Get {{PROJECT_DISPLAY_NAME}}",
+        "title": "Get NanoBananaPro",
         "url": "https://shipany.ai",
         "target": "_blank",
         "icon": "Zap"
@@ -463,7 +463,7 @@
   "subscribe": {
     "id": "subscribe",
     "title": "Subscribe to our newsletter",
-    "description": "Get the latest news and updates from {{PROJECT_DISPLAY_NAME}}.",
+    "description": "Get the latest news and updates from NanoBananaPro.",
     "submit": {
       "input": {
         "placeholder": "Enter your email"
@@ -477,11 +477,11 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "{{PROJECT_DISPLAY_NAME}} Two",
-      "description": "{{PROJECT_DISPLAY_NAME}} is a NextJS boilerplate for building AI SaaS startups. Ship Fast with a variety of templates and components.",
+      "title": "NanoBananaPro Two",
+      "description": "NanoBananaPro is a NextJS boilerplate for building AI SaaS startups. Ship Fast with a variety of templates and components.",
       "logo": {
         "src": "/logo.png",
-        "alt": "{{PROJECT_DISPLAY_NAME}} Two"
+        "alt": "NanoBananaPro Two"
       },
       "url": "/"
     },
@@ -531,7 +531,7 @@
           "title": "Friends",
           "children": [
             {
-              "title": "{{PROJECT_DISPLAY_NAME}}",
+              "title": "NanoBananaPro",
               "url": "https://shipany.ai",
               "target": "_blank"
             },

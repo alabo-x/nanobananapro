@@ -1,12 +1,12 @@
 {
   "metadata": {
     "title": "Showcases",
-    "description": "Awesome projects built with {{PROJECT_DISPLAY_NAME}}"
+    "description": "Awesome projects built with NanoBananaPro"
   },
   "showcases": {
     "id": "showcase",
     "sr_only_title": "Showcases",
-    "title": "AI SaaS Startups built with {{PROJECT_DISPLAY_NAME}}",
+    "title": "AI SaaS Startups built with NanoBananaPro",
     "description": "Easy to use and fast to ship.",
     "items": [
       {

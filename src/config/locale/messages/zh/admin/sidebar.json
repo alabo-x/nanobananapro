@@ -1,10 +1,10 @@
 {
   "header": {
     "brand": {
-      "title": "{{PROJECT_DISPLAY_NAME}} Two",
+      "title": "NanoBananaPro Two",
       "logo": {
         "src": "/logo.png",
-        "alt": "{{PROJECT_DISPLAY_NAME}} Two"
+        "alt": "NanoBananaPro Two"
       },
       "url": "/admin"
     },

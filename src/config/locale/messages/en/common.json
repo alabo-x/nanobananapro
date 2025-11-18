@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "{{PROJECT_DISPLAY_NAME}} Template Two",
-    "description": "{{PROJECT_DISPLAY_NAME}} is a NextJS boilerplate for building AI SaaS startups. Ship Fast with a variety of templates and components.",
+    "title": "NanoBananaPro Template Two",
+    "description": "NanoBananaPro is a NextJS boilerplate for building AI SaaS startups. Ship Fast with a variety of templates and components.",
     "keywords": "shipany, shipany-boilerplate, shipany-template-two-demo"
   },
   "sign": {

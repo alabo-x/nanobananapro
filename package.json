@@ -1,12 +1,12 @@
 {
-  "name": "{{PROJECT_NAME}}",
+  "name": "nanobananapro",
   "version": "0.1.0",
   "private": true,
-  "author": "{{AUTHOR_NAME}}",
-  "homepage": "{{PROJECT_URL}}",
+  "author": "alabo-x",
+  "homepage": "https://nanobananapro.com",
   "repository": {
     "type": "git",
-    "url": "{{GIT_REPOSITORY}}"
+    "url": "https://github.com/alabo-x/nanobananapro.git"
   },
   "keywords": [
     "shipany",

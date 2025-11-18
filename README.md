@@ -1,4 +1,4 @@
-# {{PROJECT_NAME}}
+# NanoBananaPro
 
 > 基于 NanoBanana2 模板的项目
 
