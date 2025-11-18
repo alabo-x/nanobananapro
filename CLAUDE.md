@@ -5,9 +5,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 项目快速概览
 
 ### 当前状态 (2025-11-18)
-- **项目阶段**: 开发中
-- **最新变更**: 支持微信支付和支付宝集成
-- **待办事项**: 待用户指定
+- **项目阶段**: 初始化完成，准备开发
+- **最新变更**: Git 仓库配置完成，建立上游管理模式
+- **待办事项**:
+  - [ ] 配置数据库连接
+  - [ ] 初始化 RBAC 系统
+  - [ ] 创建管理员账户
+
+## 最近工作记录
+
+### 2025-11-18: Git 仓库初始化和上游管理配置
+**变更类型**: Setup/Configuration
+**影响范围**: 项目基础设施
+**Git commit**: 0ac84ee
+
+**变更内容**:
+- ✅ 创建私有 GitHub 仓库: `alabo-x/nanobanana2`
+- ✅ 配置双远程仓库架构:
+  - `origin` → `https://github.com/alabo-x/nanobanana2.git` (项目仓库)
+  - `upstream` → `https://github.com/shipanyai/shipany-template-two.git` (模板仓库)
+- ✅ 添加项目文档:
+  - `CLAUDE.md`: AI 助手开发指南
+  - `docs/GIT_WORKFLOW.md`: Git 工作流和上游同步文档
+- ✅ 首次推送到远程仓库
+
+**架构决策**:
+- 采用官方推荐的上游管理模式，可持续获取 ShipAny 模板更新
+- 保持私有仓库，符合 ShipAny 许可证要求
+- 使用分支策略便于管理模板更新和项目定制
 
 ---
 
