@@ -2,10 +2,10 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "NanoBananaPro Two",
+      "title": "NanoBananaPro",
       "logo": {
         "src": "/logo.png",
-        "alt": "NanoBananaPro Two"
+        "alt": "NanoBananaPro"
       },
       "url": "/"
     },
@@ -91,7 +91,7 @@
     "description": "NanoBananaPro is a NextJS boilerplate for building AI SaaS startups.<br/>Ship Fast with a variety of templates and components.",
     "announcement": {
       "badge": "New",
-      "title": "🎉 NanoBananaPro Template Two",
+      "title": "🎉 NanoBananaPro",
       "url": "/pricing"
     },
     "tip": "🎁 Special offer for the first 1000 users",
@@ -477,11 +477,11 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "NanoBananaPro Two",
+      "title": "NanoBananaPro",
       "description": "NanoBananaPro is a NextJS boilerplate for building AI SaaS startups. Ship Fast with a variety of templates and components.",
       "logo": {
         "src": "/logo.png",
-        "alt": "NanoBananaPro Two"
+        "alt": "NanoBananaPro"
       },
       "url": "/"
     },

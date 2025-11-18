@@ -2,10 +2,10 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "NanoBananaPro Two",
+      "title": "NanoBananaPro",
       "logo": {
         "src": "/logo.png",
-        "alt": "NanoBananaPro Two"
+        "alt": "NanoBananaPro"
       },
       "url": "/"
     },
@@ -477,11 +477,11 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "NanoBananaPro Two",
+      "title": "NanoBananaPro",
       "description": "NanoBananaPro 是专为 AI SaaS 创业项目打造的 NextJS 模板。丰富模板与组件，极速交付你的产品。",
       "logo": {
         "src": "/logo.png",
-        "alt": "NanoBananaPro Two"
+        "alt": "NanoBananaPro"
       },
       "url": "/"
     },

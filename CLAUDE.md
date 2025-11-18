@@ -15,11 +15,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### 项目定位
 
-**NanoBanana2 将成为你的个人 AI SaaS 项目模板**，用于快速创建类似项目。
+**NanoBananaPro 将成为你的个人 AI SaaS 项目模板**，用于快速创建类似项目。
 
 **三层架构**:
 ```
-ShipAny 官方模板 (upstream) → NanoBanana2 基础模板 (origin) → 具体项目 (ProjectX/Y/Z)
+ShipAny 官方模板 (upstream) → NanoBananaPro 基础模板 (origin) → 具体项目 (ProjectX/Y/Z)
 ```
 
 **核心价值**:
@@ -86,23 +86,39 @@ ShipAny 官方模板 (upstream) → NanoBanana2 基础模板 (origin) → 具体
 
 ---
 
-## 项目概述
-
-这是一个基于 Next.js 16 的 AI SaaS 模板项目 (ShipAny Template Two),提供完整的 AI 功能集成、用户管理、支付系统和多语言支持。
-
 ## 技术栈
 
-- **框架**: Next.js 16.0.0 with App Router (Turbopack)
-- **React**: 19.2.0 with React Compiler
-- **语言**: TypeScript 5
-- **数据库**: PostgreSQL (通过 Drizzle ORM)
-- **认证**: better-auth 1.3.7
-- **权限管理**: 自定义 RBAC 系统
-- **国际化**: next-intl 4.3.4
-- **样式**: Tailwind CSS 4 + shadcn/ui
-- **AI SDK**: Vercel AI SDK, Replicate, OpenRouter
-- **支付**: Stripe, PayPal, 微信支付, 支付宝
-- **包管理器**: pnpm
+### 核心框架
+- **Next.js 16.0.0**: App Router + Turbopack + React 19.2 (React Compiler enabled)
+- **TypeScript 5**: 严格类型检查
+
+### 数据层
+- **Drizzle ORM 0.44.2**: 类型安全的数据库查询
+- **PostgreSQL**: 默认数据库（支持 MySQL/SQLite/Turso 切换）
+- **单例模式**: `DB_SINGLETON_ENABLED=true` 避免 serverless 连接池耗尽
+
+### 认证与权限
+- **better-auth 1.3.7**: OAuth + 邮箱验证码 + 密码登录
+- **自定义 RBAC**: 资源-操作权限模型 (`resource.action`)
+- **动态认证**: `getAuth()` 确保数据库在 API 路由中可用 (src/core/auth/index.ts:7)
+
+### AI 集成
+- **Vercel AI SDK 5.0**: 统一 AI 接口
+- **Replicate + OpenRouter**: 多 AI 提供商支持
+- **流式响应**: 实时生成内容
+
+### 支付系统
+- **Stripe, PayPal, 微信支付, 支付宝**: 多网关集成
+- **Creem**: 统一支付抽象层 (src/extensions/payment/creem.ts)
+- **订阅 + 积分**: 双计费模式
+
+### UI/UX
+- **Tailwind CSS 4 + shadcn/ui**: 组件系统
+- **next-intl 4.3.4**: 中英文国际化
+- **fumadocs**: MDX 文档系统
+
+### 包管理
+- **pnpm**: 必须使用 pnpm（React 19 依赖管理）
 
 ## 项目架构
 
@@ -110,81 +126,107 @@ ShipAny 官方模板 (upstream) → NanoBanana2 基础模板 (origin) → 具体
 
 ```
 src/
-├── app/[locale]/              # 国际化路由
-│   ├── (admin)/              # 管理后台 - RBAC 保护
-│   ├── (auth)/               # 认证页面 (登录/注册)
-│   ├── (chat)/               # AI 聊天界面
-│   ├── (docs)/               # 文档系统 (fumadocs)
-│   └── (landing)/            # 落地页和用户功能
+├── app/
+│   ├── [locale]/                    # 国际化路由根目录
+│   │   ├── (admin)/                # 管理后台 - RBAC 保护
+│   │   ├── (auth)/                 # 认证页面
+│   │   ├── (chat)/                 # AI 聊天界面
+│   │   ├── (docs)/                 # fumadocs 文档
+│   │   ├── (landing)/              # 落地页和用户功能
+│   │   └── layout.tsx              # 国际化布局
+│   └── api/                        # API 路由
+│       ├── ai/{generate,query}     # AI 生成接口
+│       ├── auth/[...all]           # better-auth 认证端点
+│       ├── chat/*                  # 聊天管理接口
+│       ├── payment/{checkout,notify} # 支付接口
+│       └── user/*                  # 用户信息接口
 ├── config/
-│   ├── db/schema.ts          # Drizzle 数据库架构定义
-│   ├── locale/messages/      # 国际化翻译文件
-│   └── index.ts              # 环境变量配置
-├── core/                     # 核心系统模块
-│   ├── auth/                 # 认证配置 (better-auth)
-│   ├── db/                   # 数据库连接和配置
-│   ├── i18n/                 # 国际化配置
-│   ├── rbac/                 # 权限系统 (RBAC)
-│   └── theme/                # 主题系统
-├── shared/
-│   ├── blocks/               # 复用业务组件块
-│   ├── components/           # UI 组件库
-│   ├── models/               # 数据模型和查询
-│   ├── services/             # 业务服务层
-│   └── lib/                  # 工具函数
-└── app/api/                  # API 路由
-    ├── ai/                   # AI 生成接口
-    ├── chat/                 # 聊天接口
-    ├── payment/              # 支付接口
-    └── user/                 # 用户接口
+│   ├── db/schema.ts                # Drizzle 数据库 Schema（核心数据模型）
+│   ├── locale/messages/{en,zh}/    # 国际化翻译文件
+│   └── index.ts                    # 环境变量配置 (envConfigs)
+├── core/                           # 核心系统模块（不要随意修改）
+│   ├── auth/
+│   │   ├── index.ts                # 动态认证 getAuth()
+│   │   └── config.ts               # better-auth 配置
+│   ├── db/
+│   │   ├── index.ts                # 数据库连接单例
+│   │   └── config.ts               # Drizzle 配置
+│   ├── rbac/
+│   │   └── permission.ts           # RBAC 权限检查函数
+│   └── i18n/                       # next-intl 配置
+├── shared/                         # 共享代码（可自由扩展）
+│   ├── blocks/                     # 业务组件块
+│   ├── components/                 # UI 组件
+│   ├── models/                     # 数据查询抽象层
+│   ├── services/                   # 业务服务层
+│   └── lib/                        # 工具函数
+├── extensions/                     # 第三方服务集成
+│   ├── ai/{replicate,kie}.ts       # AI 服务适配器
+│   ├── payment/{stripe,paypal,creem}.ts # 支付网关
+│   └── storage/{s3,r2}.ts          # 对象存储
+└── types/                          # TypeScript 类型定义
 
-content/                      # MDX 内容
-├── docs/                     # 文档内容
-├── pages/                    # 静态页面 (隐私政策等)
-└── posts/                    # 博客文章
+scripts/
+├── init-rbac.ts                    # 初始化 RBAC（创建默认角色和权限）
+└── assign-role.ts                  # 手动分配角色给用户
 
-scripts/                      # 工具脚本
-├── init-rbac.ts             # 初始化 RBAC 系统
-└── assign-role.ts           # 分配角色
+content/                            # MDX 内容
+├── docs/                           # 技术文档
+└── posts/                          # 博客文章
 ```
 
-### 架构模式
+### 关键架构模式
 
-#### 1. 路由组织
-- 使用 Next.js App Router 的路由组 `(group)` 实现不同布局
-- 所有路由带 `[locale]` 动态段实现多语言支持
-- 管理后台使用独立的 layout 和 RBAC 中间件保护
+#### 1. 路由组织 (App Router)
+- **路由组** `(group)`: 不影响 URL 的组织方式，实现不同布局
+  - `(admin)` → 侧边栏管理界面
+  - `(landing)` → 导航栏落地页
+  - `(chat)` → AI 聊天专用布局
+  - `(docs)` → 文档双栏布局
+- **国际化路由**: `[locale]` 动态段捕获语言代码 (en/zh)
+- **RBAC 保护**: 管理路由在 layout.tsx 中调用权限检查
 
-#### 2. 数据层架构
-- **ORM**: Drizzle ORM - 类型安全的数据库查询
-- **数据库**: 支持 PostgreSQL/MySQL/SQLite/Turso (通过 `DATABASE_PROVIDER` 配置)
-- **Schema**: 集中在 `src/config/db/schema.ts`
-- **Models**: `src/shared/models/` 提供业务查询抽象
+#### 2. 认证系统架构
+- **动态认证**: API 路由中使用 `const auth = await getAuth()` (src/core/auth/index.ts:7)
+  - 避免在模块顶层初始化导致数据库未就绪
+- **会话管理**: 数据库存储，支持多设备登录
+- **认证流程**: OAuth → 邮箱验证码 → 密码登录（三种方式）
 
-#### 3. 认证与权限系统
-- **认证**: better-auth (支持 OAuth、邮箱验证码、密码登录)
-- **会话管理**: 数据库会话存储
-- **RBAC**: 完整的角色-权限系统
-  - 权限格式: `resource.action` (如 `admin.users.read`)
-  - 支持通配符权限 (如 `admin.posts.*`)
-  - 预定义角色: super_admin, admin, editor, viewer
+#### 3. RBAC 权限系统
+- **权限格式**: `resource.action`（如 `admin.users.read`）
+- **通配符支持**: `admin.posts.*` 匹配所有文章操作
+- **权限检查函数** (src/core/rbac/permission.ts):
+  - `requirePermission()` - 单个权限，失败重定向
+  - `requireAnyPermission()` - 任意一个通过即可
+  - `requireAllPermissions()` - 需要全部权限
+  - `hasPermission()` - 布尔检查，不重定向
+- **初始化**: `pnpm rbac:init --admin-email=your@email.com` 创建默认角色
 
-#### 4. AI 功能集成
-- 统一的 AI SDK 接口 (Vercel AI SDK)
-- 支持多 AI 提供商: Replicate, OpenRouter
-- AI 任务管理和追踪
-- 流式响应支持
+#### 4. 数据层架构
+- **Schema 定义**: src/config/db/schema.ts（所有表定义）
+- **Model 抽象**: src/shared/models/*.ts（业务查询逻辑）
+- **Service 层**: src/shared/services/*.ts（跨 model 业务逻辑）
+- **数据库切换**: `DATABASE_PROVIDER` 环境变量（postgresql/mysql/sqlite/turso）
 
-#### 5. 支付系统
-- 多支付网关集成: Stripe, PayPal, 微信支付, 支付宝
-- 订阅管理
-- 积分系统 (Credits)
-- Webhook 回调处理
+#### 5. AI 功能集成流程
+1. 用户请求 → `/api/ai/generate` 或 `/api/ai/query`
+2. 检查积分余额
+3. 调用 AI SDK（Replicate/OpenRouter）
+4. 扣除积分 + 记录 AI 任务
+5. 流式返回结果
 
-#### 6. 国际化
-- next-intl 实现多语言
-- 翻译文件按功能模块组织: `src/config/locale/messages/{locale}/{module}/`
-- 支持语言: en (英语), zh (简体中文)
+#### 6. 支付流程
+1. 用户选择套餐 → `/api/payment/checkout`
+2. 创建订单记录
+3. 重定向到支付网关
+4. 支付完成 → Webhook `/api/payment/notify/[provider]`
+5. 验证签名 → 更新订单 → 发放积分/订阅
+
+#### 7. 国际化架构
+- **翻译文件**: `src/config/locale/messages/{locale}/{module}/`
+  - 按功能模块拆分（admin/settings/landing）
+- **使用方式**: `useTranslations('namespace')` hook
+- **命名空间**: 对应 JSON 文件路径（如 `admin/users` → `admin/users.json`）
 
 ## 常用命令
 
@@ -229,107 +271,241 @@ pnpm cf:typegen               # 生成 Cloudflare 类型定义
 
 ## 开发工作流
 
-### 1. 环境配置
-1. 复制 `.env.example` 到 `.env.development` 或 `.env`
-2. 配置数据库连接: `DATABASE_URL`
-3. 生成认证密钥: `openssl rand -base64 32` → `AUTH_SECRET`
-4. 配置 AI 提供商 API 密钥
-5. 配置支付网关凭证
-
-### 2. 数据库初始化
+### 1. 首次设置
 ```bash
-# 推送 schema 到数据库
-pnpm db:push
+# 1. 克隆仓库
+git clone https://github.com/alabo-x/nanobananapro.git
+cd nanobananapro
 
-# 初始化 RBAC 系统
-pnpm rbac:init --admin-email=admin@example.com
-```
+# 2. 安装依赖（必须使用 pnpm）
+pnpm install
 
-### 3. 启动开发
-```bash
+# 3. 配置环境变量
+cp .env.example .env.local
+# 编辑 .env.local，至少配置以下变量：
+# - DATABASE_URL (PostgreSQL 连接字符串)
+# - AUTH_SECRET (运行: openssl rand -base64 32)
+# - AI 提供商 API 密钥（可选）
+# - 支付网关凭证（可选）
+
+# 4. 初始化数据库
+pnpm db:push              # 推送 schema 到数据库
+pnpm rbac:init --admin-email=your@email.com  # 创建默认角色和管理员
+
+# 5. 启动开发服务器
 pnpm dev
+# 访问 http://localhost:3000
 ```
-访问 `http://localhost:3000`
 
-### 4. 数据库变更流程
+### 2. 数据库变更流程
+```bash
+# 开发环境快捷方式（推荐）
+pnpm db:push              # 直接推送 schema 变更，跳过迁移文件
+
+# 生产环境正式流程
+pnpm db:generate          # 生成迁移文件
+pnpm db:migrate           # 执行迁移
+
+# 数据库可视化工具
+pnpm db:studio            # 打开 Drizzle Studio
+```
+
+**数据库 Schema 变更步骤**:
 1. 修改 `src/config/db/schema.ts`
-2. 运行 `pnpm db:generate` 生成迁移文件
-3. 运行 `pnpm db:migrate` 应用迁移
-4. 开发环境快捷方式: `pnpm db:push` (跳过迁移文件)
+2. 运行 `pnpm db:push`（开发）或 `pnpm db:generate && pnpm db:migrate`（生产）
+3. 相关 Model 也需要同步更新（`src/shared/models/*.ts`）
 
-### 5. 添加新权限
-1. 在 `src/core/rbac/permission.ts` 的 `PERMISSIONS` 对象中添加常量
-2. 在 `scripts/init-rbac.ts` 的 `defaultPermissions` 数组中添加权限定义
-3. 运行 `pnpm rbac:init` 更新数据库
+### 3. 添加新 RBAC 权限
+```bash
+# 1. 编辑权限定义
+# src/core/rbac/permission.ts - 添加权限常量
+# scripts/init-rbac.ts - 在 defaultPermissions 数组中添加权限
 
-### 6. 国际化翻译
-1. 在 `src/config/locale/messages/en/` 和 `.../zh/` 添加/修改 JSON 文件
-2. 使用 `useTranslations('namespace')` 在组件中访问
-3. 命名空间对应 JSON 文件路径
+# 2. 重新初始化（幂等操作，不会删除现有数据）
+pnpm rbac:init
+
+# 3. 手动分配角色（如需要）
+pnpm rbac:assign
+```
+
+### 4. 国际化翻译
+```bash
+# 1. 添加翻译文件
+# src/config/locale/messages/en/{module}.json
+# src/config/locale/messages/zh/{module}.json
+
+# 2. 在组件中使用
+# const t = useTranslations('module')
+# t('key')
+```
+
+**翻译文件命名规则**:
+- 模块化拆分: `admin/users.json`, `settings/profile.json`
+- 组件使用: `useTranslations('admin/users')`
+
+### 5. 添加新 API 路由
+```typescript
+// src/app/api/your-endpoint/route.ts
+import { getAuth } from '@/core/auth'
+import { db } from '@/core/db'
+
+export async function POST(request: Request) {
+  const auth = await getAuth()  // 动态认证
+  const session = await auth.api.getSession({ headers: request.headers })
+
+  if (!session) {
+    return Response.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  // 业务逻辑...
+}
+```
+
+**注意**: API 路由中必须使用 `await getAuth()`，不要在模块顶层导入 auth 实例
 
 ## 关键技术细节
 
 ### Path Aliases
-- `@/*` → `src/*` 目录
-- `@/.source` → `.source/index.ts` (fumadocs)
+```typescript
+// tsconfig.json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],           // 主要代码路径
+      "@/.source": ["./.source"]    // fumadocs 文档源（自动生成）
+    }
+  }
+}
+```
 
-### 数据库连接
-- 使用单例模式 (`DB_SINGLETON_ENABLED=true`) 避免 serverless 环境连接池耗尽
-- 动态认证配置 (`getAuth()`) 确保数据库在 API 路由中可用
+### 环境变量加载顺序
+```
+.env.development (开发环境优先) → .env (通用配置) → 运行时环境变量
+```
 
-### RBAC 权限检查
-- `requirePermission()` - 单个权限检查,失败重定向
-- `requireAnyPermission()` - 任意权限通过即可
-- `requireAllPermissions()` - 需要所有权限
-- `requireAdminAccess()` - 检查管理后台访问权限
-- `hasPermission()` - 布尔检查,不重定向
+**关键配置** (src/config/index.ts:20):
+- `DATABASE_URL`: 数据库连接字符串
+- `DATABASE_PROVIDER`: `postgresql` | `mysql` | `sqlite` | `turso`
+- `DB_SINGLETON_ENABLED`: `true` 推荐（避免 serverless 连接池耗尽）
+- `AUTH_SECRET`: 认证密钥（`openssl rand -base64 32`）
+- `AUTH_URL`: 认证回调 URL（生产环境必须配置）
 
-### AI 生成流程
-1. 用户发起请求 → API 路由 (`/api/ai/*`)
-2. 检查用户积分
-3. 调用 AI SDK (Replicate/OpenRouter)
-4. 扣除积分
-5. 记录 AI 任务
-6. 返回结果 (流式或完整响应)
+### 数据库连接单例模式
+**问题**: Vercel/serverless 环境会复用函数实例，导致连接池耗尽
+**解决**: 使用单例模式 (src/core/db/index.ts)
+```typescript
+// 正确做法
+import { db } from '@/core/db'
 
-### 支付流程
-1. 用户选择套餐 → `/api/payment/checkout`
-2. 创建订单记录
-3. 重定向到支付网关
-4. 支付完成 → Webhook 回调 `/api/payment/notify/[provider]`
-5. 验证支付 → 更新订单状态 → 发放积分/订阅
+// 错误做法（会创建多个连接）
+const db = drizzle(...)
+```
 
-### 布局系统
-- `(admin)/layout.tsx` - 侧边栏管理界面
-- `(chat)/layout.tsx` - AI 聊天专用布局
-- `(landing)/layout.tsx` - 落地页导航栏布局
-- `(docs)/layout.tsx` - 文档双栏布局 (fumadocs)
+### 动态认证配置
+**问题**: 在模块顶层初始化 auth 会导致数据库未就绪
+**解决**: API 路由中使用 `await getAuth()`
+```typescript
+// 正确做法 (src/core/auth/index.ts:7)
+const auth = await getAuth()
+
+// 错误做法（Edge Runtime 不支持）
+import { auth } from '@/core/auth'  // ❌
+```
+
+### RBAC 权限检查最佳实践
+```typescript
+import {
+  requirePermission,        // 单个权限，失败抛出 redirect
+  requireAnyPermission,     // 任意一个通过
+  requireAllPermissions,    // 必须全部拥有
+  hasPermission            // 布尔检查，不重定向
+} from '@/core/rbac'
+
+// 在 Server Component 中使用
+await requirePermission('admin.users.read')
+
+// 在 Server Action 中使用
+if (!(await hasPermission('admin.posts.delete'))) {
+  return { error: 'Forbidden' }
+}
+```
+
+### React Compiler 注意事项
+- **已启用**: `babel-plugin-react-compiler` (babel.config.js)
+- **规则**: 遵循 [React Rules](https://react.dev/reference/rules)
+  - 组件和 hooks 必须是纯函数
+  - 避免在 render 中修改对象/数组
+  - 使用 `useCallback`/`useMemo` 时让 Compiler 自动优化
+
+### Turbopack 开发模式
+- **启用**: `pnpm dev` 默认使用 Turbopack
+- **优势**: 更快的 HMR，更好的 Tree Shaking
+- **限制**: 某些 webpack 插件不支持（查看 Next.js 文档）
 
 ## 重要注意事项
 
 ### 部署前检查清单
-1. **环境变量**: 确保生产环境所有环境变量已配置
-2. **数据库迁移**: 运行 `pnpm db:migrate` 应用所有迁移
-3. **RBAC 初始化**: 确保 RBAC 系统已初始化
-4. **支付 Webhook**: 配置支付网关 webhook URL
-5. **AI API 密钥**: 验证 AI 提供商 API 密钥有效
-6. **AUTH_SECRET**: 生产环境使用强随机密钥
+- [ ] **环境变量**: 生产环境配置 `AUTH_SECRET`, `DATABASE_URL`, `AUTH_URL`
+- [ ] **数据库迁移**: `pnpm db:migrate` 应用所有迁移
+- [ ] **RBAC 初始化**: `pnpm rbac:init --admin-email=admin@example.com`
+- [ ] **支付 Webhook**: 配置 Stripe/PayPal webhook URL
+- [ ] **AI API 密钥**: 验证 Replicate/OpenRouter 密钥有效
+- [ ] **安全审计**: 检查 API 路由权限保护
+- [ ] **性能测试**: 压测数据库连接池和 API 响应时间
 
-### 安全考虑
-- 所有管理接口需通过 RBAC 权限检查
-- API 密钥加密存储
-- 支付 webhook 需验证签名
-- 用户输入需验证 (使用 Zod)
-- 图片上传需验证文件类型和大小
+### 安全最佳实践
+1. **RBAC 保护**: 所有管理接口必须调用 `requirePermission()`
+2. **输入验证**: 使用 Zod schema 验证用户输入
+3. **SQL 注入防护**: Drizzle ORM 自动参数化查询
+4. **XSS 防护**: React 自动转义，MDX 内容需审查
+5. **Webhook 验证**: 支付 webhook 必须验证签名 (src/app/api/payment/notify/[provider]/route.ts)
+6. **敏感信息**: API 密钥存储在环境变量，不提交到 Git
 
-### 性能优化
-- React Compiler 已启用
-- Turbopack 开发模式
-- 图片使用 Next.js Image 优化
-- 数据库查询使用索引 (参见 schema.ts 注释)
-- MDX 文档缓存 (fumadocs)
+### 性能优化策略
+1. **数据库索引**: schema.ts 中已添加常用查询索引（参考注释）
+2. **连接池管理**: 使用单例模式 + `DB_SINGLETON_ENABLED=true`
+3. **React Compiler**: 自动优化组件 re-render
+4. **图片优化**: 使用 `next/image` 组件
+5. **MDX 缓存**: fumadocs 自动缓存文档页面
+6. **AI 流式响应**: 使用 `streamText()` 降低 TTFB
 
-### 许可证
-- 该项目使用 ShipAny LICENSE
-- 不得公开发布 ShipAny 代码
-- 非法使用将追究法律责任
+### 故障排查
+
+#### 数据库连接失败
+```bash
+# 检查环境变量
+echo $DATABASE_URL
+
+# 测试连接
+psql $DATABASE_URL
+
+# 查看连接池状态
+pnpm db:studio
+```
+
+#### 认证失败
+```bash
+# 检查 AUTH_SECRET
+echo $AUTH_SECRET
+
+# 重新生成密钥
+openssl rand -base64 32
+
+# 清除会话
+# 删除数据库 session 表记录
+```
+
+#### RBAC 权限问题
+```bash
+# 查看用户角色
+pnpm rbac:assign
+
+# 重新初始化 RBAC
+pnpm rbac:init
+```
+
+### 许可证与合规
+- **基于**: ShipAny Template Two
+- **许可证**: ShipAny LICENSE（不得公开发布源码）
+- **私有仓库**: 必须保持 Private
+- **商业使用**: 允许，但需遵守 ShipAny 许可证条款
