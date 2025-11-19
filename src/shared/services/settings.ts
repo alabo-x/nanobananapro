@@ -202,12 +202,6 @@ export async function getSettingGroups() {
       tab: 'ai',
     },
     {
-      name: 'kie',
-      title: 'Kie',
-      description: `Custom <a href="https://kie.ai" class="text-primary" target="_blank">Kie</a> settings`,
-      tab: 'ai',
-    },
-    {
       name: 'adsense',
       title: t('groups.adsense'),
       description: 'custom your adsense settings',
@@ -608,15 +602,6 @@ export async function getSettings() {
       placeholder: 'fal_xxx',
       group: 'fal',
       tip: 'Fal API Key is used to access the Fal API',
-      tab: 'ai',
-    },
-    {
-      name: 'kie_api_key',
-      title: 'Kie API Key',
-      type: 'password',
-      placeholder: 'xxx',
-      group: 'kie',
-      tip: 'Kie API Key is used to access the Kie API',
       tab: 'ai',
     },
     {

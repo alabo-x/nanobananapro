@@ -1,12 +1,4 @@
 {
-  "metadata": {
-    "title": "AI 图片生成器",
-    "description": "使用 AI 模型生成图片，支持文本到图片和图片到图片。"
-  },
-  "page": {
-    "title": "AI 图片生成器",
-    "description": "使用 AI 模型生成图片，支持文本到图片和图片到图片。"
-  },
   "generator": {
     "title": "图片生成器",
     "description": "使用 AI 模型生成图片，支持文本到图片和图片到图片。",
@@ -27,7 +19,7 @@
       "prompt_too_long": "提示词太长，请删除一些内容"
     },
     "generate": "生成图片",
-    "checking_account": "检查账户...",
+    "checking_account": "Checking Account...",
     "loading": "加载中...",
     "generating": "生成中...",
     "sign_in_to_generate": "登录生成图片",

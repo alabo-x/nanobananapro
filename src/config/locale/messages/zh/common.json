@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "NanoBananaPro 模板二",
-    "description": "NanoBananaPro 是用于构建 AI SaaS 创业项目的 NextJS 脚手架。提供丰富模板和组件，助您快速上线产品。",
-    "keywords": "shipany, shipany-boilerplate, shipany-template-two-demo"
+    "title": "NanoBananaPro - AI 图片生成与编辑",
+    "description": "使用 NanoBananaPro 创建精美的 AI 生成图片。采用先进的 AI 模型，提供专业的图片生成和编辑功能。",
+    "keywords": "AI图片生成, AI图片编辑, 图片生成, AI艺术, 文字转图片, NanoBananaPro"
   },
   "sign": {
     "sign_in_title": "登录",

@@ -10,7 +10,6 @@ export * from './locale-selector';
 export * from './theme-toggler';
 
 export * from './copyright';
-export * from './built-with';
 
 export * from './page-header';
 export * from './section-header';

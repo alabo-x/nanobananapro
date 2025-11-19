@@ -4,32 +4,201 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目快速概览
 
-### 当前状态 (2025-11-18)
-- **项目阶段**: 模板化规划中
-- **最新变更**: 创建模板化改造方案文档
+### 当前状态 (2025-11-19)
+- **项目阶段**: 首页板块精简完成
+- **最新变更**: 精简首页板块，参考 imgeditor.co 结构
+- **开发服务器**: http://localhost:3000
+- **管理员账户**: admin@nanobananapro.com (super_admin)
+- **数据库表**: 16 个表（已删除 chat, chat_message）
 - **待办事项**:
-  - [ ] 执行模板化改造（参考 docs/TEMPLATE_PLAN.md）
-  - [ ] 配置数据库连接
-  - [ ] 初始化 RBAC 系统
-  - [ ] 创建管理员账户
+  - [ ] 调整 Hero 内容（文案、CTA）
+  - [ ] 调整 Features 内容（6个核心特性）
+  - [ ] 调整 Testimonials 内容
+  - [ ] 调整 FAQ 内容
+  - [ ] 添加 Showcase 板块（需要案例图片）
 
 ### 项目定位
 
-**NanoBananaPro 将成为你的个人 AI SaaS 项目模板**，用于快速创建类似项目。
+**NanoBananaPro** 是一个专注于 **AI 图片生成和编辑** 的在线工具网站。
 
-**三层架构**:
-```
-ShipAny 官方模板 (upstream) → NanoBananaPro 基础模板 (origin) → 具体项目 (ProjectX/Y/Z)
-```
+**核心功能**:
+- 唯一功能：AI 图片生成和编辑（首页 Hero 区块）
+- 主要调用 google/nano-banana 模型的升级版本
+- 可能的模型名称：google/nano-banana-pro
 
-**核心价值**:
-- ✅ 保留 ShipAny 框架能力（认证、支付、RBAC、AI 集成）
-- ✅ 清理品牌信息和示例内容
-- ✅ 添加初始化工具，5 分钟创建新项目
-- ✅ 你的通用改进可在所有项目中共享
-- ✅ 仍可从 ShipAny 获取官方更新
+**不需要的功能** (已删除):
+- ❌ 聊天/对话功能
+- ❌ 音乐/视频/音频生成
+- ❌ 任何与图片生成无关的 AI 功能
+
+**目标市场**: 欧美用户
+
+**技术基础**:
+- 基于 ShipAny Template Two (Next.js 16 + React 19)
+- 完整的用户认证、支付、权限管理系统
+- 集成 Vercel AI SDK 和 Replicate Provider
 
 ## 最近工作记录
+
+### 2025-11-19: 首页板块精简 - 参考 imgeditor.co
+**变更类型**: Refactor/UX
+**影响范围**: 前端
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 精简首页板块，只保留核心组件
+- ✅ 参考对标网站 imgeditor.co 的结构
+
+**删除的板块**:
+- ❌ Logos - 工具网站不需要
+- ❌ FeaturesList (introduce) - 合并到 Features
+- ❌ FeaturesAccordion (benefits) - 合并到 Features
+- ❌ FeaturesStep (usage) - 合并到 Features
+- ❌ Stats - 不需要数据统计
+- ❌ Subscribe - 不需要邮件订阅
+- ❌ CTA - Hero 已有 CTA
+
+**保留的板块**:
+```
+Hero → ImageGenerator → Features → Testimonials → FAQ
+```
+
+**修改的文件**:
+- `src/themes/default/pages/landing.tsx` - 精简板块引用
+
+**后续任务**:
+- 调整各板块内容（Hero、Features、Testimonials、FAQ）
+- 添加 Showcase 板块（需要案例图片）
+
+---
+
+### 2025-11-19: 首页重构 - 图片生成器作为独立板块
+**变更类型**: Refactor/UX
+**影响范围**: 前端
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 将 ImageGenerator 作为独立板块放在 Hero 之后（不是嵌入 Hero 内部）
+- ✅ 删除导航栏 "AI" 下拉菜单
+- ✅ 更新首页 Meta 信息（SEO 优化）
+- ✅ 删除 `/ai-image-generator` 页面
+- ✅ 保留 `ai/image` 翻译文件（组件需要）
+
+**修改的文件**:
+- `src/themes/default/pages/landing.tsx` - 添加 ImageGenerator 独立板块
+- `src/themes/default/blocks/hero.tsx` - 移除错误嵌入的 ImageGenerator
+- `src/config/locale/messages/en/landing.json` - 删除 AI 菜单
+- `src/config/locale/messages/zh/landing.json` - 删除 AI 菜单
+- `src/config/locale/messages/en/common.json` - 更新 Meta 信息
+- `src/config/locale/messages/zh/common.json` - 更新 Meta 信息
+
+**删除的文件**:
+- `src/app/[locale]/(landing)/(ai)/ai-image-generator/` - 整个目录
+- `src/app/[locale]/(landing)/(ai)/` - 空目录
+
+**保留的文件**（组件翻译需要）:
+- `src/config/locale/messages/en/ai/image.json` - 只保留 generator 部分
+- `src/config/locale/messages/zh/ai/image.json` - 只保留 generator 部分
+
+**页面结构**:
+```
+Hero → ImageGenerator → Logos → Features → ...
+```
+
+**SEO 更新**:
+- Title: "NanoBananaPro - AI Image Generator & Editor"
+- Description: "Create stunning AI-generated images with NanoBananaPro..."
+- Keywords: "AI image generator, AI image editor, image generation, AI art, text to image"
+
+**构建状态**: ✅ 通过
+
+---
+
+### 2025-11-19: 代码清理 - 只保留图片生成功能
+**变更类型**: Cleanup/Refactor
+**影响范围**: 全栈
+**Git commit**: 待提交
+
+**删除的功能**:
+- ❌ 聊天系统 (chat, chat_message 表, API, 组件)
+- ❌ AI 音乐生成器 (Kie Provider)
+- ❌ AI 视频/音频/聊天机器人页面
+- ❌ BuiltWith 组件 (Footer 中的 "Built with ❤️ ShipAny")
+
+**保留的功能**:
+- ✅ AI 图片生成器 (/ai-image-generator)
+- ✅ Replicate Provider (图片生成)
+- ✅ OpenRouter (保留，未来可用)
+
+**删除清单**:
+1. **目录** (3个):
+   - `src/app/[locale]/(chat)/`
+   - `src/app/api/chat/`
+   - `src/shared/blocks/chat/`
+2. **页面** (6个):
+   - ai-music-generator, ai-video-generator, ai-audio-generator, ai-chatbot
+   - admin/chats, activity/chats
+3. **代码文件** (7个):
+   - kie.ts, music.tsx, chat.tsx (context)
+   - chat.ts, chat_message.ts (models)
+   - types/chat/
+   - built-with.tsx (BuiltWith 组件)
+4. **翻译文件** (8个):
+   - ai/chat.json, ai/music.json
+   - admin/chats.json, activity/chats.json
+
+**修改的文件**:
+- 导航配置: landing.json, admin/sidebar.json, activity/sidebar.json
+- 代码依赖: ai.ts, settings.ts, generator/index.tsx, ai/index.ts
+- 翻译索引: locale/index.ts
+- 数据库: schema.ts (删除 chat, chatMessage 表定义)
+- Footer: footer.tsx, common/index.tsx (移除 BuiltWith)
+
+**数据库变更**:
+- 删除表: chat, chat_message
+- 当前表数: 16 个
+- 迁移文件: `0001_cultured_zarda.sql`
+
+**构建状态**: ✅ 通过
+
+---
+
+### 2025-11-19: ShipAny 快速开始全部完成
+**变更类型**: Setup/Configuration
+**影响范围**: 项目基础设施
+**Git commit**: 待提交
+
+**完成的所有步骤**:
+1. ✅ 项目初始化 (pnpm install - 1059 packages)
+2. ✅ 环境变量配置 (.env.local, .env.development)
+3. ✅ 数据库配置:
+   - Supabase PostgreSQL (US East Coast)
+   - Session Pooler 连接 (IPv4 兼容)
+   - 18 个表结构已创建
+4. ✅ 认证配置 (AUTH_SECRET)
+5. ✅ RBAC 初始化:
+   - 29 个权限定义
+   - 4 个角色: super_admin, admin, editor, viewer
+6. ✅ 注册管理员账户: admin@nanobananapro.com
+7. ✅ 分配 super_admin 角色
+8. ✅ 生成数据库迁移文件:
+   - `src/config/db/migrations/0000_glorious_the_twelve.sql`
+
+**问题解决记录**:
+- 端口 3000 被占用 → 使用端口 3004
+- NEXT_PUBLIC_APP_URL 端口不匹配导致注册卡住 → 修正为 3004
+- Supabase 直连 DNS 解析失败 → 切换到 Session Pooler
+
+**开发服务器**:
+- 本地: http://localhost:3004
+- 局域网: http://192.168.0.103:3004
+
+**下一步**:
+1. 讨论图片生成功能架构
+2. 了解 Google 新模型 API
+3. 开发核心图片生成功能
+
+---
 
 ### 2025-11-18: 模板化改造方案规划
 **变更类型**: Planning/Documentation

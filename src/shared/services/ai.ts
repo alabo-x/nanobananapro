@@ -1,4 +1,4 @@
-import { AIManager, KieProvider, ReplicateProvider } from '@/extensions/ai';
+import { AIManager, ReplicateProvider } from '@/extensions/ai';
 import { Configs, getAllConfigs } from '@/shared/models/config';
 
 /**
@@ -6,14 +6,6 @@ import { Configs, getAllConfigs } from '@/shared/models/config';
  */
 export function getAIManagerWithConfigs(configs: Configs) {
   const aiManager = new AIManager();
-
-  if (configs.kie_api_key) {
-    aiManager.addProvider(
-      new KieProvider({
-        apiKey: configs.kie_api_key,
-      })
-    );
-  }
 
   if (configs.replicate_api_token) {
     aiManager.addProvider(

@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "NanoBananaPro",
-    "description": "NanoBananaPro is a NextJS boilerplate for building AI SaaS startups. Ship Fast with a variety of templates and components.",
-    "keywords": "shipany, shipany-boilerplate, shipany-template-two-demo"
+    "title": "NanoBananaPro - AI Image Generator & Editor",
+    "description": "Create stunning AI-generated images with NanoBananaPro. Powered by advanced AI models for professional image generation and editing.",
+    "keywords": "AI image generator, AI image editor, image generation, AI art, text to image, NanoBananaPro"
   },
   "sign": {
     "sign_in_title": "Sign In",
