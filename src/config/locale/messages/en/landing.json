@@ -62,208 +62,44 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Ship AI Startups in hours, not days",
-    "highlight_text": "in hours",
-    "description": "NanoBananaPro is a NextJS boilerplate for building AI SaaS startups.<br/>Ship Fast with a variety of templates and components.",
+    "title": "Nano Banana Pro",
+    "highlight_text": "",
+    "description": "Turn your ideas into professional images with simple text prompts. No design skills required.",
     "announcement": {
       "badge": "New",
       "title": "🎉 NanoBananaPro",
-      "url": "/pricing"
+      "url": "#generator"
     },
-    "tip": "🎁 Special offer for the first 1000 users",
     "buttons": [
       {
         "title": "Get Started",
         "icon": "Zap",
-        "url": "/pricing",
+        "url": "#generator",
         "target": "_self",
         "variant": "default"
       },
       {
-        "title": "Read Document",
-        "icon": "BookOpenText",
-        "url": "/docs",
-        "target": "_blank",
+        "title": "View Examples",
+        "icon": "Images",
+        "url": "#showcase",
+        "target": "_self",
         "variant": "outline"
       }
     ],
-    "show_avatars": true,
-    "avatars_tip": "999+ users are using NanoBananaPro",
+    "show_avatars": false,
     "show_award": false,
-    "image": {
-      "src": "/imgs/features/admin.png",
-      "alt": "hero"
-    },
-    "image_invert": {
-      "src": "/imgs/features/admin-dark.png",
-      "alt": "hero"
-    }
-  },
-  "logos": {
-    "title": "NanoBananaPro is built on the shoulders of giants",
-    "items": [
+    "feature_tags": [
       {
-        "title": "Next.js",
-        "image": {
-          "src": "/imgs/logos/nextjs.svg",
-          "alt": "Next.js"
-        }
+        "title": "One-Click Generate",
+        "icon": "MousePointerClick"
       },
       {
-        "title": "React",
-        "image": {
-          "src": "/imgs/logos/react.svg",
-          "alt": "React"
-        }
+        "title": "Natural Language",
+        "icon": "MessageSquareText"
       },
       {
-        "title": "TailwindCSS",
-        "image": {
-          "src": "/imgs/logos/tailwindcss.svg",
-          "alt": "TailwindCSS"
-        }
-      },
-      {
-        "title": "Shadcn/UI",
-        "image": {
-          "src": "/imgs/logos/shadcn.svg",
-          "alt": "Shadcn/UI"
-        }
-      },
-      {
-        "title": "Vercel",
-        "image": {
-          "src": "/imgs/logos/vercel.svg",
-          "alt": "Vercel"
-        }
-      }
-    ]
-  },
-  "introduce": {
-    "id": "introduce",
-    "title": "What is NanoBananaPro",
-    "label": "Introduce",
-    "description": "NanoBananaPro is a NextJS boilerplate for building AI SaaS startups, including templates, components, and documentation.",
-    "image": {
-      "src": "/imgs/features/landing-page.png",
-      "alt": "introduce"
-    },
-    "items": [
-      {
-        "title": "Ready-to-use Templates",
-        "description": "Choose from dozens of production-ready AI SaaS templates to quickly start your project.",
-        "icon": "RiNextjsFill",
-        "image": {
-          "src": "/imgs/features/1.png",
-          "alt": "introduce"
-        }
-      },
-      {
-        "title": "Infrastructure Setup",
-        "description": "Get instant access to scalable infrastructure with best practices built-in.",
-        "icon": "RiDatabase2Line",
-        "image": {
-          "src": "/imgs/features/2.png",
-          "alt": "introduce"
-        }
-      },
-      {
-        "title": "Quick Deployment",
-        "description": "Deploy your AI SaaS application to production in hours, not days.",
-        "icon": "RiCloudyFill",
-        "image": {
-          "src": "/imgs/features/3.png",
-          "alt": "introduce"
-        }
-      },
-      {
-        "title": "AI Integration",
-        "description": "Integrate AI into your project with ease using our built-in AI SDK.",
-        "icon": "RiRobot2Line",
-        "image": {
-          "src": "/imgs/features/4.png",
-          "alt": "introduce"
-        }
-      }
-    ]
-  },
-  "benefits": {
-    "id": "benefits",
-    "title": "Why Choose NanoBananaPro",
-    "label": "Benefits",
-    "description": "Get everything you need to launch your AI startup - from ready-to-use templates to technical support.",
-    "items": [
-      {
-        "title": "Complete Framework",
-        "description": "Built on Next.js with authentication, payments, and AI integration - everything works out of the box.",
-        "icon": "RiNextjsFill",
-        "image": {
-          "src": "/imgs/features/user-billing.png",
-          "alt": "benefits"
-        }
-      },
-      {
-        "title": "Rich Templates Library",
-        "description": "Choose from various AI SaaS templates to kickstart your project - chatbots, image generation, and more.",
-        "icon": "RiClapperboardAiLine",
-        "image": {
-          "src": "/imgs/features/admin-settings.png",
-          "alt": "benefits"
-        }
-      },
-      {
-        "title": "Technical Guidance",
-        "description": "Get dedicated support and join our developer community to ensure your successful launch.",
-        "icon": "RiCodeFill",
-        "image": {
-          "src": "/imgs/features/landing-page.png",
-          "alt": "benefits"
-        }
-      }
-    ]
-  },
-  "usage": {
-    "id": "usage",
-    "title": "How to Launch with NanoBananaPro",
-    "description": "Get your AI SaaS startup running in three simple steps:",
-    "image": {
-      "src": "/imgs/features/1.png",
-      "alt": "usage"
-    },
-    "image_position": "left",
-    "text_align": "center",
-    "items": [
-      {
-        "title": "Get NanoBananaPro",
-        "description": "Buy NanoBananaPro with a one-time payment. Check your email for the code and documentation.",
-        "image": {
-          "src": "/imgs/features/5.png",
-          "alt": "usage"
-        }
-      },
-      {
-        "title": "Start Your Project",
-        "description": "Read the documentation and clone the code of NanoBananaPro. Start building your AI SaaS startup.",
-        "image": {
-          "src": "/imgs/features/6.png",
-          "alt": "usage"
-        }
-      },
-      {
-        "title": "Customize Your Project",
-        "description": "Modify the template with your data and contents. Specific AI functionality needs.",
-        "image": {
-          "src": "/imgs/features/7.png",
-          "alt": "usage"
-        }
-      },
-      {
-        "title": "Deploy to Production",
-        "description": "Deploy your project to production with a few steps and start serving customers immediately.",
-        "image": {
-          "src": "/imgs/features/8.png",
-          "alt": "usage"
-        }
+        "title": "HD Output",
+        "icon": "ImageUp"
       }
     ]
   },
@@ -301,25 +137,6 @@
         "title": "AI-Ready Infrastructure",
         "description": "Pre-configured AI integration with built-in credits system and API sales.",
         "icon": "RiRobot2Line"
-      }
-    ]
-  },
-  "stats": {
-    "id": "stats",
-    "title": "People Love NanoBananaPro",
-    "description": "for it's easy to use and fast to ship.",
-    "items": [
-      {
-        "title": "999+",
-        "description": "Customers"
-      },
-      {
-        "title": "200+",
-        "description": "Blocks"
-      },
-      {
-        "title": "50+",
-        "description": "Templates"
       }
     ]
   },
@@ -415,40 +232,6 @@
         "answer": "Absolutely! All NanoBananaPro templates are fully customizable. You can modify the design, features, and functionality to match your brand identity and specific business requirements while maintaining the robust underlying infrastructure."
       }
     ]
-  },
-  "cta": {
-    "id": "cta",
-    "title": "Ship your first AI SaaS Startup",
-    "description": "Start from here, ship with NanoBananaPro.",
-    "buttons": [
-      {
-        "title": "Get NanoBananaPro",
-        "url": "https://shipany.ai",
-        "target": "_blank",
-        "icon": "Zap"
-      },
-      {
-        "title": "Read Document",
-        "url": "/docs",
-        "target": "_blank",
-        "variant": "outline",
-        "icon": "BookOpenText"
-      }
-    ]
-  },
-  "subscribe": {
-    "id": "subscribe",
-    "title": "Subscribe to our newsletter",
-    "description": "Get the latest news and updates from NanoBananaPro.",
-    "submit": {
-      "input": {
-        "placeholder": "Enter your email"
-      },
-      "button": {
-        "title": "Subscribe"
-      },
-      "action": "/api/subscribe"
-    }
   },
   "footer": {
     "id": "footer",

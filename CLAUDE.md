@@ -11,11 +11,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **管理员账户**: admin@nanobananapro.com (super_admin)
 - **数据库表**: 16 个表（已删除 chat, chat_message）
 - **待办事项**:
-  - [ ] 调整 Hero 内容（文案、CTA）
+  - [ ] 调整 Hero 内容（文案、CTA，参考 imgeditor.co）
   - [ ] 调整 Features 内容（6个核心特性）
   - [ ] 调整 Testimonials 内容
   - [ ] 调整 FAQ 内容
-  - [ ] 添加 Showcase 板块（需要案例图片）
+  - [ ] **Showcase 板块** - 添加生成案例展示（需要准备案例图片素材，暂未完成）
 
 ### 项目定位
 
@@ -31,7 +31,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - ❌ 音乐/视频/音频生成
 - ❌ 任何与图片生成无关的 AI 功能
 
-**目标市场**: 欧美用户
+**目标市场**: 欧美普通用户
+
+**用户画像**:
+- 非专业设计师
+- 社交媒体运营者、内容创作者
+- 电商卖家、营销人员
+- 普通用户（需要图片但不会 Photoshop）
+
+**核心诉求**:
+- 简单易用，不需要学习成本
+- 快速出图，节省时间
+- 专业质量，无需专业技能
+
+**文案风格**:
+- 简洁直接，一句话说清价值
+- 强调"No design skills required"
+- 降低用户心理门槛
 
 **技术基础**:
 - 基于 ShipAny Template Two (Next.js 16 + React 19)
@@ -39,6 +55,44 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 集成 Vercel AI SDK 和 Replicate Provider
 
 ## 最近工作记录
+
+### 2025-11-20: Hero 内容和样式优化 - 参考 imgeditor.co
+**变更类型**: Content/UX/Style
+**影响范围**: 前端
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 更新 Hero 标题为品牌名 "Nano Banana Pro"
+- ✅ 更新描述和按钮内容
+- ✅ 删除社交证明区域（tip、avatars）
+- ✅ 保留 announcement 横幅，跳转到 #generator
+- ✅ 添加功能标签组件（feature_tags）
+- ✅ 更新类型定义支持 feature_tags
+- ✅ 优化样式使 Hero 更大气
+
+**Hero 新内容**:
+- **标题**: "Nano Banana Pro"
+- **描述**: "Turn your ideas into professional images with simple text prompts. No design skills required."
+- **主按钮**: "Get Started" → #generator
+- **次按钮**: "View Examples" → #showcase
+- **功能标签**: 一键生成 / 自然语言 / 高清输出
+- **横幅**: 跳转到 #generator
+
+**样式优化**:
+- 标题字体：`text-5xl sm:text-7xl` → `text-6xl sm:text-8xl`
+- 区域 padding：`pb-8 md:pb-8` → `pb-16 md:pb-24`
+- 描述间距：`mt-8 mb-8` → `mt-10 mb-10`
+- 描述字体：`text-lg` → `text-xl`
+- 按钮尺寸：`size="default"` → `size="lg"`
+- 功能标签间距：`mt-8 gap-6` → `mt-12 gap-8`
+
+**修改的文件**:
+- `src/config/locale/messages/en/landing.json` - 英文 Hero 配置
+- `src/config/locale/messages/zh/landing.json` - 中文 Hero 配置
+- `src/themes/default/blocks/hero.tsx` - Hero 组件（feature_tags + 样式优化）
+- `src/shared/types/blocks/landing.d.ts` - 添加 FeatureTag 类型定义
+
+---
 
 ### 2025-11-19: 首页板块精简 - 参考 imgeditor.co
 **变更类型**: Refactor/UX
@@ -48,6 +102,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **变更内容**:
 - ✅ 精简首页板块，只保留核心组件
 - ✅ 参考对标网站 imgeditor.co 的结构
+- ✅ 删除 Hero 图片展示区域代码
+- ✅ 彻底删除无用组件代码和配置
 
 **删除的板块**:
 - ❌ Logos - 工具网站不需要
@@ -57,18 +113,40 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - ❌ Stats - 不需要数据统计
 - ❌ Subscribe - 不需要邮件订阅
 - ❌ CTA - Hero 已有 CTA
+- ❌ Hero 图片区域 - 彻底移除代码
 
 **保留的板块**:
 ```
 Hero → ImageGenerator → Features → Testimonials → FAQ
 ```
 
+**删除的组件文件** (7个):
+- `src/themes/default/blocks/logos.tsx`
+- `src/themes/default/blocks/features-list.tsx`
+- `src/themes/default/blocks/features-accordion.tsx`
+- `src/themes/default/blocks/features-step.tsx`
+- `src/themes/default/blocks/stats.tsx`
+- `src/themes/default/blocks/subscribe.tsx`
+- `src/themes/default/blocks/cta.tsx`
+
+**删除的配置内容**:
+- `src/config/locale/messages/en/landing.json`: logos, introduce, benefits, usage, stats, cta, subscribe
+- `src/config/locale/messages/zh/landing.json`: logos, introduce, benefits, usage, stats, cta, subscribe
+
 **修改的文件**:
 - `src/themes/default/pages/landing.tsx` - 精简板块引用
+- `src/themes/default/blocks/hero.tsx` - 删除图片展示区域（第142-172行）、移除 LazyImage 导入
+- `src/themes/default/blocks/index.tsx` - 更新导出（移除已删除组件）
 
 **后续任务**:
 - 调整各板块内容（Hero、Features、Testimonials、FAQ）
-- 添加 Showcase 板块（需要案例图片）
+- **Showcase 板块** - 需要准备案例图片素材后开发
+
+**决策理由**:
+- 项目功能明确（AI 图片生成工具）
+- 后期不会添加太多板块
+- 需要时可从 ShipAny upstream 获取
+- 减少代码量，提高可维护性
 
 ---
 

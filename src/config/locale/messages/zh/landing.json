@@ -62,208 +62,44 @@
   },
   "hero": {
     "id": "hero",
-    "title": "一小时快速上线你的 AI 创业项目",
-    "highlight_text": "一小时",
-    "description": "NanoBananaPro 是用于构建 AI SaaS 创业项目的 NextJS 项目模板。<br/>集成常用功能，快速上线你的产品。",
+    "title": "Nano Banana Pro",
+    "highlight_text": "",
+    "description": "用简单的文字描述，将你的创意变成专业图片。无需设计技能。",
     "announcement": {
       "badge": "全新",
-      "title": "🎉 NanoBananaPro 模板二已发布",
-      "url": "/pricing"
+      "title": "🎉 NanoBananaPro",
+      "url": "#generator"
     },
-    "tip": "🎁 前 1000 名用户特价优惠",
     "buttons": [
       {
         "title": "立即开始",
         "icon": "Zap",
-        "url": "/pricing",
+        "url": "#generator",
         "target": "_self",
         "variant": "default"
       },
       {
-        "title": "阅读文档",
-        "icon": "BookOpenText",
-        "url": "/docs",
-        "target": "_blank",
+        "title": "查看案例",
+        "icon": "Images",
+        "url": "#showcase",
+        "target": "_self",
         "variant": "outline"
       }
     ],
-    "show_avatars": true,
-    "avatars_tip": "999+ 用户在使用 NanoBananaPro 上站",
+    "show_avatars": false,
     "show_award": false,
-    "image": {
-      "src": "/imgs/features/admin.png",
-      "alt": "hero"
-    },
-    "image_invert": {
-      "src": "/imgs/features/admin-dark.png",
-      "alt": "hero"
-    }
-  },
-  "logos": {
-    "title": "NanoBananaPro 使用以下技术栈构建",
-    "items": [
+    "feature_tags": [
       {
-        "title": "Next.js",
-        "image": {
-          "src": "/imgs/logos/nextjs.svg",
-          "alt": "Next.js"
-        }
+        "title": "一键生成",
+        "icon": "MousePointerClick"
       },
       {
-        "title": "React",
-        "image": {
-          "src": "/imgs/logos/react.svg",
-          "alt": "React"
-        }
+        "title": "自然语言",
+        "icon": "MessageSquareText"
       },
       {
-        "title": "TailwindCSS",
-        "image": {
-          "src": "/imgs/logos/tailwindcss.svg",
-          "alt": "TailwindCSS"
-        }
-      },
-      {
-        "title": "Shadcn/UI",
-        "image": {
-          "src": "/imgs/logos/shadcn.svg",
-          "alt": "Shadcn/UI"
-        }
-      },
-      {
-        "title": "Vercel",
-        "image": {
-          "src": "/imgs/logos/vercel.svg",
-          "alt": "Vercel"
-        }
-      }
-    ]
-  },
-  "introduce": {
-    "id": "introduce",
-    "title": "NanoBananaPro 是什么？",
-    "label": "产品简介",
-    "description": "NanoBananaPro 是专为 AI SaaS 创业项目打造的 NextJS 脚手架，包括丰富模板、组件及文档。",
-    "image": {
-      "src": "/imgs/features/landing-page.png",
-      "alt": "introduce"
-    },
-    "items": [
-      {
-        "title": "开箱即用的模板",
-        "description": "从数十款生产级 AI SaaS 模板中选择，快速开启你的项目。",
-        "icon": "RiNextjsFill",
-        "image": {
-          "src": "/imgs/features/1.png",
-          "alt": "introduce"
-        }
-      },
-      {
-        "title": "基础设施搭建",
-        "description": "内置最佳实践，即刻拥有可扩展的基础设施。",
-        "icon": "RiDatabase2Line",
-        "image": {
-          "src": "/imgs/features/2.png",
-          "alt": "introduce"
-        }
-      },
-      {
-        "title": "极速部署",
-        "description": "AI SaaS 产品快速上线，助力小时级交付。",
-        "icon": "RiCloudyFill",
-        "image": {
-          "src": "/imgs/features/3.png",
-          "alt": "introduce"
-        }
-      },
-      {
-        "title": "AI 集成",
-        "description": "通过内置的 AI SDK，轻松为你的项目集成 AI 能力。",
-        "icon": "RiRobot2Line",
-        "image": {
-          "src": "/imgs/features/4.png",
-          "alt": "introduce"
-        }
-      }
-    ]
-  },
-  "benefits": {
-    "id": "benefits",
-    "title": "为何选择 NanoBananaPro",
-    "label": "产品优势",
-    "description": "你获得一切 AI 创业所需——从开箱即用的模板到专业技术支持。",
-    "items": [
-      {
-        "title": "全栈解决方案",
-        "description": "基于 Next.js，集成认证、支付、AI，一站式开箱即用。",
-        "icon": "RiNextjsFill",
-        "image": {
-          "src": "/imgs/features/user-billing.png",
-          "alt": "benefits"
-        }
-      },
-      {
-        "title": "丰富模板库",
-        "description": "多样的 AI SaaS 模板，点击即用，涵盖聊天、图像生成等多场景。",
-        "icon": "RiClapperboardAiLine",
-        "image": {
-          "src": "/imgs/features/admin-settings.png",
-          "alt": "benefits"
-        }
-      },
-      {
-        "title": "专属技术指导",
-        "description": "享受专属技术支持与开发者社区，为你的成功保驾护航。",
-        "icon": "RiCodeFill",
-        "image": {
-          "src": "/imgs/features/landing-page.png",
-          "alt": "benefits"
-        }
-      }
-    ]
-  },
-  "usage": {
-    "id": "usage",
-    "title": "三步使用 NanoBananaPro 极速上线",
-    "description": "只需三步，快速开启你的 AI SaaS 创业之路：",
-    "image": {
-      "src": "/imgs/features/1.png",
-      "alt": "usage"
-    },
-    "image_position": "left",
-    "text_align": "center",
-    "items": [
-      {
-        "title": "获取 NanoBananaPro",
-        "description": "一次性购买 NanoBananaPro，查收邮件获取代码与文档。",
-        "image": {
-          "src": "/imgs/features/5.png",
-          "alt": "usage"
-        }
-      },
-      {
-        "title": "启动你的项目",
-        "description": "阅读说明文档，克隆 NanoBananaPro 代码，开始开发你的 AI SaaS 项目。",
-        "image": {
-          "src": "/imgs/features/6.png",
-          "alt": "usage"
-        }
-      },
-      {
-        "title": "个性化定制",
-        "description": "根据需求修改模板内容和数据，配置专属 AI 能力。",
-        "image": {
-          "src": "/imgs/features/7.png",
-          "alt": "usage"
-        }
-      },
-      {
-        "title": "部署上线",
-        "description": "简单几步将你的项目推向生产环境，立刻为客户提供服务。",
-        "image": {
-          "src": "/imgs/features/8.png",
-          "alt": "usage"
-        }
+        "title": "高清输出",
+        "icon": "ImageUp"
       }
     ]
   },
@@ -301,25 +137,6 @@
         "title": "AI 原生基础设施",
         "description": "预置 AI 集成、积分系统和 API 售卖能力。",
         "icon": "RiRobot2Line"
-      }
-    ]
-  },
-  "stats": {
-    "id": "stats",
-    "title": "用户喜爱 NanoBananaPro",
-    "description": "因其易用且上线飞快。",
-    "items": [
-      {
-        "title": "999+",
-        "description": "位用户"
-      },
-      {
-        "title": "200+",
-        "description": "组件块"
-      },
-      {
-        "title": "50+",
-        "description": "专业模板"
       }
     ]
   },
@@ -415,40 +232,6 @@
         "answer": "当然支持！所有模板均可自定义设计、功能和品牌，既保持基础架构稳定，又能满足个性扩展需求。"
       }
     ]
-  },
-  "cta": {
-    "id": "cta",
-    "title": "发布你的第一个 AI SaaS 项目",
-    "description": "从这里出发，用 NanoBananaPro 极速交付。",
-    "buttons": [
-      {
-        "title": "获取 NanoBananaPro",
-        "url": "https://shipany.ai",
-        "target": "_blank",
-        "icon": "Zap"
-      },
-      {
-        "title": "阅读文档",
-        "url": "/docs",
-        "target": "_blank",
-        "variant": "outline",
-        "icon": "BookOpenText"
-      }
-    ]
-  },
-  "subscribe": {
-    "id": "subscribe",
-    "title": "订阅我们的邮件通知",
-    "description": "获取 NanoBananaPro 最新资讯与产品动态。",
-    "submit": {
-      "input": {
-        "placeholder": "输入邮箱"
-      },
-      "button": {
-        "title": "订阅"
-      },
-      "action": "/api/subscribe"
-    }
   },
   "footer": {
     "id": "footer",

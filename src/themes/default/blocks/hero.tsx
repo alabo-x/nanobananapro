@@ -4,14 +4,12 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 import { Link } from '@/core/i18n/navigation';
-import { LazyImage, SmartIcon } from '@/shared/blocks/common';
+import { SmartIcon } from '@/shared/blocks/common';
 import { AnimatedGridPattern } from '@/shared/components/ui/animated-grid-pattern';
 import { Button } from '@/shared/components/ui/button';
 import { Highlighter } from '@/shared/components/ui/highlighter';
 import { cn } from '@/shared/lib/utils';
 import { Hero as HeroType } from '@/shared/types/blocks/landing';
-
-import { SocialAvatars } from './social-avatars';
 
 const createFadeInVariant = (delay: number) => ({
   initial: {
@@ -48,7 +46,7 @@ export function Hero({
     <>
       <section
         id={hero.id}
-        className={`pt-24 pb-8 md:pt-36 md:pb-8 ${hero.className} ${className}`}
+        className={`pt-24 pb-16 md:pt-36 md:pb-24 ${hero.className} ${className}`}
       >
         {hero.announcement && (
           <motion.div {...createFadeInVariant(0)}>
@@ -95,7 +93,7 @@ export function Hero({
 
           <motion.p
             {...createFadeInVariant(0.3)}
-            className="text-muted-foreground mt-8 mb-8 text-lg text-balance"
+            className="text-muted-foreground mt-10 mb-10 text-xl text-balance"
             dangerouslySetInnerHTML={{ __html: hero.description ?? '' }}
           />
 
@@ -107,9 +105,9 @@ export function Hero({
               {hero.buttons.map((button, idx) => (
                 <Button
                   asChild
-                  size={button.size || 'default'}
+                  size={button.size || 'lg'}
                   variant={button.variant || 'default'}
-                  className="px-4 text-sm"
+                  className="px-6 text-base"
                   key={idx}
                 >
                   <Link
@@ -124,52 +122,29 @@ export function Hero({
             </motion.div>
           )}
 
-          {hero.tip && (
-            <motion.p
+          {hero.feature_tags && hero.feature_tags.length > 0 && (
+            <motion.div
               {...createFadeInVariant(0.6)}
-              className="text-muted-foreground mt-6 block text-center text-sm"
-              dangerouslySetInnerHTML={{ __html: hero.tip ?? '' }}
-            />
-          )}
-
-          {hero.show_avatars && (
-            <motion.div {...createFadeInVariant(0.75)}>
-              <SocialAvatars tip={hero.avatars_tip || ''} />
+              className="mt-12 flex flex-wrap items-center justify-center gap-8"
+            >
+              {hero.feature_tags.map((tag, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-2 text-muted-foreground"
+                >
+                  {tag.icon && (
+                    <SmartIcon
+                      name={tag.icon}
+                      className="size-5 text-primary"
+                    />
+                  )}
+                  <span className="text-sm font-medium">{tag.title}</span>
+                </div>
+              ))}
             </motion.div>
           )}
         </div>
       </section>
-      {hero.image && (
-        <motion.section
-          className="border-foreground/10 relative mt-8 border-y sm:mt-16"
-          initial={{ opacity: 0, y: 20, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{
-            delay: 0.9,
-            duration: 0.7,
-            ease: [0.22, 1, 0.36, 1] as const,
-          }}
-        >
-          <div className="relative z-10 mx-auto max-w-6xl border-x px-3">
-            <div className="border-x">
-              <div
-                aria-hidden
-                className="h-3 w-full bg-[repeating-linear-gradient(-45deg,var(--color-foreground),var(--color-foreground)_1px,transparent_1px,transparent_4px)] opacity-5"
-              />
-              <LazyImage
-                className="border-border/25 relative z-2 hidden border dark:block"
-                src={hero.image_invert?.src || hero.image?.src || ''}
-                alt={hero.image_invert?.alt || hero.image?.alt || ''}
-              />
-              <LazyImage
-                className="border-border/25 relative z-2 border dark:hidden"
-                src={hero.image?.src || hero.image_invert?.src || ''}
-                alt={hero.image?.alt || hero.image_invert?.alt || ''}
-              />
-            </div>
-          </div>
-        </motion.section>
-      )}
 
       <AnimatedGridPattern
         numSquares={30}

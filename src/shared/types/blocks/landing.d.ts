@@ -56,6 +56,12 @@ export interface Footer {
   className?: string;
 }
 
+// feature tag for hero component
+export interface FeatureTag {
+  title?: string;
+  icon?: string;
+}
+
 // hero props for hero component
 export interface Hero extends Section {
   id?: string;
@@ -64,6 +70,7 @@ export interface Hero extends Section {
   avatars_tip?: string;
   show_award?: boolean;
   highlight_text?: string;
+  feature_tags?: FeatureTag[];
 }
 
 export interface Logos extends Section {}
