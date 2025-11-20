@@ -46,14 +46,14 @@ export function Hero({
     <>
       <section
         id={hero.id}
-        className={`pt-24 pb-16 md:pt-36 md:pb-24 ${hero.className} ${className}`}
+        className={`min-h-[calc(100vh-64px)] flex flex-col items-center justify-center ${hero.className} ${className}`}
       >
         {hero.announcement && (
           <motion.div {...createFadeInVariant(0)}>
             <Link
               href={hero.announcement.url || ''}
               target={hero.announcement.target || '_self'}
-              className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto mb-8 flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
+              className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto mb-4 flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
             >
               <span className="text-foreground text-sm">
                 {hero.announcement.title}
@@ -77,7 +77,7 @@ export function Hero({
         <div className="relative mx-auto max-w-5xl px-4 text-center">
           <motion.div {...createFadeInVariant(0.15)}>
             {texts && texts.length > 0 ? (
-              <h1 className="text-foreground text-5xl font-semibold text-balance sm:mt-12 sm:text-7xl">
+              <h1 className="text-foreground text-5xl font-semibold text-balance sm:text-7xl">
                 {texts[0]}
                 <Highlighter action="underline" color="#FF9800">
                   {highlightText}
@@ -85,7 +85,7 @@ export function Hero({
                 {texts[1]}
               </h1>
             ) : (
-              <h1 className="text-foreground text-5xl font-semibold text-balance sm:mt-12 sm:text-7xl">
+              <h1 className="text-foreground text-5xl font-semibold text-balance sm:text-7xl">
                 {hero.title}
               </h1>
             )}
@@ -93,7 +93,7 @@ export function Hero({
 
           <motion.p
             {...createFadeInVariant(0.3)}
-            className="text-muted-foreground mt-10 mb-10 text-xl text-balance"
+            className="text-muted-foreground mt-6 mb-10 text-xl text-balance"
             dangerouslySetInnerHTML={{ __html: hero.description ?? '' }}
           />
 
@@ -125,7 +125,7 @@ export function Hero({
           {hero.feature_tags && hero.feature_tags.length > 0 && (
             <motion.div
               {...createFadeInVariant(0.6)}
-              className="mt-12 flex flex-wrap items-center justify-center gap-8"
+              className="mt-10 flex flex-wrap items-center justify-center gap-6"
             >
               {hero.feature_tags.map((tag, idx) => (
                 <div

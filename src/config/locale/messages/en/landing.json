@@ -103,6 +103,11 @@
       }
     ]
   },
+  "generator": {
+    "id": "generator",
+    "title": "Try The AI Editor",
+    "description": "Transform any image with simple text prompts. Advanced AI editing delivers consistent results and precise modifications that surpass traditional tools."
+  },
   "features": {
     "id": "features",
     "title": "Key Features of NanoBananaPro",

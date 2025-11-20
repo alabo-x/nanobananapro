@@ -107,6 +107,9 @@ export interface Testimonials extends Section {
   items?: TestimonialsItem[];
 }
 
+// generator section for ImageGenerator component
+export interface Generator extends Section {}
+
 // landing props for landing page component
 export interface Landing {
   header?: Header;
@@ -118,6 +121,7 @@ export interface Landing {
   features?: Features;
   stats?: Stats;
   showcases?: Showcases;
+  generator?: Generator;
   subscribe?: Subscribe;
   faq?: FAQ;
   cta?: CTA;

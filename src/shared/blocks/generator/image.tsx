@@ -20,6 +20,7 @@ import {
   LazyImage,
 } from '@/shared/blocks/common';
 import { Button } from '@/shared/components/ui/button';
+import { ScrollAnimation } from '@/shared/components/ui/scroll-animation';
 import {
   Card,
   CardContent,
@@ -39,7 +40,14 @@ import { Tabs, TabsList, TabsTrigger } from '@/shared/components/ui/tabs';
 import { Textarea } from '@/shared/components/ui/textarea';
 import { useAppContext } from '@/shared/contexts/app';
 
+interface GeneratorConfig {
+  id?: string;
+  title?: string;
+  description?: string;
+}
+
 interface ImageGeneratorProps {
+  generator?: GeneratorConfig;
   allowMultipleImages?: boolean;
   maxImages?: number;
   maxSizeMB?: number;
@@ -71,18 +79,8 @@ const MAX_PROMPT_LENGTH = 2000;
 
 const MODEL_OPTIONS = [
   {
-    value: 'black-forest-labs/flux-schnell',
-    label: 'FLUX Schnell',
-    scenes: ['text-to-image'],
-  },
-  {
-    value: 'google/nano-banana',
-    label: 'Nano Banana',
-    scenes: ['text-to-image', 'image-to-image'],
-  },
-  {
-    value: 'bytedance/seedream-4',
-    label: 'Seedream 4',
+    value: 'google/nano-banana-pro',
+    label: 'Nano Banana Pro',
     scenes: ['text-to-image', 'image-to-image'],
   },
 ];
@@ -147,6 +145,7 @@ function extractImageUrls(result: any): string[] {
 }
 
 export function ImageGenerator({
+  generator,
   allowMultipleImages = true,
   maxImages = 9,
   maxSizeMB = 5,
@@ -155,11 +154,11 @@ export function ImageGenerator({
   const t = useTranslations('ai.image.generator');
 
   const [activeTab, setActiveTab] =
-    useState<ImageGeneratorTab>('text-to-image');
+    useState<ImageGeneratorTab>('image-to-image');
 
   const [costCredits, setCostCredits] = useState<number>(2);
-  const [provider, setProvider] = useState(PROVIDER_OPTIONS[0]?.value ?? '');
-  const [model, setModel] = useState(MODEL_OPTIONS[0]?.value ?? '');
+  const [provider, setProvider] = useState('replicate');
+  const [model, setModel] = useState('google/nano-banana-pro');
   const [prompt, setPrompt] = useState('');
   const [referenceImageItems, setReferenceImageItems] = useState<
     ImageUploaderValue[]
@@ -192,10 +191,10 @@ export function ImageGenerator({
 
   useEffect(() => {
     if (activeTab === 'text-to-image') {
-      setModel('black-forest-labs/flux-schnell');
+      setModel('google/nano-banana-pro');
       setCostCredits(2);
     } else {
-      setModel('google/nano-banana');
+      setModel('google/nano-banana-pro');
       setCostCredits(4);
     }
   }, [activeTab]);
@@ -503,8 +502,22 @@ export function ImageGenerator({
   };
 
   return (
-    <section className="py-16 md:py-24">
+    <section id={generator?.id} className="pt-0 pb-16 md:pb-24">
       <div className="container">
+        {generator?.title && (
+          <ScrollAnimation>
+            <div className="mx-auto max-w-2xl text-center text-balance">
+              <h2 className="text-foreground mb-4 text-3xl font-semibold tracking-tight md:text-4xl">
+                {generator.title}
+              </h2>
+              {generator.description && (
+                <p className="text-muted-foreground mb-6 md:mb-12 lg:mb-16">
+                  {generator.description}
+                </p>
+              )}
+            </div>
+          </ScrollAnimation>
+        )}
         <div className="mx-auto max-w-6xl">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <Card>
@@ -522,33 +535,16 @@ export function ImageGenerator({
                   }
                 >
                   <TabsList className="bg-primary/10 grid w-full grid-cols-2">
-                    <TabsTrigger value="text-to-image">
-                      {t('tabs.text-to-image')}
-                    </TabsTrigger>
                     <TabsTrigger value="image-to-image">
                       {t('tabs.image-to-image')}
+                    </TabsTrigger>
+                    <TabsTrigger value="text-to-image">
+                      {t('tabs.text-to-image')}
                     </TabsTrigger>
                   </TabsList>
                 </Tabs>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label>{t('form.provider')}</Label>
-                    <Select value={provider} onValueChange={setProvider}>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder={t('form.select_provider')} />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {PROVIDER_OPTIONS.map((option) => (
-                          <SelectItem key={option.value} value={option.value}>
-                            {option.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
+                <div className="space-y-2">
                     <Label>{t('form.model')}</Label>
                     <Select value={model} onValueChange={setModel}>
                       <SelectTrigger className="w-full">
@@ -565,7 +561,6 @@ export function ImageGenerator({
                       </SelectContent>
                     </Select>
                   </div>
-                </div>
 
                 {!isTextToImageMode && (
                   <div className="space-y-4">
@@ -638,7 +633,7 @@ export function ImageGenerator({
                     ) : (
                       <>
                         <Sparkles className="mr-2 h-4 w-4" />
-                        {t('generate')}
+                        {t('generate', { credits: costCredits })}
                       </>
                     )}
                   </Button>
@@ -752,11 +747,16 @@ export function ImageGenerator({
                     <div className="bg-muted mb-4 flex h-16 w-16 items-center justify-center rounded-full">
                       <ImageIcon className="text-muted-foreground h-10 w-10" />
                     </div>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground font-medium">
                       {isGenerating
                         ? t('ready_to_generate')
                         : t('no_images_generated')}
                     </p>
+                    {!isGenerating && (
+                      <p className="text-muted-foreground mt-2 text-sm">
+                        {t('no_images_generated_description')}
+                      </p>
+                    )}
                   </div>
                 )}
               </CardContent>

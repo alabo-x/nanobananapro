@@ -17,7 +17,7 @@ export default async function LandingPage({
   return (
     <>
       {page.hero && <Hero hero={page.hero} />}
-      <ImageGenerator />
+      <ImageGenerator generator={page.generator} />
       {page.features && <Features features={page.features} />}
       {page.testimonials && <Testimonials testimonials={page.testimonials} />}
       {page.faq && <FAQ faq={page.faq} />}

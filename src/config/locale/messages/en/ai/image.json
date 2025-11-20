@@ -1,14 +1,14 @@
 {
   "generator": {
-    "title": "Image Generator",
-    "description": "Generate images with AI models, support text-to-image and image-to-image.",
+    "title": "Image Editor",
+    "description": "Edit and transform images with AI. Support text-to-image generation and image-to-image editing.",
     "tabs": {
       "text-to-image": "Text to Image",
       "image-to-image": "Image to Image"
     },
     "form": {
       "provider": "Provider",
-      "model": "Model",
+      "model": "AI Model Selection",
       "select_provider": "Select Provider",
       "select_model": "Select Model",
       "prompt": "Prompt",
@@ -18,7 +18,7 @@
       "some_images_failed_to_upload": "Some images failed to upload, please delete them and re-upload",
       "prompt_too_long": "Prompt is too long, please delete some content"
     },
-    "generate": "Generate Images",
+    "generate": "Generate Now ({credits} Credits)",
     "checking_account": "Checking Account...",
     "loading": "Loading...",
     "generating": "Generating...",
@@ -30,6 +30,7 @@
     "generated_images": "Image Preview",
     "ready_to_generate": "Ready to Generate",
     "ready_for_generating": "Ready for Generating",
-    "no_images_generated": "No Images Generated"
+    "no_images_generated": "Ready for instant generation",
+    "no_images_generated_description": "Enter your prompt and unleash the power"
   }
 }

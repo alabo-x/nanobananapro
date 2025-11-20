@@ -4,14 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目快速概览
 
-### 当前状态 (2025-11-19)
-- **项目阶段**: 首页板块精简完成
-- **最新变更**: 精简首页板块，参考 imgeditor.co 结构
+### 当前状态 (2025-11-20)
+- **项目阶段**: ImageGenerator 标题优化完成
+- **最新变更**: 为 ImageGenerator 添加 section 标题（使用模板标准样式）
 - **开发服务器**: http://localhost:3000
 - **管理员账户**: admin@nanobananapro.com (super_admin)
 - **数据库表**: 16 个表（已删除 chat, chat_message）
 - **待办事项**:
-  - [ ] 调整 Hero 内容（文案、CTA，参考 imgeditor.co）
+  - [x] 调整 Hero 内容（文案、CTA，参考 imgeditor.co）
+  - [x] 为 ImageGenerator 添加 section 标题
   - [ ] 调整 Features 内容（6个核心特性）
   - [ ] 调整 Testimonials 内容
   - [ ] 调整 FAQ 内容
@@ -56,6 +57,96 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 最近工作记录
 
+### 2025-11-20: ImageGenerator 核心功能优化
+**变更类型**: Feature/UX/Content
+**影响范围**: 前端
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 统一文案为 "Editor"（编辑器）定位
+  - 卡片标题：Image Generator → **Image Editor**
+  - 卡片描述：突出"编辑和转换"能力
+- ✅ 优化右侧空状态文案
+  - 主标题：Ready for instant generation（准备即时生成）
+  - 副标题：Enter your prompt and unleash the power（输入提示词，释放强大力量）
+- ✅ 调整 Tab 顺序，突出编辑能力
+  - 第一个 Tab：**Image to Image**（图片编辑）
+  - 第二个 Tab：Text to Image（文本生成）
+  - 默认选中：Image to Image
+- ✅ 移除 Provider 选择器
+  - UI 更简洁，只保留 Model 选择
+  - Provider 固定为 Replicate（后端仍需要）
+  - 布局从双列改为单列
+- ✅ 简化 Model 选择
+  - 只保留 "Nano Banana Pro" 一个模型
+  - 硬编码默认值为 `google/nano-banana-pro`
+  - 避免动态查找导致的空选项问题
+- ✅ 修复 Model 下拉框空白问题
+  - 问题原因：`useEffect` 在 tab 切换时覆盖 model 值为旧模型名
+  - 解决方案：统一 `useEffect` 中两个分支都使用 `google/nano-banana-pro`
+- ✅ 优化生成按钮文案
+  - 按钮显示积分消耗：Generate Now (2 Credits) / 立即生成 (2 积分)
+  - 根据 tab 动态显示：Text to Image (2积分), Image to Image (4积分)
+- ✅ 优化 Model 标签文案
+  - "Model" → "AI Model Selection"（更专业和明确）
+
+**设计思路**:
+- 强调产品定位：AI **图片编辑器**（而非生成器）
+- 用户操作是"生成"，但工具能力是"编辑"
+- 突出差异化：图片编辑能力 > 文本生成能力
+- UI 极简化：只保留必要的模型选择，后期需要时再扩展
+
+**修改的文件**:
+- `src/config/locale/messages/en/ai/image.json` - 英文文案优化
+- `src/config/locale/messages/zh/ai/image.json` - 中文文案优化
+- `src/shared/blocks/generator/image.tsx` - Tab顺序、默认状态、移除Provider UI、简化Model选项、硬编码默认值
+
+---
+
+### 2025-11-20: ImageGenerator 添加 Section 标题
+**变更类型**: Feature/UX
+**影响范围**: 前端
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 为 ImageGenerator 组件添加 section 标题（使用模板标准样式）
+- ✅ 添加 generator 配置到 landing.json（en/zh）
+- ✅ 添加 Generator 类型定义到 landing.d.ts
+- ✅ 修改 ImageGeneratorProps 接口支持 generator 配置
+- ✅ 更新 page.tsx 和 landing.tsx 传递配置
+- ✅ 优化间距：`py-16 md:py-24` → `pt-0 pb-16 md:pb-24`（减少与 Hero 的间距）
+
+**标题样式**:
+使用项目模板标准样式（与 Features、Testimonials、FAQ 保持一致）：
+```tsx
+<ScrollAnimation>
+  <div className="mx-auto max-w-2xl text-center text-balance">
+    <h2 className="text-foreground mb-4 text-3xl font-semibold tracking-tight md:text-4xl">
+      {generator.title}
+    </h2>
+    <p className="text-muted-foreground mb-6 md:mb-12 lg:mb-16">
+      {generator.description}
+    </p>
+  </div>
+</ScrollAnimation>
+```
+
+**配置内容**:
+- **英文标题**: "Try The AI Generator"
+- **英文描述**: "Experience the power of AI image generation. Create stunning visuals from text descriptions or transform existing images."
+- **中文标题**: "体验 AI 图片生成器"
+- **中文描述**: "感受 AI 图片生成的强大能力。通过文字描述创建惊艳视觉效果，或转换现有图片。"
+
+**修改的文件**:
+- `src/config/locale/messages/en/landing.json` - 添加 generator 配置
+- `src/config/locale/messages/zh/landing.json` - 添加 generator 中文配置
+- `src/shared/blocks/generator/image.tsx` - 添加标题渲染和 ScrollAnimation
+- `src/shared/types/blocks/landing.d.ts` - 添加 Generator 类型定义
+- `src/app/[locale]/(landing)/page.tsx` - 传递 generator 配置
+- `src/themes/default/pages/landing.tsx` - 传递 generator 到组件
+
+---
+
 ### 2025-11-20: Hero 内容和样式优化 - 参考 imgeditor.co
 **变更类型**: Content/UX/Style
 **影响范围**: 前端
@@ -79,12 +170,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **横幅**: 跳转到 #generator
 
 **样式优化**:
-- 标题字体：`text-5xl sm:text-7xl` → `text-6xl sm:text-8xl`
-- 区域 padding：`pb-8 md:pb-8` → `pb-16 md:pb-24`
-- 描述间距：`mt-8 mb-8` → `mt-10 mb-10`
+- 区域布局：使用 `min-h-[calc(100vh-64px)] flex flex-col items-center justify-center` 实现全屏居中
+- 标题字体：`text-5xl sm:text-7xl`（与对标网站一致）
+- 横幅间距：`mb-8` → `mb-4`
+- 标题间距：移除 `sm:mt-12`
+- 描述间距：`mt-6 mb-10`
 - 描述字体：`text-lg` → `text-xl`
 - 按钮尺寸：`size="default"` → `size="lg"`
-- 功能标签间距：`mt-8 gap-6` → `mt-12 gap-8`
+- 功能标签间距：`mt-10 gap-6`
 
 **修改的文件**:
 - `src/config/locale/messages/en/landing.json` - 英文 Hero 配置

@@ -103,6 +103,11 @@
       }
     ]
   },
+  "generator": {
+    "id": "generator",
+    "title": "体验 AI 编辑器",
+    "description": "用简单的文字提示改造任何图片。先进的 AI 编辑技术，提供稳定结果和精准修改，超越传统工具。"
+  },
   "features": {
     "id": "features",
     "title": "NanoBananaPro 核心功能",

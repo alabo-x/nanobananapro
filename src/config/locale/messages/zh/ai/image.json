@@ -1,14 +1,14 @@
 {
   "generator": {
-    "title": "图片生成器",
-    "description": "使用 AI 模型生成图片，支持文本到图片和图片到图片。",
+    "title": "图片编辑器",
+    "description": "使用 AI 编辑和转换图片。支持文生图和图片编辑功能。",
     "tabs": {
       "text-to-image": "文生图",
       "image-to-image": "图生图"
     },
     "form": {
       "provider": "服务商",
-      "model": "模型",
+      "model": "AI 模型选择",
       "select_provider": "选择服务商",
       "select_model": "选择模型",
       "prompt": "提示词",
@@ -18,7 +18,7 @@
       "some_images_failed_to_upload": "一些图片上传失败，请删除它们并重新上传",
       "prompt_too_long": "提示词太长，请删除一些内容"
     },
-    "generate": "生成图片",
+    "generate": "立即生成 ({credits} 积分)",
     "checking_account": "Checking Account...",
     "loading": "加载中...",
     "generating": "生成中...",
@@ -29,7 +29,8 @@
     "progress": "进度",
     "generated_images": "图片预览",
     "ready_to_generate": "准备生成",
-    "no_images_generated": "没有生成图片",
+    "no_images_generated": "准备即时生成",
+    "no_images_generated_description": "输入提示词，释放强大力量",
     "ready_for_generating": "准备生成"
   }
 }
