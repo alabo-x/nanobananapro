@@ -1,29 +1,29 @@
 {
-  "title": "设置",
+  "title": "Configuración",
   "nav": {
     "items": [
       {
-        "title": "个人资料",
+        "title": "Perfil",
         "url": "/settings/profile",
         "icon": "User"
       },
       {
-        "title": "账单",
+        "title": "Facturación",
         "url": "/settings/billing",
         "icon": "CreditCard"
       },
       {
-        "title": "支付",
+        "title": "Pagos",
         "url": "/settings/payments",
         "icon": "DollarSign"
       },
       {
-        "title": "积分",
+        "title": "Créditos",
         "url": "/settings/credits",
         "icon": "Coins"
       },
       {
-        "title": "API 密钥",
+        "title": "API Keys",
         "url": "/settings/apikeys",
         "icon": "RiKeyLine"
       }
@@ -32,12 +32,12 @@
   "top_nav": {
     "items": [
       {
-        "title": "活动",
+        "title": "Actividad",
         "url": "/activity",
         "icon": "Activity"
       },
       {
-        "title": "设置",
+        "title": "Configuración",
         "url": "/settings",
         "icon": "Settings"
       }

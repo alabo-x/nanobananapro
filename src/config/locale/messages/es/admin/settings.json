@@ -1,9 +1,9 @@
 {
   "groups": {
-    "email_auth": "邮箱认证",
-    "google_auth": "Google认证",
-    "github_auth": "Github认证",
-    "basic_payment": "基础支付",
+    "email_auth": "Autenticación Email",
+    "google_auth": "Autenticación Google",
+    "github_auth": "Autenticación Github",
+    "basic_payment": "Pago Básico",
     "stripe": "Stripe",
     "creem": "Creem",
     "paypal": "Paypal",
@@ -13,7 +13,7 @@
     "openrouter": "OpenRouter",
     "replicate": "Replicate",
     "fal": "Fal",
-    "google_analytics": "谷歌分析",
+    "google_analytics": "Google Analytics",
     "clarity": "Clarity",
     "plausible": "Plausible",
     "openpanel": "OpenPanel",
@@ -25,24 +25,24 @@
     "crisp": "Crisp"
   },
   "edit": {
-    "title": "设置",
+    "title": "Configuración",
     "crumbs": {
-      "admin": "管理后台",
-      "settings": "设置"
+      "admin": "Admin",
+      "settings": "Configuración"
     },
     "tabs": {
-      "auth": "认证",
-      "payment": "支付",
-      "email": "邮箱",
-      "storage": "存储",
+      "auth": "Autenticación",
+      "payment": "Pago",
+      "email": "Correo",
+      "storage": "Almacenamiento",
       "ai": "AI",
-      "analytics": "分析",
-      "ads": "广告",
-      "affiliate": "联盟营销",
-      "customer_service": "客服"
+      "analytics": "Analíticas",
+      "ads": "Anuncios",
+      "affiliate": "Afiliados",
+      "customer_service": "Servicio al Cliente"
     },
     "buttons": {
-      "submit": "保存"
+      "submit": "Guardar"
     }
   }
 }

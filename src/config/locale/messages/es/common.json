@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "title": "NanoBananaPro - Generador y Editor de Imágenes AI",
+    "description": "Crea impresionantes imágenes generadas con AI usando NanoBananaPro. Impulsado por modelos de IA avanzados para generación y edición profesional de imágenes.",
+    "keywords": "generador de imágenes AI, editor de imágenes AI, generación de imágenes, arte AI, texto a imagen, NanoBananaPro"
+  },
+  "sign": {
+    "sign_in_title": "Iniciar Sesión",
+    "sign_in_description": "Inicia sesión en tu cuenta",
+    "sign_up_title": "Crear Cuenta",
+    "sign_up_description": "Crea una cuenta",
+    "email_title": "Correo Electrónico",
+    "email_placeholder": "Ingresa tu correo electrónico aquí",
+    "password_title": "Contraseña",
+    "password_placeholder": "Ingresa tu contraseña aquí",
+    "forgot_password": "¿Olvidaste tu contraseña?",
+    "or": "O",
+    "continue": "Continuar",
+    "no_account": "¿No tienes una cuenta?",
+    "already_have_account": "¿Ya tienes una cuenta?",
+    "email_sign_in": "Iniciar sesión con Correo",
+    "google_sign_in_title": "Iniciar sesión con Google",
+    "github_sign_in_title": "Iniciar sesión con GitHub",
+    "close_title": "Cerrar",
+    "cancel_title": "Cancelar",
+    "sign_out_title": "Cerrar Sesión",
+    "billing_title": "Facturación",
+    "name_title": "Nombre",
+    "name_placeholder": "Ingresa tu nombre aquí",
+    "admin_title": "Sistema de Administración",
+    "credits_title": "Créditos: {credits}"
+  },
+  "payment": {
+    "choose_payment_method": "Elige Método de Pago",
+    "choose_payment_method_description": "",
+    "cancel_title": "Cancelar"
+  },
+  "locale_detector": {
+    "title": "Detectamos que el idioma de tu navegador es {locale}. ¿Cambiar a este idioma?",
+    "switch_to": "Cambiar a {locale}"
+  }
+}

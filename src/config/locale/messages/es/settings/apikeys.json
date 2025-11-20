@@ -1,0 +1,47 @@
+{
+  "fields": {
+    "title": "Título",
+    "key": "Clave",
+    "created_at": "Creado el",
+    "action": "Acción"
+  },
+  "list": {
+    "title": "API Keys",
+    "empty_message": "Sin API Keys",
+    "buttons": {
+      "add": "Crear API Key",
+      "edit": "Editar",
+      "delete": "Eliminar"
+    }
+  },
+  "add": {
+    "title": "Crear API Key",
+    "crumbs": {
+      "apikeys": "API Keys",
+      "add": "Crear API Key"
+    },
+    "buttons": {
+      "submit": "Crear"
+    }
+  },
+  "edit": {
+    "title": "Editar API Key",
+    "crumbs": {
+      "apikeys": "API Keys",
+      "edit": "Editar API Key"
+    },
+    "buttons": {
+      "submit": "Actualizar"
+    }
+  },
+  "delete": {
+    "title": "Eliminar API Key",
+    "crumbs": {
+      "apikeys": "API Keys",
+      "delete": "Eliminar API Key"
+    },
+    "buttons": {
+      "submit": "Confirmar Eliminación"
+    }
+  }
+}

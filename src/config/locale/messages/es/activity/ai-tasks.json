@@ -1,0 +1,31 @@
+{
+  "fields": {
+    "title": "Título",
+    "media_type": "Tipo de Medio",
+    "provider": "Proveedor",
+    "model": "Modelo",
+    "prompt": "Indicación",
+    "options": "Opciones",
+    "status": "Estado",
+    "result": "Resultado",
+    "cost_credits": "Costo en Créditos",
+    "created_at": "Creado el",
+    "action": "Acción"
+  },
+  "list": {
+    "title": "Tareas AI",
+    "tabs": {
+      "all": "Todas",
+      "music": "Música",
+      "image": "Imagen",
+      "video": "Video",
+      "audio": "Audio",
+      "text": "Texto"
+    },
+    "buttons": {
+      "view": "Ver Tarea",
+      "refresh": "Actualizar Tarea"
+    },
+    "empty_message": "No se encontraron tareas"
+  }
+}

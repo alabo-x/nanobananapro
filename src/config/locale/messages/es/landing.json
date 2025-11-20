@@ -1,0 +1,336 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "NanoBananaPro",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "NanoBananaPro"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Características",
+          "url": "/#features",
+          "icon": "Sparkles"
+        },
+        {
+          "title": "Ejemplos",
+          "url": "/#showcase",
+          "icon": "Box"
+        },
+        {
+          "title": "Precios",
+          "url": "/pricing",
+          "icon": "DollarSign"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": true,
+      "show_credits": true,
+      "show_sign_out": true,
+      "items": [
+        {
+          "title": "Facturación",
+          "url": "/settings/billing",
+          "icon": "CreditCard"
+        },
+        {
+          "title": "Actividad",
+          "url": "/activity",
+          "icon": "Activity"
+        }
+      ]
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "id": "hero",
+    "title": "Nano Banana Pro",
+    "highlight_text": "",
+    "description": "Convierte tus ideas en imágenes profesionales con simples indicaciones de texto. No se requieren habilidades de diseño.",
+    "announcement": {
+      "badge": "Nuevo",
+      "title": "🎉 NanoBananaPro",
+      "url": "#generator"
+    },
+    "buttons": [
+      {
+        "title": "Comenzar",
+        "icon": "Zap",
+        "url": "#generator",
+        "target": "_self",
+        "variant": "default"
+      },
+      {
+        "title": "Ver Ejemplos",
+        "icon": "Images",
+        "url": "#showcase",
+        "target": "_self",
+        "variant": "outline"
+      }
+    ],
+    "show_avatars": false,
+    "show_award": false,
+    "feature_tags": [
+      {
+        "title": "Generación en Un Clic",
+        "icon": "MousePointerClick"
+      },
+      {
+        "title": "Lenguaje Natural",
+        "icon": "MessageSquareText"
+      },
+      {
+        "title": "Salida HD",
+        "icon": "ImageUp"
+      }
+    ]
+  },
+  "generator": {
+    "id": "generator",
+    "title": "Prueba el Editor AI",
+    "description": "Transforma cualquier imagen con simples indicaciones de texto. La edición AI avanzada ofrece resultados consistentes y modificaciones precisas que superan las herramientas tradicionales."
+  },
+  "showcase": {
+    "id": "showcase",
+    "title": "Galería",
+    "heading": "Creaciones AI Ultrarrápidas",
+    "description": "Mira lo que Nano Banana Pro crea en milisegundos",
+    "items": [
+      {
+        "title": "Resultados de Calidad Profesional",
+        "description": "Edición de retratos de nivel estudio con iluminación y detalles perfectos",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-professional-portrait.webp",
+          "alt": "Retrato profesional generado con IA con iluminación de estudio"
+        }
+      },
+      {
+        "title": "Visualización de Interiores Impresionante",
+        "description": "Transformación fotorrealista de espacios para proyectos arquitectónicos",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-interior-design.webp",
+          "alt": "Diseño de interior moderno de sala editado con IA"
+        }
+      },
+      {
+        "title": "Fotografía de Producto Perfecta",
+        "description": "Tomas profesionales listas para e-commerce con fondos impecables",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-fashion-photography.webp",
+          "alt": "Fotografía de moda mejorada con IA para e-commerce"
+        }
+      },
+      {
+        "title": "Diseño de Personajes Consistente",
+        "description": "Mantén la consistencia perfecta del personaje en todas las ediciones y escenas",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-character-design.webp",
+          "alt": "Diseño de personajes AI con modelado 3D y renderizado consistente"
+        }
+      }
+    ],
+    "cta": {
+      "text": "Experimenta el poder tú mismo",
+      "button": "Prueba Nano Banana Pro",
+      "url": "/#generator"
+    }
+  },
+  "features": {
+    "id": "features",
+    "title": "¿Por Qué Elegir Nano Banana Pro?",
+    "description": "El editor de imágenes AI más potente con comprensión de lenguaje natural. Transforma tus imágenes sin esfuerzo.",
+    "items": [
+      {
+        "title": "Edición en Lenguaje Natural",
+        "description": "Edita imágenes usando simples indicaciones de texto. Describe lo que quieres y nuestra IA comprende instrucciones complejas al instante.",
+        "icon": "MessageSquareText"
+      },
+      {
+        "title": "Resultados Instantáneos",
+        "description": "Resultados perfectos en un solo intento. No más prueba y error: obtén ediciones profesionales en segundos.",
+        "icon": "Zap"
+      },
+      {
+        "title": "Preservación de Escena",
+        "description": "Mezcla ediciones perfectamente con fondos originales. Mantén iluminación natural y composición sin esfuerzo.",
+        "icon": "Layers"
+      },
+      {
+        "title": "Consistencia de Personajes",
+        "description": "Mantén detalles perfectos del personaje a través de las ediciones. Preserva rostros, identidades y características únicas impecablemente.",
+        "icon": "Users"
+      },
+      {
+        "title": "Calidad Profesional",
+        "description": "Resultados de nivel estudio sin habilidades profesionales. La edición impulsada por IA rivaliza con diseñadores experimentados.",
+        "icon": "Award"
+      },
+      {
+        "title": "Soporte Multi-Formato",
+        "description": "Procesa múltiples imágenes simultáneamente. Soporte para edición por lotes y varios formatos de imagen.",
+        "icon": "Images"
+      }
+    ]
+  },
+  "testimonials": {
+    "id": "testimonials",
+    "title": "Lo Que Dicen Los Creadores",
+    "description": "Escucha a creadores de contenido y profesionales que transforman sus imágenes diariamente con Nano Banana Pro.",
+    "items": [
+      {
+        "name": "Sarah Miller",
+        "role": "Gerente de Redes Sociales",
+        "quote": "Perfecto para crear visuales de marca consistentes. Puedo editar docenas de imágenes en minutos con simples indicaciones de texto. ¡Cambia el juego para redes sociales!",
+        "image": {
+          "src": "/imgs/avatars/1.png",
+          "alt": "sarah"
+        }
+      },
+      {
+        "name": "Alex Chen",
+        "role": "Creador de Contenido",
+        "quote": "¡La consistencia de personajes es increíble! Mi avatar AI se ve perfecto en todas las ediciones. Mucho mejor que otras herramientas que he probado.",
+        "image": {
+          "src": "/imgs/avatars/2.png",
+          "alt": "alex"
+        }
+      },
+      {
+        "name": "Jessica Brown",
+        "role": "Vendedora de E-commerce",
+        "quote": "Solía pasar horas editando fotos de productos. Ahora toma segundos con lenguaje natural. ¡Mi tasa de conversión aumentó un 40%!",
+        "image": {
+          "src": "/imgs/avatars/3.png",
+          "alt": "jessica"
+        }
+      },
+      {
+        "name": "Michael Torres",
+        "role": "Profesional de Marketing",
+        "quote": "La edición por lotes salva vidas para campañas. Procesa más de 50 imágenes a la vez manteniendo la calidad. Ahorra incontables horas a nuestro equipo.",
+        "image": {
+          "src": "/imgs/avatars/4.png",
+          "alt": "michael"
+        }
+      },
+      {
+        "name": "Emma Wilson",
+        "role": "Diseñadora Freelance",
+        "quote": "Como diseñadora profesional, estoy impresionada por los resultados de nivel estudio. Los clientes no pueden notar que está editado con IA. ¡Vale cada centavo!",
+        "image": {
+          "src": "/imgs/avatars/5.png",
+          "alt": "emma"
+        }
+      },
+      {
+        "name": "David Kim",
+        "role": "Blogger de Viajes",
+        "quote": "¡No se necesitan habilidades de Photoshop! Puedo mejorar mis fotos de viaje con descripciones simples. A mis seguidores les encanta la nueva calidad.",
+        "image": {
+          "src": "/imgs/avatars/6.png",
+          "alt": "david"
+        }
+      }
+    ]
+  },
+  "faq": {
+    "id": "faq",
+    "title": "Preguntas Frecuentes",
+    "description": "Todo lo que necesitas saber sobre Nano Banana Pro. ¿No encuentras la respuesta? Contáctanos.",
+    "tip": "¿No encuentras lo que buscas? Contacta a nuestro <a href='mailto:support@nanobananapro.com' class='text-primary font-medium hover:underline'>equipo de soporte</a>",
+    "items": [
+      {
+        "question": "¿Qué es Nano Banana Pro?",
+        "answer": "Nano Banana Pro es un editor de imágenes AI avanzado que transforma fotos usando indicaciones en lenguaje natural. Simplemente describe tus ediciones deseadas en texto simple, y nuestra IA comprende instrucciones complejas para entregar resultados profesionales al instante."
+      },
+      {
+        "question": "¿Necesito habilidades de diseño o experiencia con Photoshop?",
+        "answer": "¡Para nada! Esa es la belleza de Nano Banana Pro. No necesitas ninguna experiencia en diseño ni habilidades técnicas. Solo describe lo que quieres con palabras simples, y nuestra IA maneja todo el trabajo de edición complejo por ti."
+      },
+      {
+        "question": "¿Qué tipos de ediciones puede manejar?",
+        "answer": "Nano Banana Pro puede manejar una amplia gama de ediciones incluyendo cambios de fondo, colocación de objetos, completado de rostros, modificaciones de personajes, transferencias de estilo y mezcla de escenas. Sobresale en mantener consistencia de personajes y crear resultados fotorrealistas."
+      },
+      {
+        "question": "¿Cómo es mejor que otros editores AI?",
+        "answer": "Nano Banana Pro ofrece consistencia de personajes superior, preservación de escena y edición en un solo intento. A diferencia de otras herramientas, mantiene características faciales perfectas a través de las ediciones y mezcla cambios perfectamente con fondos originales. Obtienes resultados profesionales en un solo intento."
+      },
+      {
+        "question": "¿Puedo usarlo para proyectos comerciales?",
+        "answer": "¡Sí! Nano Banana Pro es perfecto para uso comercial. Crea contenido generado con IA, campañas de redes sociales, fotografía de productos y materiales de marketing. Muchos profesionales lo usan para crear influencers AI consistentes y contenido UGC."
+      },
+      {
+        "question": "¿Cómo empiezo?",
+        "answer": "¡Empezar es simple! Regístrate para una cuenta, sube tu imagen, describe tus ediciones deseadas en lenguaje simple, y observa cómo la IA transforma tu foto. Obtendrás resultados profesionales en segundos. No se requiere instalación ni configuración técnica."
+      }
+    ]
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "NanoBananaPro",
+      "description": "NanoBananaPro es un boilerplate de NextJS para construir startups AI SaaS. Lanza rápido con una variedad de plantillas y componentes.",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "NanoBananaPro"
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Acerca de",
+          "children": [
+            {
+              "title": "Características",
+              "url": "/#features",
+              "target": "_self"
+            },
+            {
+              "title": "Ejemplos",
+              "url": "/#showcase",
+              "target": "_self"
+            },
+            {
+              "title": "Precios",
+              "url": "/pricing",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "Correo",
+          "icon": "Mail",
+          "url": "mailto:support@nanobananapro.com",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Política de Privacidad",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Términos de Servicio",
+          "url": "/terms-of-service"
+        }
+      ]
+    },
+    "show_theme": true,
+    "show_locale": true
+  }
+}

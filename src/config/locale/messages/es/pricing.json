@@ -1,0 +1,239 @@
+{
+  "metadata": {
+    "title": "Precios",
+    "description": "Elige tu plan de edición de imágenes AI"
+  },
+  "pricing": {
+    "id": "pricing",
+    "sr_only_title": "Precios de NanoBananaPro",
+    "title": "Precios",
+    "description": "Edición profesional de imágenes AI impulsada por modelos avanzados de IA. Transforma tus imágenes con simples indicaciones de texto.",
+    "groups": [
+      {
+        "name": "monthly",
+        "title": "Mensual",
+        "is_featured": true,
+        "label": "Flexible"
+      },
+      {
+        "name": "yearly",
+        "title": "Anual",
+        "label": "Ahorra 20%"
+      }
+    ],
+    "items": [
+      {
+        "title": "Starter",
+        "description": "Perfecto para usuarios casuales y proyectos pequeños.",
+        "features_title": "Incluye",
+        "features": [
+          "100 imágenes AI por mes",
+          "200 créditos mensuales",
+          "Modelos AI básicos",
+          "Velocidad de generación estándar",
+          "Soporte por correo",
+          "Descargas JPG y PNG",
+          "Resolución 720p"
+        ],
+        "interval": "month",
+        "amount": 1200,
+        "currency": "USD",
+        "price": "$12",
+        "original_price": "",
+        "unit": "/ mes",
+        "is_featured": false,
+        "tip": "Excelente para probar la edición de imágenes AI",
+        "button": {
+          "title": "Comenzar",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "starter-monthly",
+        "product_name": "Plan Starter Mensual",
+        "credits": 200,
+        "valid_days": 30,
+        "group": "monthly",
+        "plan_name": "Starter"
+      },
+      {
+        "title": "Pro",
+        "description": "Lo mejor para creadores de contenido y profesionales.",
+        "label": "Popular",
+        "features_title": "Todo en Starter, más",
+        "features": [
+          "400 imágenes AI por mes",
+          "800 créditos mensuales",
+          "Modelos AI avanzados",
+          "Cola de generación prioritaria",
+          "Procesamiento de imágenes por lotes",
+          "Soporte prioritario por correo",
+          "Todos los formatos (JPG, PNG, WebP)",
+          "Resolución HD 1080p"
+        ],
+        "interval": "month",
+        "amount": 2400,
+        "currency": "USD",
+        "price": "$24",
+        "original_price": "",
+        "unit": "/ mes",
+        "is_featured": true,
+        "tip": "Más popular para profesionales",
+        "button": {
+          "title": "Comenzar",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "pro-monthly",
+        "product_name": "Plan Pro Mensual",
+        "credits": 800,
+        "valid_days": 30,
+        "group": "monthly",
+        "plan_name": "Pro"
+      },
+      {
+        "title": "Premium",
+        "description": "Para agencias y creadores de alto volumen.",
+        "features_title": "Todo en Pro, más",
+        "features": [
+          "2000 imágenes AI por mes",
+          "4000 créditos mensuales",
+          "Modelos AI más recientes (acceso anticipado)",
+          "Velocidad de generación más rápida",
+          "Procesamiento ilimitado por lotes",
+          "Gerente de cuenta dedicado",
+          "Todos los formatos + exportación RAW",
+          "Resolución 4K",
+          "Licencia comercial incluida",
+          "Suite de edición profesional"
+        ],
+        "interval": "month",
+        "amount": 6900,
+        "currency": "USD",
+        "price": "$69",
+        "original_price": "",
+        "unit": "/ mes",
+        "is_featured": false,
+        "tip": "Mejor valor para agencias",
+        "button": {
+          "title": "Comenzar",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "premium-monthly",
+        "product_name": "Plan Premium Mensual",
+        "credits": 4000,
+        "valid_days": 30,
+        "group": "monthly",
+        "plan_name": "Premium"
+      },
+      {
+        "title": "Starter",
+        "description": "Perfecto para usuarios casuales y proyectos pequeños.",
+        "features_title": "Incluye",
+        "features": [
+          "100 imágenes AI por mes",
+          "200 créditos mensuales",
+          "Modelos AI básicos",
+          "Velocidad de generación estándar",
+          "Soporte por correo",
+          "Descargas JPG y PNG",
+          "Resolución 720p"
+        ],
+        "interval": "year",
+        "amount": 9600,
+        "currency": "USD",
+        "price": "$8",
+        "original_price": "$12",
+        "unit": "/ mes",
+        "is_featured": false,
+        "tip": "Ahorra $48 por año",
+        "button": {
+          "title": "Comenzar",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "starter-yearly",
+        "product_name": "Plan Starter Anual",
+        "credits": 2400,
+        "valid_days": 365,
+        "group": "yearly",
+        "plan_name": "Starter"
+      },
+      {
+        "title": "Pro",
+        "description": "Lo mejor para creadores de contenido y profesionales.",
+        "label": "Popular",
+        "features_title": "Todo en Starter, más",
+        "features": [
+          "400 imágenes AI por mes",
+          "800 créditos mensuales",
+          "Modelos AI avanzados",
+          "Cola de generación prioritaria",
+          "Procesamiento de imágenes por lotes",
+          "Soporte prioritario por correo",
+          "Todos los formatos (JPG, PNG, WebP)",
+          "Resolución HD 1080p"
+        ],
+        "interval": "year",
+        "amount": 19200,
+        "currency": "USD",
+        "price": "$16",
+        "original_price": "$24",
+        "unit": "/ mes",
+        "is_featured": true,
+        "tip": "Ahorra $96 por año - Mejor valor",
+        "button": {
+          "title": "Comenzar",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "pro-yearly",
+        "product_name": "Plan Pro Anual",
+        "credits": 9600,
+        "valid_days": 365,
+        "group": "yearly",
+        "plan_name": "Pro"
+      },
+      {
+        "title": "Premium",
+        "description": "Para agencias y creadores de alto volumen.",
+        "features_title": "Todo en Pro, más",
+        "features": [
+          "2000 imágenes AI por mes",
+          "4000 créditos mensuales",
+          "Modelos AI más recientes (acceso anticipado)",
+          "Velocidad de generación más rápida",
+          "Procesamiento ilimitado por lotes",
+          "Gerente de cuenta dedicado",
+          "Todos los formatos + exportación RAW",
+          "Resolución 4K",
+          "Licencia comercial incluida",
+          "Suite de edición profesional"
+        ],
+        "interval": "year",
+        "amount": 55200,
+        "currency": "USD",
+        "price": "$46",
+        "original_price": "$69",
+        "unit": "/ mes",
+        "is_featured": false,
+        "tip": "Ahorra $276 por año",
+        "button": {
+          "title": "Comenzar",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "premium-yearly",
+        "product_name": "Plan Premium Anual",
+        "credits": 48000,
+        "valid_days": 365,
+        "group": "yearly",
+        "plan_name": "Premium"
+      }
+    ]
+  },
+  "page": {
+    "current_plan": "Plan Actual",
+    "processing": "Procesando"
+  }
+}

@@ -5,20 +5,70 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 项目快速概览
 
 ### 当前状态 (2025-11-20)
-- **项目阶段**: 首页开发完成 + 大规模清理优化 ✅
-- **最新变更**: 删除 Showcases 独立页面 + 资源清理（节省 ~23MB）
+- **项目阶段**: 首页开发完成，准备部署上线 🚀
+- **最新变更**: 完成部署前检查，整理待办清单
 - **开发服务器**: http://localhost:3000
 - **管理员账户**: admin@nanobananapro.com (super_admin)
 - **数据库表**: 16 个表（已删除 chat, chat_message）
-- **待办事项**:
-  - [x] 调整 Hero 内容（文案、CTA，参考 imgeditor.co）
-  - [x] 为 ImageGenerator 添加 section 标题
-  - [x] 调整 Features 内容（6个核心特性）
-  - [x] 调整 Testimonials 内容
-  - [x] 调整 FAQ 内容
-  - [x] **Showcase 板块** - 案例展示板块开发完成
-  - [x] **资源清理** - 删除未使用的 ShipAny 模板文件（~23MB）
-  - [x] **导航优化** - Showcases 页面删除，导航改为锚点跳转
+- **构建状态**: ✅ 生产构建成功（15.3s，12个静态页面）
+
+### 部署上线待办事项
+
+#### 🔴 必须完成（上线前）
+- [x] **修复 sitemap.xml**
+  - ✅ 删除已删除页面（/blog, /showcases）
+  - ✅ 添加实际页面（/pricing）
+  - ⏳ 域名仍为占位符（待提供真实域名）
+- [ ] **配置 AI API 密钥**（待用户提供）
+  - ⏳ Replicate API Key（图片生成核心功能）
+  - ⏳ 或 OpenRouter API Key
+- [ ] **配置生产环境变量**（待用户提供域名）
+  - ⏳ AUTH_URL（OAuth 回调地址）
+  - ⏳ NEXT_PUBLIC_APP_URL（实际域名）
+- [x] **更新社交媒体链接**
+  - ✅ 删除 X/Twitter 链接
+  - ✅ 删除 Github 链接
+  - ✅ 删除 Discord 链接
+  - ✅ 邮箱更新为 support@nanobananapro.com
+- [x] **优化价格页面**
+  - ✅ 已完成从"SaaS 模板销售"改为"AI 服务订阅"
+
+#### 🟡 重要但非阻塞（上线后优化）
+- [ ] **支付网关配置**
+  - Stripe API 密钥
+  - PayPal 配置
+  - 测试完整支付流程
+- [ ] **补充案例图片**
+  - 准备更多真实 AI 生成案例
+  - 优化图片质量和多样性
+- [ ] **品牌资产更新**
+  - Logo 设计
+  - Favicon
+  - OG 图片（社交媒体分享图）
+
+#### 🟢 可选优化（长期）
+- [ ] **性能监控**
+  - 添加 Google Analytics
+  - 添加错误追踪（Sentry）
+- [ ] **SEO 优化**
+  - 添加结构化数据（Schema.org）
+  - 优化页面加载速度
+- [ ] **用户反馈系统**
+  - 添加用户反馈入口
+  - 集成客服系统
+
+### 已完成事项 ✅
+- [x] 调整 Hero 内容（文案、CTA，参考 imgeditor.co）
+- [x] 为 ImageGenerator 添加 section 标题
+- [x] 调整 Features 内容（6个核心特性）
+- [x] 调整 Testimonials 内容
+- [x] 调整 FAQ 内容
+- [x] Showcase 板块 - 案例展示板块开发完成
+- [x] 资源清理 - 删除未使用的 ShipAny 模板文件（~23MB）
+- [x] 导航优化 - Showcases 页面删除，导航改为锚点跳转
+- [x] 删除博客和文档功能
+- [x] Footer 优化 - 删除合作伙伴栏目
+- [x] 清理未使用的配置文件
 
 ### 项目定位
 
@@ -58,6 +108,158 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 集成 Vercel AI SDK 和 Replicate Provider
 
 ## 最近工作记录
+
+### 2025-11-20: 语言配置优化 - 删除中文，添加西班牙语
+**变更类型**: Configuration/i18n
+**影响范围**: 全站国际化
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 删除中文（zh）语言配置和所有翻译文件（25个文件）
+- ✅ 添加西班牙语（es）支持，使用 AI 翻译所有 25 个文件
+- ✅ 更新语言配置：en (English) 和 es (Español)
+- ✅ 保持英文作为默认语言
+
+**删除的目录**:
+- `src/config/locale/messages/zh/` - 整个中文翻译目录
+
+**新增的目录**:
+- `src/config/locale/messages/es/` - 西班牙语翻译目录
+  - 包含 25 个 JSON 翻译文件（activity, admin, ai, settings, common, landing, pricing）
+
+**修改的文件**:
+- `src/config/locale/index.ts` - 更新 localeNames 和 locales 配置
+
+**翻译质量**:
+- 使用拉丁美洲西班牙语（适合欧美市场）
+- 保持 JSON 结构完全不变
+- 保留所有占位符和 HTML 标签
+- 专业术语保持准确性和一致性
+
+**关键术语翻译对照**:
+- Sign In/Sign Up → Iniciar Sesión / Crear Cuenta
+- Settings → Configuración
+- Billing → Facturación
+- Credits → Créditos
+- Generate → Generar
+- Pricing → Precios
+
+**语言切换器**:
+- 从"中文/English"改为"English/Español"
+- 默认语言：英文（en）
+- URL 路径：`/` (英文), `/es/` (西班牙语)
+
+**决策理由**:
+- 项目目标市场：欧美用户
+- 西班牙语是全球第二大使用人口语言
+- 提升拉美地区用户体验
+
+---
+
+### 2025-11-20: 价格页面内容优化 - 从模板销售改为 AI 服务订阅
+**变更类型**: Content/Product
+**影响范围**: 前端 - 价格页面
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 将定位从"SaaS 模板销售"改为"AI 图片编辑服务订阅"
+- ✅ 采用方案 B：标准 3 套餐（Starter/Pro/Premium）
+- ✅ 删除"按次付费"选项，只保留包月和包年
+- ✅ 完整替换所有模板特性为 AI 服务特性
+- ✅ 添加年付折扣（节省 20%）
+
+**新价格方案**:
+
+| 套餐 | 月付 | 年付 | 每月图片 | 积分 | 特色功能 |
+|---|---|---|---|---|---|
+| **Starter 入门版** | $12 | $8/月 | 100 张 | 200 | 基础模型、标准速度、720p |
+| **Pro 标准版** (推荐) | $24 | $16/月 | 400 张 | 800 | 高级模型、优先队列、1080p |
+| **Premium 高级版** | $69 | $46/月 | 2000 张 | 4000 | 最新模型、最快速度、4K、商业授权 |
+
+**年付优惠**:
+- Starter: 年付节省 $48 (33% off)
+- Pro: 年付节省 $96 (33% off)
+- Premium: 年付节省 $276 (33% off)
+
+**功能差异化**:
+- **Starter**: 基础 AI 模型、标准生成速度、邮件支持、JPG/PNG 下载、720p 分辨率
+- **Pro**: 高级 AI 模型、优先生成队列、批量图片处理、优先邮件支持、所有格式（JPG/PNG/WebP）、1080p 高清分辨率
+- **Premium**: 最新 AI 模型（抢先体验）、最快生成速度、无限批量处理、专属客户经理、所有格式+RAW 导出、4K 分辨率、包含商业授权、专业编辑套件
+
+**旧内容示例**（已删除）:
+```
+"description": "获取 NanoBananaPro 的全部功能，极速交付你的 AI SaaS 创业项目。"
+"features": ["NextJS 项目模板", "SEO 友好结构", "支持 Stripe 支付"]
+"tip": "一次付费，畅享无限项目部署！"
+```
+
+**新内容示例**:
+```
+"description": "先进 AI 模型驱动的专业图片编辑服务。用简单文字提示转换你的图片。"
+"features": ["每月 400 张 AI 图片", "高级 AI 模型", "优先生成队列"]
+"tip": "专业人士的首选方案"
+```
+
+**修改的文件**:
+- `src/config/locale/messages/en/pricing.json` - 英文价格配置（334→239 行）
+- `src/config/locale/messages/zh/pricing.json` - 中文价格配置（361→293 行）
+
+**参考竞品**: imgeditor.co 定价策略
+- Basic: $12/月（75 图片）
+- Pro: $19.5/月（400 图片）
+- Max: $80/月（2300 图片）
+
+**设计理念**:
+- 以积分/图片数量为核心卖点（而非技术功能）
+- 突出 AI 模型等级和生成速度差异
+- Premium 提供商业授权和专属服务
+- 清晰的价值阶梯，引导用户选择 Pro
+- 降低用户心理门槛："不卖技术，卖能力"
+
+---
+
+### 2025-11-20: 清理未使用的翻译配置文件
+**变更类型**: Cleanup
+**影响范围**: 配置文件
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 删除 blog.json 翻译文件（EN/ZH）
+
+**删除的文件**:
+- `src/config/locale/messages/en/blog.json`
+- `src/config/locale/messages/zh/blog.json`
+
+**决策理由**:
+- 之前删除了 /blog 页面，但遗漏了对应的翻译配置文件
+- 清理未使用的配置文件，保持代码库整洁
+
+---
+
+### 2025-11-20: Footer 导航优化 - 删除合作伙伴栏目
+**变更类型**: Cleanup/UX
+**影响范围**: 前端 - Footer
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 删除 Footer "合作伙伴"/"Friends" 栏目
+- ✅ 移除所有合作伙伴链接（NanoBananaPro/ShipAny.ai、ThinkAny、MCP.so）
+
+**当前 Footer 结构**:
+- **关于我们/About**: 功能亮点、案例展示、价格
+- **社交媒体**: X、Github、Discord、Email
+- **法律协议**: 隐私政策、服务条款
+
+**修改的文件**:
+- `src/config/locale/messages/en/landing.json` - 删除 "Friends" 栏目
+- `src/config/locale/messages/zh/landing.json` - 删除 "合作伙伴" 栏目
+
+**决策理由**:
+- 简化 Footer 导航，只保留核心内容
+- 移除 ShipAny 模板的友情链接
+- 突出产品自身而非外部链接
+
+---
 
 ### 2025-11-20: 删除博客和文档功能
 **变更类型**: Cleanup/Refactor

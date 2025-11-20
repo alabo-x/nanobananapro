@@ -12,62 +12,62 @@
   },
   "main_navs": [
     {
-      "title": "系统",
+      "title": "Sistema",
       "items": [
         {
-          "title": "用户与权限",
+          "title": "Usuarios y Permisos",
           "icon": "User",
           "is_expand": true,
           "children": [
             {
-              "title": "用户",
+              "title": "Usuarios",
               "url": "/admin/users",
               "icon": "User"
             },
             {
-              "title": "角色",
+              "title": "Roles",
               "url": "/admin/roles",
               "icon": "Users"
             },
             {
-              "title": "权限",
+              "title": "Permisos",
               "url": "/admin/permissions",
               "icon": "ShieldCheck"
             }
           ]
         },
         {
-          "title": "页面与内容",
+          "title": "Páginas y Contenido",
           "icon": "FileText",
           "children": [
             {
-              "title": "分类",
+              "title": "Categorías",
               "icon": "Folder",
               "url": "/admin/categories"
             },
             {
-              "title": "文章",
+              "title": "Publicaciones",
               "icon": "FileText",
               "url": "/admin/posts"
             }
           ]
         },
         {
-          "title": "支付与积分",
+          "title": "Pagos y Créditos",
           "icon": "DollarSign",
           "children": [
             {
-              "title": "支付",
+              "title": "Pagos",
               "url": "/admin/payments",
               "icon": "DollarSign"
             },
             {
-              "title": "订阅",
+              "title": "Suscripciones",
               "url": "/admin/subscriptions",
               "icon": "CreditCard"
             },
             {
-              "title": "积分",
+              "title": "Créditos",
               "url": "/admin/credits",
               "icon": "Coins"
             }
@@ -76,10 +76,10 @@
       ]
     },
     {
-      "title": "业务",
+      "title": "Negocio",
       "items": [
         {
-          "title": "AI任务",
+          "title": "Tareas AI",
           "url": "/admin/ai-tasks",
           "icon": "Brain"
         }
@@ -89,12 +89,12 @@
   "bottom_nav": {
     "items": [
       {
-        "title": "设置",
+        "title": "Configuración",
         "url": "/admin/settings/auth",
         "icon": "Settings"
       },
       {
-        "title": "API密钥",
+        "title": "API Keys",
         "url": "/admin/apikeys",
         "icon": "Key"
       }
@@ -104,7 +104,7 @@
     "nav": {
       "items": [
         {
-          "title": "个人资料",
+          "title": "Perfil",
           "url": "/settings/profile",
           "icon": "User",
           "target": "_blank"
@@ -119,7 +119,7 @@
     "nav": {
       "items": [
         {
-          "title": "首页",
+          "title": "Inicio",
           "url": "/",
           "icon": "Home",
           "target": "_blank"
@@ -131,7 +131,7 @@
           "target": "_blank"
         },
         {
-          "title": "推特",
+          "title": "Twitter",
           "url": "https://twitter.com/your-app-name",
           "icon": "RiTwitterXFill",
           "target": "_blank"
@@ -143,7 +143,7 @@
           "target": "_blank"
         },
         {
-          "title": "邮箱",
+          "title": "Correo",
           "url": "mailto:support@your-domain.com",
           "icon": "Mail",
           "target": "_blank"

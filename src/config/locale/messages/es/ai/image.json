@@ -1,0 +1,36 @@
+{
+  "generator": {
+    "title": "Editor de Imágenes",
+    "description": "Edita y transforma imágenes con IA. Soporta generación de texto a imagen y edición de imagen a imagen.",
+    "tabs": {
+      "text-to-image": "Texto a Imagen",
+      "image-to-image": "Imagen a Imagen"
+    },
+    "form": {
+      "provider": "Proveedor",
+      "model": "Selección de Modelo AI",
+      "select_provider": "Seleccionar Proveedor",
+      "select_model": "Seleccionar Modelo",
+      "prompt": "Indicación",
+      "prompt_placeholder": "Describe los detalles de la imagen, como color, forma, textura, etc.",
+      "reference_image": "Imagen de Referencia",
+      "reference_image_placeholder": "Sube imágenes de referencia, soporta múltiples imágenes",
+      "some_images_failed_to_upload": "Algunas imágenes no se pudieron subir, por favor elimínalas y vuelve a subirlas",
+      "prompt_too_long": "La indicación es demasiado larga, por favor elimina algo de contenido"
+    },
+    "generate": "Generar Ahora ({credits} Créditos)",
+    "checking_account": "Verificando Cuenta...",
+    "loading": "Cargando...",
+    "generating": "Generando...",
+    "sign_in_to_generate": "Inicia Sesión para Generar Imagen",
+    "credits_cost": "Costo {credits} créditos",
+    "credits_remaining": "Créditos restantes {credits}",
+    "buy_credits": "Comprar Créditos",
+    "progress": "Progreso",
+    "generated_images": "Vista Previa de Imagen",
+    "ready_to_generate": "Listo para Generar",
+    "ready_for_generating": "Listo para Generar",
+    "no_images_generated": "Listo para generación instantánea",
+    "no_images_generated_description": "Ingresa tu indicación y desata el poder"
+  }
+}
