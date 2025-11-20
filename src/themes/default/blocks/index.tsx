@@ -6,6 +6,7 @@ export * from './hero';
 
 export * from './features';
 
+export * from './showcase';
 export * from './showcases';
 export * from './testimonials';
 export * from './faq';

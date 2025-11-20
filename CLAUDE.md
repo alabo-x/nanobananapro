@@ -5,18 +5,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 项目快速概览
 
 ### 当前状态 (2025-11-20)
-- **项目阶段**: ImageGenerator 标题优化完成
-- **最新变更**: 为 ImageGenerator 添加 section 标题（使用模板标准样式）
+- **项目阶段**: 首页开发完成 + 大规模清理优化 ✅
+- **最新变更**: 删除 Showcases 独立页面 + 资源清理（节省 ~23MB）
 - **开发服务器**: http://localhost:3000
 - **管理员账户**: admin@nanobananapro.com (super_admin)
 - **数据库表**: 16 个表（已删除 chat, chat_message）
 - **待办事项**:
   - [x] 调整 Hero 内容（文案、CTA，参考 imgeditor.co）
   - [x] 为 ImageGenerator 添加 section 标题
-  - [ ] 调整 Features 内容（6个核心特性）
-  - [ ] 调整 Testimonials 内容
-  - [ ] 调整 FAQ 内容
-  - [ ] **Showcase 板块** - 添加生成案例展示（需要准备案例图片素材，暂未完成）
+  - [x] 调整 Features 内容（6个核心特性）
+  - [x] 调整 Testimonials 内容
+  - [x] 调整 FAQ 内容
+  - [x] **Showcase 板块** - 案例展示板块开发完成
+  - [x] **资源清理** - 删除未使用的 ShipAny 模板文件（~23MB）
+  - [x] **导航优化** - Showcases 页面删除，导航改为锚点跳转
 
 ### 项目定位
 
@@ -56,6 +58,292 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 集成 Vercel AI SDK 和 Replicate Provider
 
 ## 最近工作记录
+
+### 2025-11-20: 删除博客和文档功能
+**变更类型**: Cleanup/Refactor
+**影响范围**: 前端 - 导航栏、Footer、页面路由
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 删除 Header 导航中的"博客"和"文档"链接
+- ✅ 删除 Footer "资源"栏目（包含"文档"和"博客"链接）
+- ✅ 删除 /blog 页面目录
+- ✅ 删除 /docs 页面目录和整个 (docs) 路由组
+- ✅ 删除 API 文档路由
+
+**删除的目录**:
+- `src/app/[locale]/(landing)/blog/` - 博客页面
+- `src/app/[locale]/(docs)/` - 整个文档路由组（包含 docs 页面）
+- `src/app/api/docs/` - API 文档路由
+
+**修改的配置文件**:
+- `src/config/locale/messages/en/landing.json` - 删除 Header "Blog"/"Docs" + Footer "Resources" 栏目
+- `src/config/locale/messages/zh/landing.json` - 删除 Header "博客"/"文档" + Footer "资源" 栏目
+
+**当前导航结构**:
+- **Header**: 功能亮点 | 案例展示 | 价格
+- **Footer**: 关于我们 | 合作伙伴
+
+**决策理由**:
+- 项目专注于 AI 图片编辑工具，不需要博客和文档功能
+- 简化导航结构，突出核心功能
+- 减少维护成本
+
+---
+
+### 2025-11-20: 大规模资源清理 + Showcases 页面重构
+**变更类型**: Cleanup/Refactor/Performance
+**影响范围**: 前端 + 资源文件
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 修复开发服务器编译错误（showcases.tsx 引用已删除的 CTA 组件）
+- ✅ 将 Showcase 板块移至 FAQ 前面，修复 showcase 数据缺失问题
+- ✅ 替换案例图片：comic_panel.png → 角色设计图片（ai-image-editor-character-design.webp）
+- ✅ 删除 Showcases 独立页面（/showcases）
+- ✅ 导航链接改为锚点跳转（/showcases → /#showcase）
+- ✅ 大规模图片资源清理
+
+**删除的资源** (总计 ~23MB):
+1. **cases 文件夹清理**:
+   - 删除 1-9.png（9张，9.4MB）
+   - 删除原始 PNG 文件（4张）
+   - 删除已替换的旧图片（3张）
+   - **保留**: 4个 WebP 文件（404KB）
+
+2. **ShipAny 模板资源清理**:
+   - 删除 `/imgs/features/` 整个文件夹（14MB）
+   - 删除 `/imgs/logos/` 整个文件夹（24KB）
+   - 删除 `/imgs/avatars/7-13.png`（保留 1-6.png 用于 Testimonials）
+
+**性能优化结果**:
+- `/imgs/cases/`: 18.4MB → 404KB（压缩 98%）
+- `/imgs/` 总大小: ~24MB → 9.9MB（减少 59%）
+- 总节省空间: **~23MB**
+
+**页面结构变更**:
+- Showcase 板块位置: Generator → Features → Testimonials → **Showcase** → FAQ
+- 导航链接: Header/Footer 中的 "Showcases" 现在跳转到 `/#showcase` 锚点
+- 删除文件: `/app/[locale]/(landing)/showcases/` + `showcases.json` 配置
+
+**修复的问题**:
+1. **编译错误**: showcases.tsx 导入已删除的 CTA 组件 → 移除引用
+2. **Showcase 不显示**: 缺少 `showcase: t.raw('showcase')` → 添加到 page 数据
+3. **案例图片不匹配**: 艺术风格图片 → 角色设计一致性案例
+
+**修改的文件**:
+- `src/themes/default/pages/showcases.tsx` - 移除 CTA 组件
+- `src/themes/default/pages/landing.tsx` - 调整 Showcase 位置
+- `src/app/[locale]/(landing)/page.tsx` - 添加 showcase 数据
+- `src/config/locale/messages/en/landing.json` - 更新案例配置 + 导航链接
+- `src/config/locale/messages/zh/landing.json` - 更新案例配置 + 导航链接
+- `public/imgs/cases/` - 清理 22.7MB 未使用文件
+- `public/imgs/features/` - 删除整个文件夹
+- `public/imgs/logos/` - 删除整个文件夹
+- `public/imgs/avatars/` - 删除 7-13.png
+
+**删除的页面和配置**:
+- `/app/[locale]/(landing)/showcases/page.tsx` - Showcases 独立页面
+- `src/config/locale/messages/en/showcases.json` - 英文配置
+- `src/config/locale/messages/zh/showcases.json` - 中文配置
+
+---
+
+### 2025-11-20: Showcase 案例展示板块开发
+**变更类型**: Feature/Content/Performance
+**影响范围**: 前端 - 首页 Showcase 板块
+**Git commit**: 待提交
+
+**开发内容**:
+- ✅ 图片优化:转换 PNG 为 WebP 格式,压缩 85-95%
+  - professional-portrait: 1.3MB → 72KB (压缩 95%)
+  - interior-design: 1.2MB → 81KB (压缩 93%)
+  - fashion-photography: 1.5MB → 144KB (压缩 90%)
+  - style-transfer: 2.1MB → 322KB (压缩 85%)
+- ✅ SEO 优化:图片命名使用关键词 `ai-image-editor-[功能]`
+- ✅ 创建 Showcase 组件 (`showcase.tsx`)
+- ✅ 添加类型定义 (`Showcase`, `ShowcaseItem`)
+- ✅ 配置翻译文件 (en/zh `landing.json`)
+- ✅ 集成到首页 (位置: Generator → **Showcase** → Features)
+
+**4个展示案例**:
+1. **Professional Quality Results** - 专业人像编辑
+2. **Stunning Interior Visualization** - 室内设计可视化
+3. **Perfect Product Photography** - 产品摄影
+4. **Artistic Style Transformation** - 艺术风格转换
+
+**组件特性**:
+- 响应式网格布局 (移动端 1列,桌面端 2列)
+- 图片悬停缩放效果
+- ScrollAnimation 滚动动画
+- CTA 按钮跳转到 Generator
+- Next.js Image 优化加载
+
+**修改的文件**:
+- `public/imgs/cases/*.webp` - 4张优化后的案例图片
+- `src/config/locale/messages/en/landing.json` - 英文 Showcase 配置
+- `src/config/locale/messages/zh/landing.json` - 中文 Showcase 配置
+- `src/shared/types/blocks/landing.d.ts` - 类型定义
+- `src/themes/default/blocks/showcase.tsx` - Showcase 组件 (新建)
+- `src/themes/default/blocks/index.tsx` - 导出 Showcase
+- `src/themes/default/pages/landing.tsx` - 集成 Showcase 到首页
+
+---
+
+### 2025-11-20: FAQ 板块内容优化
+**变更类型**: Content/UX
+**影响范围**: 前端 - 首页 FAQ 板块
+**Git commit**: 待提交
+
+**优化目标**:
+- 将 FAQ 从"NextJS 开发工具问答"改为"AI 图片编辑器使用问答"
+- 回答用户真正关心的产品使用问题
+
+**变更内容**:
+- ✅ 标题简化
+  - `"Frequently Asked Questions About NanoBananaPro"` → `"Frequently Asked Questions"` (英文)
+  - `"关于 NanoBananaPro 的常见问题"` → `"常见问题"` (中文)
+- ✅ 描述优化
+  - `"Have another question? Contact us on Discord or by email"` → `"Everything you need to know about Nano Banana Pro"`
+- ✅ 联系方式更新
+  - Discord 链接 → Email 支持 (support@nanobananapro.com)
+- ✅ 6个问题完全重写:
+
+| 旧问题 (开发工具) | 新问题 (图片编辑) |
+|---|---|
+| NanoBananaPro 是什么?怎么工作? | 什么是 Nano Banana Pro? |
+| 需要很高技术水平吗? | 我需要设计技能或 Photoshop 经验吗? |
+| 支持哪些类型的 AI SaaS? | 能处理哪些类型的编辑? |
+| 一般多久能上线? | 相比其他 AI 编辑器有什么优势? |
+| 基础设施包括哪些? | 可以用于商业项目吗? |
+| 模板支持定制吗? | 如何开始使用? |
+
+**设计理念**:
+- 回答用户实际使用问题,而非技术实现
+- 强调"无需技能"、"简单描述"、"瞬间结果"
+- 突出产品优势:角色一致性、专业品质、一次成功
+- 明确商业用途和使用场景
+
+**修改的文件**:
+- `src/config/locale/messages/en/landing.json:209-240` - 英文 FAQ 内容
+- `src/config/locale/messages/zh/landing.json:209-240` - 中文 FAQ 内容
+
+---
+
+### 2025-11-20: Testimonials 板块内容优化
+**变更类型**: Content/UX
+**影响范围**: 前端 - 首页 Testimonials 板块
+**Git commit**: 待提交
+
+**优化目标**:
+- 将用户评价从"开发者创业故事"改为"内容创作者真实使用体验"
+- 展示图片编辑工具的实际使用场景和效果
+
+**变更内容**:
+- ✅ 标题优化
+  - `"What Users Say About NanoBananaPro"` → `"What Creators Say"` (英文)
+  - `"用户对 NanoBananaPro 的评价"` → `"用户真实评价"` (中文)
+- ✅ 描述优化
+  - 去掉"developers and founders who launched AI startups"
+  - 改为"content creators and professionals who transform images daily"
+- ✅ 6条评价完全重写:
+
+| 旧用户身份 | 新用户身份 | 评价重点 |
+|---|---|---|
+| AIWallpaper.shop 创始人 | 社交媒体运营 | 几分钟编辑几十张图片 |
+| HeyBeauty.ai CTO | 内容创作者 | AI 虚拟形象角色一致性 |
+| 独立开发者 | 电商卖家 | 产品图编辑效率,转化率提升 40% |
+| Melodisco CEO | 营销专员 | 批量编辑 50+ 图片 |
+| GPTs.works 技术负责人 | 自由设计师 | 工作室级别输出品质 |
+| 创业者 | 旅行博主 | 无需 Photoshop 技能 |
+
+**设计理念**:
+- 从"技术实现"转向"使用效果"
+- 从"创业故事"转向"日常场景"
+- 强调量化结果 (40% 转化率提升、50+ 图片批量处理)
+- 突出"无需专业技能"降低门槛
+
+**修改的文件**:
+- `src/config/locale/messages/en/landing.json:148-208` - 英文 Testimonials 内容
+- `src/config/locale/messages/zh/landing.json:148-208` - 中文 Testimonials 内容
+
+---
+
+### 2025-11-20: Features 板块内容优化
+**变更类型**: Content/UX
+**影响范围**: 前端 - 首页 Features 板块
+**Git commit**: 待提交
+
+**优化目标**:
+- 将 Features 从"SaaS 开发工具特性"改为"AI 图片编辑能力"
+- 让用户一眼看懂产品价值,而非技术栈
+
+**变更内容**:
+- ✅ 标题优化
+  - `"Key Features of NanoBananaPro"` → `"Why Choose Nano Banana Pro?"`
+  - 从"功能列表"改为"选择理由"
+- ✅ 描述优化
+  - 去掉"launch AI SaaS startup"等开发者导向文案
+  - 强调"natural language understanding + effortless transformation"
+- ✅ 6个特性完全重写:
+
+| 旧内容 (模板功能) | 新内容 (产品能力) |
+|---|---|
+| Next.js Boilerplate | Natural Language Editing - 自然语言编辑 |
+| Authentication & Payments | Instant Results - 即时生成结果 |
+| Data Infrastructure | Scene Preservation - 场景完美保留 |
+| One-Click Deployment | Character Consistency - 角色细节一致 |
+| Business Analytics | Professional Quality - 专业级品质 |
+| AI-Ready Infrastructure | Multi-Format Support - 多格式支持 |
+
+- ✅ 图标更新
+  - 从技术图标 (Next.js, Database) 改为用户能力图标 (MessageSquareText, Zap, Layers, Users, Award, Images)
+
+**设计理念**:
+- 不说"我们用了什么技术",而说"你能做什么"
+- 强调"简单易用 + 专业效果"
+- 降低用户心理门槛
+
+**修改的文件**:
+- `src/config/locale/messages/en/landing.json:111-147` - 英文 Features 内容
+- `src/config/locale/messages/zh/landing.json:111-147` - 中文 Features 内容
+
+---
+
+### 2025-11-20: 价格页面布局修复
+**变更类型**: Bugfix
+**影响范围**: 前端 - 价格页面
+**Git commit**: 待提交
+
+**问题描述**:
+1. 价格页面只显示 1 个卡片,应该显示 3 个卡片的网格布局
+2. 控制台报错: "No intl context found"
+
+**问题原因**:
+1. **Tailwind CSS 动态类名问题**: 使用了动态字符串拼接 `md:grid-cols-${count}`,Tailwind 编译器无法识别
+2. **next-intl 上下文缺失**: `NextIntlClientProvider` 没有传递 `messages` 属性
+
+**解决方案**:
+- ✅ 修复网格布局 (`src/themes/default/blocks/pricing.tsx`)
+  - 将动态字符串改为条件类名映射
+  - 使用 `cn()` 工具函数 + 完整的类名字符串
+  ```tsx
+  // ❌ 错误: className={`md:grid-cols-${count}`}
+  // ✅ 正确: className={cn('...', { 'md:grid-cols-3': count === 3 })}
+  ```
+- ✅ 修复 next-intl 上下文 (`src/app/[locale]/layout.tsx`)
+  - 导入 `getMessages` 从 `next-intl/server`
+  - 获取当前 locale 的翻译消息并传递给 Provider
+  ```tsx
+  const messages = await getMessages();
+  <NextIntlClientProvider messages={messages}>
+  ```
+
+**修改的文件**:
+- `src/themes/default/blocks/pricing.tsx:364-384` - 网格布局修复
+- `src/app/[locale]/layout.tsx:3,28,31` - next-intl 上下文配置
+
+---
 
 ### 2025-11-20: ImageGenerator 核心功能优化
 **变更类型**: Feature/UX/Content

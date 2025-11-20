@@ -18,23 +18,13 @@
         },
         {
           "title": "Showcases",
-          "url": "/showcases",
+          "url": "/#showcase",
           "icon": "Box"
         },
         {
           "title": "Pricing",
           "url": "/pricing",
           "icon": "DollarSign"
-        },
-        {
-          "title": "Blog",
-          "url": "/blog",
-          "icon": "Newspaper"
-        },
-        {
-          "title": "Docs",
-          "url": "/docs",
-          "icon": "BookOpenText"
         }
       ]
     },
@@ -108,133 +98,178 @@
     "title": "Try The AI Editor",
     "description": "Transform any image with simple text prompts. Advanced AI editing delivers consistent results and precise modifications that surpass traditional tools."
   },
-  "features": {
-    "id": "features",
-    "title": "Key Features of NanoBananaPro",
-    "description": "Everything you need to launch your AI SaaS startup quickly and efficiently.",
+  "showcase": {
+    "id": "showcase",
+    "title": "Showcase",
+    "heading": "Lightning-Fast AI Creations",
+    "description": "See what Nano Banana Pro creates in milliseconds",
     "items": [
       {
-        "title": "Next.js Boilerplate",
-        "description": "Production-ready Next.js templates with SEO-friendly structure and i18n support.",
-        "icon": "RiNextjsFill"
+        "title": "Professional Quality Results",
+        "description": "Studio-grade portrait editing with perfect lighting and details",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-professional-portrait.webp",
+          "alt": "AI-generated professional portrait with studio lighting"
+        }
       },
       {
-        "title": "Authentication & Payments",
-        "description": "Integrated Google OAuth, one-tap login, and Stripe payment processing.",
-        "icon": "RiKey2Fill"
+        "title": "Stunning Interior Visualization",
+        "description": "Photorealistic space transformation for architectural projects",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-interior-design.webp",
+          "alt": "AI-edited modern living room interior design"
+        }
       },
       {
-        "title": "Data Infrastructure",
-        "description": "Built-in Supabase integration for reliable and scalable data storage.",
-        "icon": "RiDatabase2Line"
+        "title": "Perfect Product Photography",
+        "description": "E-commerce ready professional shots with seamless backgrounds",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-fashion-photography.webp",
+          "alt": "AI-enhanced fashion photography for e-commerce"
+        }
       },
       {
-        "title": "One-Click Deployment",
-        "description": "Seamless deployment to Vercel or Cloudflare with automated setup.",
-        "icon": "RiCloudy2Fill"
+        "title": "Consistent Character Design",
+        "description": "Maintain perfect character consistency across all edits and scenes",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-character-design.webp",
+          "alt": "AI character design with consistent 3D modeling and rendering"
+        }
+      }
+    ],
+    "cta": {
+      "text": "Experience the power yourself",
+      "button": "Try Nano Banana Pro",
+      "url": "/#generator"
+    }
+  },
+  "features": {
+    "id": "features",
+    "title": "Why Choose Nano Banana Pro?",
+    "description": "The most powerful AI image editor with natural language understanding. Transform your images effortlessly.",
+    "items": [
+      {
+        "title": "Natural Language Editing",
+        "description": "Edit images using simple text prompts. Describe what you want, and our AI understands complex instructions instantly.",
+        "icon": "MessageSquareText"
       },
       {
-        "title": "Business Analytics",
-        "description": "Integrated Google Analytics and Search Console for tracking growth.",
-        "icon": "RiBarChart2Line"
+        "title": "Instant Results",
+        "description": "Perfect results in a single attempt. No more trial and error - get professional edits in seconds.",
+        "icon": "Zap"
       },
       {
-        "title": "AI-Ready Infrastructure",
-        "description": "Pre-configured AI integration with built-in credits system and API sales.",
-        "icon": "RiRobot2Line"
+        "title": "Scene Preservation",
+        "description": "Seamlessly blend edits with original backgrounds. Maintain natural lighting and composition effortlessly.",
+        "icon": "Layers"
+      },
+      {
+        "title": "Character Consistency",
+        "description": "Maintain perfect character details across edits. Preserves faces, identities, and unique features flawlessly.",
+        "icon": "Users"
+      },
+      {
+        "title": "Professional Quality",
+        "description": "Studio-grade output without professional skills. AI-powered editing rivals experienced designers.",
+        "icon": "Award"
+      },
+      {
+        "title": "Multi-Format Support",
+        "description": "Process multiple images simultaneously. Support for batch editing and various image formats.",
+        "icon": "Images"
       }
     ]
   },
   "testimonials": {
     "id": "testimonials",
-    "title": "What Users Say About NanoBananaPro",
-    "description": "Hear from developers and founders who launched their AI startups with NanoBananaPro.",
+    "title": "What Creators Say",
+    "description": "Hear from content creators and professionals who transform their images daily with Nano Banana Pro.",
     "items": [
       {
-        "name": "David Chen",
-        "role": "Founder of AIWallpaper.shop",
-        "quote": "NanoBananaPro saved us months of development time. We launched our AI wallpaper business in just 2 days and got our first paying customer within a week!",
+        "name": "Sarah Miller",
+        "role": "Social Media Manager",
+        "quote": "Perfect for creating consistent brand visuals. I can edit dozens of images in minutes with simple text prompts. Game changer for social media!",
         "image": {
           "src": "/imgs/avatars/1.png",
-          "alt": "david"
+          "alt": "sarah"
         }
       },
       {
-        "name": "Rachel Kim",
-        "role": "CTO at HeyBeauty.ai",
-        "quote": "The pre-built AI infrastructure is a game-changer. We didn't have to worry about architecture - just focused on our AI beauty tech and went live fast.",
+        "name": "Alex Chen",
+        "role": "Content Creator",
+        "quote": "The character consistency is incredible! My AI avatar looks perfect across all edits. Way better than other tools I've tried.",
         "image": {
           "src": "/imgs/avatars/2.png",
-          "alt": "rachel"
+          "alt": "alex"
         }
       },
       {
-        "name": "Marcus Thompson",
-        "role": "Solo Developer",
-        "quote": "As a solo developer, NanoBananaPro gave me everything I needed - auth, payments, AI integration, and beautiful UI. Launched my SaaS in a weekend!",
+        "name": "Jessica Brown",
+        "role": "E-commerce Seller",
+        "quote": "I used to spend hours editing product photos. Now it takes seconds with natural language. My conversion rate increased by 40%!",
         "image": {
           "src": "/imgs/avatars/3.png",
-          "alt": "marcus"
+          "alt": "jessica"
         }
       },
       {
-        "name": "Sofia Garcia",
-        "role": "CEO of Melodisco",
-        "quote": "The templates are production-ready and highly customizable. We built our AI music platform in hours instead of months. Incredible time-to-market!",
+        "name": "Michael Torres",
+        "role": "Marketing Professional",
+        "quote": "Batch editing is a lifesaver for campaigns. Process 50+ images at once while maintaining quality. Saves our team countless hours.",
         "image": {
           "src": "/imgs/avatars/4.png",
-          "alt": "sofia"
+          "alt": "michael"
         }
       },
       {
-        "name": "James Wilson",
-        "role": "Tech Lead at GPTs.works",
-        "quote": "NanoBananaPro's infrastructure is rock-solid. We scaled from 0 to 10k users without touching the backend. Best investment for our AI startup.",
+        "name": "Emma Wilson",
+        "role": "Freelance Designer",
+        "quote": "As a professional designer, I'm impressed by the studio-grade output. Clients can't tell it's AI-edited. Worth every penny!",
         "image": {
           "src": "/imgs/avatars/5.png",
-          "alt": "james"
+          "alt": "emma"
         }
       },
       {
-        "name": "Anna Zhang",
-        "role": "Startup Founder",
-        "quote": "From idea to launch in 3 days! NanoBananaPro's templates and deployment tools made it possible to test our AI business concept incredibly fast.",
+        "name": "David Kim",
+        "role": "Travel Blogger",
+        "quote": "No Photoshop skills needed! I can enhance my travel photos with simple descriptions. My followers love the new quality.",
         "image": {
           "src": "/imgs/avatars/6.png",
-          "alt": "anna"
+          "alt": "david"
         }
       }
     ]
   },
   "faq": {
     "id": "faq",
-    "title": "Frequently Asked Questions About NanoBananaPro",
-    "description": "Have another question? Contact us on Discord or by email.",
-    "tip": "Can't find what you're looking for? Contact our <a href='https://discord.gg/HQNnrzjZQS' target='_blank' class='text-primary font-medium hover:underline'>customer support team</a>",
+    "title": "Frequently Asked Questions",
+    "description": "Everything you need to know about Nano Banana Pro. Can't find the answer? Contact us.",
+    "tip": "Can't find what you're looking for? Contact our <a href='mailto:support@nanobananapro.com' class='text-primary font-medium hover:underline'>support team</a>",
     "items": [
       {
-        "question": "What exactly is NanoBananaPro and how does it work?",
-        "answer": "NanoBananaPro is a comprehensive NextJS boilerplate designed specifically for building AI SaaS startups. It provides ready-to-use templates, infrastructure setup, and deployment tools that help you launch your AI business in hours instead of days."
+        "question": "What is Nano Banana Pro?",
+        "answer": "Nano Banana Pro is an advanced AI image editor that transforms photos using natural language prompts. Simply describe your desired edits in plain text, and our AI understands complex instructions to deliver professional results instantly."
       },
       {
-        "question": "Do I need advanced technical skills to use NanoBananaPro?",
-        "answer": "While basic programming knowledge is helpful, NanoBananaPro is designed to be developer-friendly. Our templates and documentation make it easy to get started, even if you're not an expert in AI or cloud infrastructure."
+        "question": "Do I need design skills or Photoshop experience?",
+        "answer": "Not at all! That's the beauty of Nano Banana Pro. You don't need any design experience or technical skills. Just describe what you want in simple words, and our AI handles all the complex editing work for you."
       },
       {
-        "question": "What types of AI SaaS can I build with NanoBananaPro?",
-        "answer": "NanoBananaPro supports a wide range of AI applications, from content generation to data analysis tools. Our templates cover popular use cases like AI chatbots, content generators, image processing apps, and more."
+        "question": "What types of edits can it handle?",
+        "answer": "Nano Banana Pro can handle a wide range of edits including background changes, object placement, face completion, character modifications, style transfers, and scene blending. It excels at maintaining character consistency and creating photorealistic results."
       },
       {
-        "question": "How long does it typically take to launch with NanoBananaPro?",
-        "answer": "With NanoBananaPro, you can have a working prototype in hours and a production-ready application in hours. Our one-click deployment and pre-configured infrastructure significantly reduce the traditional months-long development cycle."
+        "question": "How is it better than other AI editors?",
+        "answer": "Nano Banana Pro offers superior character consistency, scene preservation, and one-shot editing. Unlike other tools, it maintains perfect facial features across edits and seamlessly blends changes with original backgrounds. You get professional results in a single attempt."
       },
       {
-        "question": "What's included in the NanoBananaPro infrastructure?",
-        "answer": "NanoBananaPro provides a complete infrastructure stack including authentication, database setup, API integration, payment processing, and scalable cloud deployment. Everything is pre-configured following industry best practices."
+        "question": "Can I use it for commercial projects?",
+        "answer": "Yes! Nano Banana Pro is perfect for commercial use. Create AI-generated content, social media campaigns, product photography, and marketing materials. Many professionals use it for creating consistent AI influencers and UGC content."
       },
       {
-        "question": "Can I customize the templates to match my brand?",
-        "answer": "Absolutely! All NanoBananaPro templates are fully customizable. You can modify the design, features, and functionality to match your brand identity and specific business requirements while maintaining the robust underlying infrastructure."
+        "question": "How do I get started?",
+        "answer": "Getting started is simple! Sign up for an account, upload your image, describe your desired edits in plain language, and watch the AI transform your photo. You'll get professional results in seconds. No installation or technical setup required."
       }
     ]
   },
@@ -261,27 +296,12 @@
             },
             {
               "title": "Showcases",
-              "url": "/showcases",
+              "url": "/#showcase",
               "target": "_self"
             },
             {
               "title": "Pricing",
               "url": "/pricing",
-              "target": "_self"
-            }
-          ]
-        },
-        {
-          "title": "Resources",
-          "children": [
-            {
-              "title": "Documents",
-              "url": "/docs",
-              "target": "_self"
-            },
-            {
-              "title": "Blog",
-              "url": "/blog",
               "target": "_self"
             }
           ]

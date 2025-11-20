@@ -79,6 +79,20 @@ export interface Features extends Section {}
 
 export interface Stats extends Section {}
 
+export interface ShowcaseItem extends SectionItem {
+  image?: Image;
+}
+
+export interface Showcase extends Section {
+  heading?: string;
+  items?: ShowcaseItem[];
+  cta?: {
+    text?: string;
+    button?: string;
+    url?: string;
+  };
+}
+
 export interface Showcases extends Section {}
 
 export interface FAQItem extends SectionItem {
@@ -121,6 +135,7 @@ export interface Landing {
   features?: Features;
   stats?: Stats;
   showcases?: Showcases;
+  showcase?: Showcase;
   generator?: Generator;
   subscribe?: Subscribe;
   faq?: FAQ;

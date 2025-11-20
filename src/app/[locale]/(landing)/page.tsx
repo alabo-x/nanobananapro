@@ -20,6 +20,7 @@ export default async function LandingPage({
     generator: t.raw('generator'),
     features: t.raw('features'),
     testimonials: t.raw('testimonials'),
+    showcase: t.raw('showcase'),
     faq: t.raw('faq'),
   };
 
