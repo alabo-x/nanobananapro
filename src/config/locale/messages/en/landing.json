@@ -54,15 +54,15 @@
     "id": "hero",
     "title": "Nano Banana Pro",
     "highlight_text": "",
-    "description": "Turn your ideas into professional images with simple text prompts. No design skills required.",
+    "description": "Transform your images with AI-powered editing. Perfect character consistency and scene preservation. Professional results in seconds.",
     "announcement": {
       "badge": "New",
-      "title": "🎉 NanoBananaPro",
+      "title": "🎨 Professional Image Editing",
       "url": "#generator"
     },
     "buttons": [
       {
-        "title": "Get Started",
+        "title": "Edit Images Now",
         "icon": "Zap",
         "url": "#generator",
         "target": "_self",
@@ -95,8 +95,8 @@
   },
   "generator": {
     "id": "generator",
-    "title": "Try The AI Editor",
-    "description": "Transform any image with simple text prompts. Advanced AI editing delivers consistent results and precise modifications that surpass traditional tools."
+    "title": "Professional Image Editor",
+    "description": "Upload your image and describe your edits. Our AI understands complex instructions and delivers professional results instantly. Powered by Google Gemini."
   },
   "showcase": {
     "id": "showcase",
@@ -170,7 +170,7 @@
       },
       {
         "title": "Professional Quality",
-        "description": "Studio-grade output without professional skills. AI-powered editing rivals experienced designers.",
+        "description": "Studio-grade output up to 4K resolution. High-fidelity text rendering with perfect typography. AI-powered editing rivals experienced designers.",
         "icon": "Award"
       },
       {
@@ -277,7 +277,7 @@
     "id": "footer",
     "brand": {
       "title": "NanoBananaPro",
-      "description": "NanoBananaPro is a NextJS boilerplate for building AI SaaS startups. Ship Fast with a variety of templates and components.",
+      "description": "AI image editor powered by Google Gemini. Transform images with natural language prompts. Professional results in seconds.",
       "logo": {
         "src": "/logo.png",
         "alt": "NanoBananaPro"

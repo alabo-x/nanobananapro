@@ -1,36 +1,52 @@
 {
   "generator": {
-    "title": "Image Editor",
-    "description": "Edit and transform images with AI. Support text-to-image generation and image-to-image editing.",
-    "tabs": {
-      "text-to-image": "Text to Image",
-      "image-to-image": "Image to Image"
-    },
+    "title": "Professional Image Editor",
+    "description": "Perfect character consistency and scene preservation. Upload your image, describe your edits in natural language, and get professional results instantly.",
     "form": {
       "provider": "Provider",
       "model": "AI Model Selection",
       "select_provider": "Select Provider",
       "select_model": "Select Model",
       "prompt": "Prompt",
-      "prompt_placeholder": "Describe the details of the image, such as color, shape, texture, etc.",
-      "reference_image": "Reference Image",
-      "reference_image_placeholder": "Upload reference images, support multiple images",
+      "prompt_placeholder": "Upload reference images and describe how you'd like to edit using them.",
+      "reference_image": "Image",
+      "reference_image_placeholder": "Max 8 images",
+      "resolution": "Resolution",
+      "select_resolution": "Select Resolution",
+      "aspect_ratio": "Aspect Ratio",
+      "select_aspect_ratio": "Select Aspect Ratio",
       "some_images_failed_to_upload": "Some images failed to upload, please delete them and re-upload",
-      "prompt_too_long": "Prompt is too long, please delete some content"
+      "prompt_too_long": "Instructions are too long, please be more concise",
+      "image_required": "Please upload an image first"
     },
-    "generate": "Generate Now ({credits} Credits)",
+    "resolution_options": {
+      "1k": "1K (Standard Quality)",
+      "2k": "2K (High Quality)",
+      "4k": "4K (Ultra Quality)"
+    },
+    "aspect_ratio_options": {
+      "original": "Original",
+      "1:1": "Square (1:1)",
+      "16:9": "Landscape (16:9)",
+      "9:16": "Portrait (9:16)",
+      "4:3": "Classic (4:3)",
+      "3:4": "Portrait (3:4)",
+      "3:2": "Photo (3:2)",
+      "2:3": "Portrait (2:3)"
+    },
+    "generate": "Create • {credits} Credits",
     "checking_account": "Checking Account...",
     "loading": "Loading...",
-    "generating": "Generating...",
-    "sign_in_to_generate": "Sign In to Generate Image",
+    "generating": "Transforming...",
+    "sign_in_to_generate": "Sign In to Create",
     "credits_cost": "Cost {credits} credits",
     "credits_remaining": "Remaining {credits} credits",
     "buy_credits": "Buy Credits",
     "progress": "Progress",
-    "generated_images": "Image Preview",
-    "ready_to_generate": "Ready to Generate",
-    "ready_for_generating": "Ready for Generating",
-    "no_images_generated": "Ready for instant generation",
-    "no_images_generated_description": "Enter your prompt and unleash the power"
+    "generated_images": "Output",
+    "ready_to_generate": "Ready to Transform",
+    "ready_for_generating": "Ready for Transforming",
+    "no_images_generated": "Ready to Create",
+    "no_images_generated_description": "Upload an image and describe your edits"
   }
 }

@@ -1,36 +1,52 @@
 {
   "generator": {
-    "title": "Editor de Imágenes",
-    "description": "Edita y transforma imágenes con IA. Soporta generación de texto a imagen y edición de imagen a imagen.",
-    "tabs": {
-      "text-to-image": "Texto a Imagen",
-      "image-to-image": "Imagen a Imagen"
-    },
+    "title": "Editor de Imágenes Profesional",
+    "description": "Perfecta consistencia de personajes y preservación de escenas. Sube tu imagen, describe tus ediciones en lenguaje natural y obtén resultados profesionales al instante.",
     "form": {
       "provider": "Proveedor",
       "model": "Selección de Modelo AI",
       "select_provider": "Seleccionar Proveedor",
       "select_model": "Seleccionar Modelo",
-      "prompt": "Indicación",
-      "prompt_placeholder": "Describe los detalles de la imagen, como color, forma, textura, etc.",
-      "reference_image": "Imagen de Referencia",
-      "reference_image_placeholder": "Sube imágenes de referencia, soporta múltiples imágenes",
+      "prompt": "Prompt",
+      "prompt_placeholder": "Sube imágenes de referencia y describe cómo te gustaría editarlas.",
+      "reference_image": "Imagen",
+      "reference_image_placeholder": "Máximo 8 imágenes",
+      "resolution": "Resolución",
+      "select_resolution": "Seleccionar Resolución",
+      "aspect_ratio": "Relación de Aspecto",
+      "select_aspect_ratio": "Seleccionar Relación de Aspecto",
       "some_images_failed_to_upload": "Algunas imágenes no se pudieron subir, por favor elimínalas y vuelve a subirlas",
-      "prompt_too_long": "La indicación es demasiado larga, por favor elimina algo de contenido"
+      "prompt_too_long": "Las instrucciones son demasiado largas, por favor sé más conciso",
+      "image_required": "Por favor sube una imagen primero"
     },
-    "generate": "Generar Ahora ({credits} Créditos)",
+    "resolution_options": {
+      "1k": "1K (Calidad Estándar)",
+      "2k": "2K (Alta Calidad)",
+      "4k": "4K (Ultra Calidad)"
+    },
+    "aspect_ratio_options": {
+      "original": "Original",
+      "1:1": "Cuadrado (1:1)",
+      "16:9": "Horizontal (16:9)",
+      "9:16": "Vertical (9:16)",
+      "4:3": "Clásico (4:3)",
+      "3:4": "Vertical (3:4)",
+      "3:2": "Foto (3:2)",
+      "2:3": "Vertical (2:3)"
+    },
+    "generate": "Crear • {credits} Créditos",
     "checking_account": "Verificando Cuenta...",
     "loading": "Cargando...",
-    "generating": "Generando...",
-    "sign_in_to_generate": "Inicia Sesión para Generar Imagen",
+    "generating": "Transformando...",
+    "sign_in_to_generate": "Inicia Sesión para Crear",
     "credits_cost": "Costo {credits} créditos",
     "credits_remaining": "Créditos restantes {credits}",
     "buy_credits": "Comprar Créditos",
     "progress": "Progreso",
-    "generated_images": "Vista Previa de Imagen",
-    "ready_to_generate": "Listo para Generar",
-    "ready_for_generating": "Listo para Generar",
-    "no_images_generated": "Listo para generación instantánea",
-    "no_images_generated_description": "Ingresa tu indicación y desata el poder"
+    "generated_images": "Resultado",
+    "ready_to_generate": "Listo para Transformar",
+    "ready_for_generating": "Listo para Transformar",
+    "no_images_generated": "Listo para Crear",
+    "no_images_generated_description": "Sube una imagen y describe tus ediciones"
   }
 }

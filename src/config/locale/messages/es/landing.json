@@ -54,15 +54,15 @@
     "id": "hero",
     "title": "Nano Banana Pro",
     "highlight_text": "",
-    "description": "Convierte tus ideas en imágenes profesionales con simples indicaciones de texto. No se requieren habilidades de diseño.",
+    "description": "Transforma tus imágenes con edición impulsada por IA. Consistencia perfecta de personajes y preservación de escenas. Resultados profesionales en segundos.",
     "announcement": {
       "badge": "Nuevo",
-      "title": "🎉 NanoBananaPro",
+      "title": "🎨 Edición Profesional de Imágenes",
       "url": "#generator"
     },
     "buttons": [
       {
-        "title": "Comenzar",
+        "title": "Editar Imágenes Ahora",
         "icon": "Zap",
         "url": "#generator",
         "target": "_self",
@@ -95,8 +95,8 @@
   },
   "generator": {
     "id": "generator",
-    "title": "Prueba el Editor AI",
-    "description": "Transforma cualquier imagen con simples indicaciones de texto. La edición AI avanzada ofrece resultados consistentes y modificaciones precisas que superan las herramientas tradicionales."
+    "title": "Editor de Imágenes Profesional",
+    "description": "Sube tu imagen y describe tus ediciones. Nuestra IA comprende instrucciones complejas y entrega resultados profesionales al instante. Impulsado por Google Gemini."
   },
   "showcase": {
     "id": "showcase",
@@ -170,7 +170,7 @@
       },
       {
         "title": "Calidad Profesional",
-        "description": "Resultados de nivel estudio sin habilidades profesionales. La edición impulsada por IA rivaliza con diseñadores experimentados.",
+        "description": "Resultados de nivel estudio hasta resolución 4K. Renderizado de texto de alta fidelidad con tipografía perfecta. La edición impulsada por IA rivaliza con diseñadores experimentados.",
         "icon": "Award"
       },
       {
@@ -277,7 +277,7 @@
     "id": "footer",
     "brand": {
       "title": "NanoBananaPro",
-      "description": "NanoBananaPro es un boilerplate de NextJS para construir startups AI SaaS. Lanza rápido con una variedad de plantillas y componentes.",
+      "description": "Editor de imágenes AI impulsado por Google Gemini. Transforma imágenes con indicaciones de lenguaje natural. Resultados profesionales en segundos.",
       "logo": {
         "src": "/logo.png",
         "alt": "NanoBananaPro"

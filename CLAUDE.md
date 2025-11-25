@@ -4,13 +4,30 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目快速概览
 
-### 当前状态 (2025-11-20)
-- **项目阶段**: 首页开发完成，准备部署上线 🚀
-- **最新变更**: 完成部署前检查，整理待办清单
+### 当前状态 (2025-11-25)
+- **项目阶段**: 🎉 重大产品调整完成 - 专注 Image-to-Image 编辑
+- **最新变更**: 纵横比选择器视觉优化 - 图标尺寸和颜色调整（参考 nanabananapro.io）
 - **开发服务器**: http://localhost:3000
 - **管理员账户**: admin@nanobananapro.com (super_admin)
 - **数据库表**: 16 个表（已删除 chat, chat_message）
-- **构建状态**: ✅ 生产构建成功（15.3s，12个静态页面）
+- **构建状态**: ✅ 生产构建成功（11.6s，TypeScript 编译通过）
+- **产品定位**: 专业图片编辑工具（高端市场 $19-129/月）
+
+### 下一步工作
+
+#### 🎨 当前阶段：核心功能 UI/UX 优化
+- [ ] **继续优化核心功能的 UI 和文案**
+  - 优化 ImageGenerator 组件的用户体验
+  - 参考对标网站（nanabananapro.io）进行视觉优化
+  - 简化文案，突出核心价值
+
+- [ ] **⚠️ 核心功能测试（UI 优化完成后执行）**
+  - 测试 **Image-to-Image 编辑功能**（唯一核心功能）
+  - 验证 Replicate API 集成（google/nano-banana-pro 模型）
+  - 测试图片上传功能（参考图像）
+  - 测试积分扣除逻辑（Image-to-Image: 4 积分）
+  - 验证图片生成流程和结果输出
+  - 测试纵横比和分辨率选择器功能
 
 ### 部署上线待办事项
 
@@ -72,35 +89,106 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### 项目定位
 
-**NanoBananaPro** 是一个专注于 **AI 图片生成和编辑** 的在线工具网站。
+**NanoBananaPro** 是一个**专注于 Image-to-Image 编辑**的专业 AI 图片工具。
 
-**核心功能**:
-- 唯一功能：AI 图片生成和编辑（首页 Hero 区块）
-- 主要调用 google/nano-banana 模型的升级版本
-- 可能的模型名称：google/nano-banana-pro
+**核心定位**:
+- **唯一功能**：AI Image-to-Image 编辑（首页 Hero 区块）
+  - 用户上传参考图像
+  - 用自然语言描述想要的编辑效果
+  - AI 生成编辑后的图片
+- **AI 模型**：google/nano-banana-pro（Google Gemini 3 Pro 驱动）
+
+**差异化优势**:
+与 Google 官方/对标网站的区别：
+- ❌ **他们**：Text-to-Image + Image-to-Image（全功能，从零生成）
+- ✅ **我们**：只专注 Image-to-Image（编辑专精，优化现有图片）
+
+**核心技术优势**：
+- 🎯 **角色一致性保持**（Character Consistency）：适合虚拟形象、IP 形象、品牌角色
+- 🎯 **场景完美保留**（Scene Preservation）：适合产品图、人像、专业摄影
+- 🎯 **自然语言编辑指令**（Natural Language Editing）：无需专业技能、简单描述即可
 
 **不需要的功能** (已删除):
+- ❌ Text-to-Image 文本生成图片功能（已移除 Tab）
 - ❌ 聊天/对话功能
 - ❌ 音乐/视频/音频生成
-- ❌ 任何与图片生成无关的 AI 功能
+- ❌ 任何与图片编辑无关的 AI 功能
 
-**目标市场**: 欧美普通用户
+---
 
-**用户画像**:
-- 非专业设计师
-- 社交媒体运营者、内容创作者
-- 电商卖家、营销人员
-- 普通用户（需要图片但不会 Photoshop）
+### 目标用户定位
 
-**核心诉求**:
-- 简单易用，不需要学习成本
-- 快速出图，节省时间
-- 专业质量，无需专业技能
+**目标市场**: 欧美国家的专业用户
 
-**文案风格**:
-- 简洁直接，一句话说清价值
-- 强调"No design skills required"
-- 降低用户心理门槛
+**核心用户画像**:
+
+#### 1. 🛍️ **电商卖家/产品经理**
+- **典型场景**：产品图背景替换、场景切换、快速出图
+- **核心痛点**：
+  - Photoshop 太复杂，学习成本高
+  - 外包修图贵且慢，周期长
+  - 需要大量 SKU 图片，手工编辑效率低
+- **价值主张**：
+  - ✅ 提升转化率（专业产品图）
+  - ✅ 快速上架（几秒钟完成编辑）
+  - ✅ 降低成本（无需外包）
+
+#### 2. 📱 **内容创作者/社交媒体运营者**
+- **典型场景**：批量图片编辑、虚拟形象一致性、快速素材制作
+- **核心痛点**：
+  - 需要大量图片素材，手工编辑耗时
+  - 虚拟形象/IP 角色需要保持一致性
+  - 内容迭代快，需要快速出图
+- **价值主张**：
+  - ✅ 快速出图（批量编辑）
+  - ✅ 角色一致（虚拟形象保持）
+  - ✅ 高效迭代（自然语言编辑）
+
+#### 3. 📷 **摄影师/图片编辑**
+- **典型场景**：人像润色、背景调整、批量修图、后期处理
+- **核心痛点**：
+  - 后期处理耗时，批量编辑困难
+  - 细节把控难，需要专业技能
+  - 客户修改需求多，迭代成本高
+- **价值主张**：
+  - ✅ 保留细节（场景保留技术）
+  - ✅ 专业品质（高清输出）
+  - ✅ 快速迭代（AI 辅助编辑）
+
+**次要用户**：营销人员、设计师（营销素材快速迭代、A/B 测试）
+
+---
+
+### 文案和 UI 指导原则
+
+#### 原则 1：突出编辑能力（产品定位）
+- ❌ **禁用词**："生成"、"创建"、"制作"
+- ✅ **推荐词**："编辑"、"转换"、"优化"、"增强"、"润色"
+- 📝 **文案示例**：
+  - ❌ 不说："生成专业图片"
+  - ✅ 改为："将图片编辑为专业效果"
+
+#### 原则 2：强调核心优势（差异化）
+- 🎯 **角色一致性**：适合虚拟形象、IP 形象、品牌角色
+- 🎯 **场景保留**：适合产品图、人像、专业摄影
+- 🎯 **自然语言**：无需专业技能、简单描述即可
+
+#### 原则 3：分层文案风格（针对不同用户群体）
+
+**针对电商卖家**：
+- 关键词：提升转化率、专业产品图、快速上架、降低成本
+- 文案风格：强调商业价值和效率
+- 示例："几秒钟将产品图编辑为专业效果，提升 40% 转化率"
+
+**针对内容创作者**：
+- 关键词：快速出图、角色一致、批量编辑、高效迭代
+- 文案风格：强调效率和一致性
+- 示例："保持虚拟形象完美一致，批量编辑节省 80% 时间"
+
+**针对摄影师**：
+- 关键词：保留细节、专业品质、高清输出、AI 辅助
+- 文案风格：强调品质和专业性
+- 示例："保留原图每个细节，输出专业级高清作品"
 
 **技术基础**:
 - 基于 ShipAny Template Two (Next.js 16 + React 19)
@@ -108,6 +196,474 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 集成 Vercel AI SDK 和 Replicate Provider
 
 ## 最近工作记录
+
+### 2025-11-25: ImageGenerator 核心组件完整 UI/UX 优化 - 专业化改造
+**变更类型**: Feature/UX/Content
+**影响范围**: 前端 - ImageGenerator 组件 + ImageUploader 组件
+**Git commit**: 待提交
+
+**优化目标**:
+- 根据行业成熟网站标准（Midjourney、DALL-E、Stable Diffusion）优化文案
+- 修正 API 限制配置（根据 kie.ai/nano-banana-pro 实际要求）
+- 增强上传区域视觉效果和交互体验
+- 统一所有文案为 "Create" 核心动词，保持专业简洁
+
+**完成的优化** (共 9 项):
+
+#### 1. Prompt 标签专业化
+```
+修改前: "What do you want to edit?" (过于口语化)
+修改后: "Prompt" (行业标准术语)
+理由: 专业用户已习惯 "Prompt" 术语，简洁直接
+```
+
+#### 2. 生成按钮文案简化
+```
+修改前: "Transform Now ({credits} Credits)"
+修改后: "Create • {credits} Credits"
+理由: 更简洁专业，与空状态文案呼应
+```
+
+#### 3. 未登录按钮文案统一
+```
+修改前: "Sign In to Transform Images"
+修改后: "Sign In to Create"
+理由: 与主按钮文案保持一致
+```
+
+#### 4. 空状态文案优化
+```
+修改前:
+  主标题: "Ready to Transform"
+  副标题: "Upload your image → Describe your edits → Transform instantly"
+
+修改后:
+  主标题: "Ready to Create"
+  副标题: "Upload an image and describe your edits"
+
+理由: 更简洁明了，与 "Create" 按钮呼应
+```
+
+#### 5. Prompt Placeholder 指引优化
+```
+修改前: "Change background to beach, improve lighting, remove watermark..."
+修改后: "Upload reference images and describe how you'd like to edit using them."
+理由: 更清晰的操作指引，避免冗长的示例列表
+```
+
+#### 6. 输出区域标题简化
+```
+修改前: "Transformed Images"
+修改后: "Output"
+理由: 专业工具常用术语，更简洁
+```
+
+#### 7. 图片数量和大小限制修正（关键修复）
+```
+代码配置修改 (image.tsx:157-158):
+  修改前: maxImages = 9, maxSizeMB = 5
+  修改后: maxImages = 8, maxSizeMB = 30
+
+翻译文件修改:
+  标题: "Source Image" → "Image"
+  提示: "Upload your image to edit (required)" → "Max 8 images"
+
+API 实际限制 (kie.ai/nano-banana-pro):
+  ✅ 最大图片数: 8 张
+  ✅ 最大文件大小: 30MB
+  ✅ 支持格式: JPEG, PNG, WebP
+```
+
+#### 8. 上传区域样式改造（image-uploader.tsx:343-358）
+```
+尺寸调整:
+  修改前: h-32 w-32 (128px × 128px 正方形)
+  修改后: h-40 w-full (160px 高 × 全宽长方形)
+
+图标优化:
+  修改前: h-10 w-10 圆形 + h-5 w-5 图标
+  修改后: h-12 w-12 圆形 + h-6 w-6 图标
+
+文案更新:
+  主文案: "Click or drag image" (text-sm font-medium)
+  副文案: "Supports: JPG, PNG, WebP" (text-xs muted)
+  移除: "Max 30MB" 提示
+```
+
+#### 9. 上传区域悬停动画增强（image-uploader.tsx:343,350）
+```
+外层容器动画:
+  - 缩放: hover:scale-[1.02] (放大 2%)
+  - 阴影: shadow-sm → hover:shadow-lg
+  - 边框: hover:border-primary (完整主题色高亮)
+  - 背景: bg-muted/50 → hover:bg-muted
+  - 过渡: transition-all duration-200 ease-in-out
+
+图标动画:
+  - 向上移动: group-hover:-translate-y-1 (4px)
+  - 过渡: transition-transform duration-200
+
+视觉效果:
+  ✅ 更明显的视觉反馈
+  ✅ 专业且流畅的交互体验
+  ✅ 符合现代设计趋势
+```
+
+**修改的文件**:
+- `src/config/locale/messages/en/ai/image.json` - 英文文案优化
+- `src/config/locale/messages/es/ai/image.json` - 西班牙语文案优化
+- `src/shared/blocks/generator/image.tsx:157-158` - API 限制配置修正
+- `src/shared/blocks/common/image-uploader.tsx:343-358` - 上传区域样式和动画
+
+**设计理念**:
+- **简洁专业**: 使用行业标准术语（Prompt、Create、Output）
+- **视觉反馈**: 增强悬停动画，提升交互体验
+- **精确配置**: 根据实际 API 限制修正代码配置
+- **统一文案**: 围绕 "Create" 核心动词，保持一致性
+
+**性能影响**: 无负面影响，动画使用 CSS transform 和 shadow，性能良好
+
+---
+
+### 2025-11-25: ImageGenerator UI/文案优化方案批准 - 采用方案 A（通用版本）
+**变更类型**: Planning/Content Strategy
+**影响范围**: 前端 - ImageGenerator 组件文案
+**Git commit**: 待提交
+
+**背景**:
+- 完成目标用户定位分析（电商卖家、内容创作者、摄影师）
+- 确立三大文案指导原则（突出编辑能力、强调核心优势、分层文案风格）
+- 需要根据新定位优化 ImageGenerator 核心组件的文案
+
+**方案对比**:
+- **方案 A（通用版本）**：统一文案，适合所有用户群体，突出核心优势 ✅ 采用
+- **方案 B（分层版本）**：针对不同用户群体使用不同文案，需要识别逻辑
+- **方案 C（渐进式）**：分阶段推出，先通用后分层
+
+**决策理由**:
+1. ✅ **开发成本低**：不需要用户识别逻辑，实施简单
+2. ✅ **适合所有用户群体**：通用文案不会让任何一类用户感到不适
+3. ✅ **突出核心优势**：强调角色一致性、场景保留、自然语言三大核心能力
+4. ✅ **遵循三大指导原则**：
+   - 原则 1：使用"编辑"而非"生成"
+   - 原则 2：强调角色一致性和场景保留
+   - 原则 3：通用文案覆盖多种使用场景
+
+**批准的优化方案** (方案 A):
+
+1. **Section 描述优化**:
+   - 修改前："Experience the power of AI image generation..."
+   - 修改后："Perfect character consistency and scene preservation. Upload your image, describe your edits in natural language, and get professional results instantly."
+   - 改进点：突出两大核心优势（角色一致性 + 场景保留）
+
+2. **Card 描述优化**:
+   - 修改前："Transform your images with AI-powered editing..."
+   - 修改后："Upload your image → Describe your edits → Transform instantly"
+   - 改进点：简化为 3 步流程，降低理解成本
+
+3. **Prompt 标签优化**:
+   - 修改前："Edit Instructions"
+   - 修改后："What do you want to edit?"
+   - 改进点：更口语化，降低专业门槛
+
+4. **Prompt Placeholder 优化**:
+   - 修改前："Describe what you want to change, add, or remove from the image..."
+   - 修改后："Change background to beach, improve lighting, remove watermark, adjust colors, enhance details..."
+   - 改进点：提供具体示例，引导用户输入
+
+5. **按钮文案优化**:
+   - 修改前："Edit Now ({credits} Credits)"
+   - 修改后："Transform Now ({credits} Credits)"
+   - 改进点：使用更有冲击力的动词"Transform"
+
+6. **空状态文案优化**:
+   - 修改前："Upload your image to start"
+   - 修改后："Ready to Transform"
+   - 改进点：更简洁，传达"随时可用"的感觉
+
+**下一步行动**:
+1. 实施方案 A 的文案修改（`en/ai/image.json` 和 `es/ai/image.json`）
+2. 验证所有文案位置的翻译一致性
+3. 测试中英文环境的文案展示效果
+
+**参考文件**:
+- `/Users/pipi/nanobananapro/src/config/locale/messages/en/ai/image.json` - 英文翻译文件
+- `/Users/pipi/nanobananapro/src/config/locale/messages/es/ai/image.json` - 西班牙语翻译文件
+- `/Users/pipi/nanobananapro/src/shared/blocks/generator/image.tsx` - ImageGenerator 组件
+
+---
+
+### 2025-11-25: 纵横比选择器视觉优化 - 图标尺寸和颜色调整
+**变更类型**: UX/Visual
+**影响范围**: 前端 - ImageGenerator 组件
+**Git commit**: 待提交
+
+**问题背景**:
+- 用户反馈图标与文字颜色不一致："颜色不一致，对标是一致的"
+- SelectTrigger 中的图标太大（9:16 比例高度 42.67px），在触发按钮中显得突兀
+- SelectContent 下拉列表中的图标颜色不明显（`bg-muted` 太浅）
+- 对标网站 nanabananapro.io 的图标是白色空心边框，与文字颜色一致
+
+**解决方案**:
+- ✅ **SelectTrigger 图标**：
+  - 尺寸优化：`w-6` → `w-4`（从 24px 缩小到 16px）
+  - 样式优化：`bg-foreground/20` → `border border-current`（实心填充改为空心边框）
+  - 效果：9:16 比例高度从 42.67px 降到 28.44px，更协调
+- ✅ **SelectContent 图标**：
+  - 保持尺寸：`w-6`（24px，在下拉列表中足够明显）
+  - 样式优化：`bg-muted` → `border border-current`（浅灰色改为边框，颜色与文字一致）
+- ✅ **颜色统一**：使用 `border-current` 自动继承父元素文字颜色，确保图标与文字颜色始终一致
+
+**技术实现细节**:
+
+```tsx
+// SelectTrigger 图标 - 小巧协调
+<div
+  className="w-4 border border-current rounded flex-shrink-0"
+  style={{
+    aspectRatio: ASPECT_RATIO_OPTIONS.find(o => o.value === aspectRatio)?.ratio || '1'
+  }}
+/>
+
+// SelectContent 图标 - 大而明显
+<div
+  className="w-6 border border-current rounded flex-shrink-0"
+  style={{ aspectRatio: option.ratio }}
+/>
+```
+
+**关键设计决策**:
+- **差异化尺寸**：SelectTrigger（w-4）和 SelectContent（w-6）使用不同尺寸
+  - 触发按钮空间有限，需要小图标
+  - 下拉列表空间充足，可以用大图标增强可读性
+- **`border-current` 优势**：
+  - 自动继承父元素的 `color` 属性
+  - 无论浅色/深色主题，图标颜色都会与文字保持一致
+  - 符合对标网站的视觉风格
+- **固定宽度，高度自适应**：
+  - 只设置 `w-4` 或 `w-6`，不设置 `h-*`
+  - 高度由 CSS `aspect-ratio` 属性自动计算
+  - 不同比例的矩形有明显的视觉差异（如 9:16 瘦长，16:9 扁平）
+
+**修改的文件**:
+- `src/shared/blocks/generator/image.tsx:560,573` - 图标样式优化
+
+**视觉效果对比**:
+| 位置 | 修改前 | 修改后 |
+|------|--------|--------|
+| SelectTrigger | `w-6 bg-foreground/20`（大图标，深灰实心） | `w-4 border border-current`（小图标，白色边框） |
+| SelectContent | `w-6 bg-muted`（大图标，浅灰实心） | `w-6 border border-current`（大图标，白色边框） |
+
+**构建状态**: ✅ 生产构建成功（11.6s，TypeScript 编译通过）
+
+---
+
+### 2025-11-25: UI 简化优化 - 分辨率和纵横比选择器重构
+**变更类型**: UX/Refactor
+**影响范围**: 前端 - ImageGenerator 组件
+**Git commit**: 待提交
+
+**问题背景**:
+- 用户反馈 UI 过于复杂："为什那么多文字"、"你现在整的太复杂了"
+- 分辨率选择器：使用了冗长的说明文字 "1K (Standard Quality)"、"2K (High Quality)"
+- 纵横比选择器：使用下拉框，不够直观，不符合竞品设计风格
+- 用户强调："我希望这个选择越简洁越好"、"请你不要偷懒，我们的核心卖点是核心功能"
+
+**解决方案**:
+- ✅ **分辨率选择器**：简化为纯数字 "1K", "2K", "4K"（移除所有说明文字）
+- ✅ **纵横比选择器**：从下拉框重构为图标式网格布局
+  - 4x2 网格布局（8 个选项）
+  - 每个选项显示视觉化矩形图标（体现真实纵横比）
+  - 选中态：`border-2 border-primary bg-primary/5`
+  - 未选中态：`border-transparent bg-card hover:bg-muted/20`
+  - 移动端保持 4 列布局（不缩减为 2 列）
+
+**技术实现细节**:
+
+1. **分辨率选择器简化**:
+```tsx
+<SelectContent>
+  <SelectItem value="1k">1K</SelectItem>
+  <SelectItem value="2k">2K</SelectItem>
+  <SelectItem value="4k">4K</SelectItem>
+</SelectContent>
+```
+- 硬编码标签（不使用翻译键）
+- 优先简洁性而非国际化完整性
+
+2. **纵横比选择器图标化**:
+```tsx
+<div className="grid grid-cols-4 gap-2 sm:gap-3">
+  {[
+    { value: 'original', label: 'Original', ratio: '1' },
+    { value: '16:9', label: '16:9', ratio: '16/9' },
+    // ... 8 个选项
+  ].map((option) => (
+    <button
+      type="button"
+      className="flex flex-col items-center justify-center gap-2 p-3 rounded-lg aspect-square"
+    >
+      <div className="w-full h-10 flex items-center justify-center">
+        <div
+          className="bg-muted rounded"
+          style={{
+            aspectRatio: option.ratio,
+            width: horizontal ? '100%' : 'auto',
+            height: vertical ? '100%' : 'auto',
+          }}
+        />
+      </div>
+      <span className="text-xs text-muted-foreground">{option.label}</span>
+    </button>
+  ))}
+</div>
+```
+
+**关键技术点**:
+- **动态矩形尺寸**：使用 CSS `aspect-ratio` 属性
+  - 横向比例（16:9, 4:3, 3:2）：`width: 100%`，高度自适应
+  - 纵向比例（9:16, 3:4, 2:3）：`height: 100%`，宽度自适应
+  - 正方形（1:1, original）：自动适应
+- **容器尺寸**：`aspect-square` 确保卡片为正方形，`h-10` 限制矩形高度
+- **响应式布局**：`grid-cols-4 gap-2 sm:gap-3`（移动端保持 4 列）
+- **防止表单提交**：`type="button"` 避免点击触发表单提交
+- **内联数据**：直接在 JSX 中定义选项数组，避免额外常量
+
+**修改的文件**:
+- `src/shared/blocks/generator/image.tsx:L150-220` - UI 重构
+
+**构建测试**:
+- ✅ TypeScript 编译成功（11.3s）
+- ✅ 无错误和警告
+- ✅ 12 个静态页面生成
+
+**参考设计**:
+- 完全对齐竞品网站 (imgeditor.co) 的图标式布局
+- 使用项目现有配色方案（primary, muted, card）
+- 视觉化设计降低用户认知成本
+
+**用户反馈原文**:
+> "为什那么多文字，我希望这个选择越简洁越好，你现在整的太复杂了"
+> "请你不要偷懒，我们的核心卖点是核心功能"
+> "完全参考截图"
+
+**决策理由**:
+- 核心功能是产品卖点，UI 必须极致简洁
+- 视觉化选择比文字描述更直观
+- 降低用户决策成本，提升转化率
+- 对齐行业标准设计模式
+
+---
+
+### 2025-11-25: 重大产品调整 - 专注 Image-to-Image 编辑 + 定价重构
+**变更类型**: Strategy/Product/Pricing
+**影响范围**: 全站
+**Git commit**: 待提交
+
+**核心决策**：
+- ✅ 去掉 text-to-image 功能，专注 image-to-image 编辑
+- ✅ 差异化定位：专业图片编辑工具（vs 竞品的多功能生成平台）
+- ✅ 重新设计定价：Basic/Standard/Pro（$19/$49/$129/月）
+- ✅ 积分消耗规则：1K=2积分, 2K=3积分, 4K=6积分
+
+**定价重构**（已完成）:
+
+| 套餐 | 月付 | 年付 | 积分/月 | 1K 图片 | 2K 图片 | 4K 图片 |
+|------|------|------|---------|---------|---------|---------|
+| **Basic** | $19 | $12.7/月 | 600 | 300 张 | 200 张 | 100 张 |
+| **Standard** | $49 | $32.8/月 | 1800 | 900 张 | 600 张 | 300 张 |
+| **Pro** | $129 | $86.4/月 | 6000 | 3000 张 | 2000 张 | 1000 张 |
+
+**修改的文件**:
+- ✅ `src/config/locale/messages/en/pricing.json` - 完整重构 6 个套餐（月付+年付）
+- ✅ `src/config/locale/messages/es/pricing.json` - 西班牙语版本
+- ✅ `src/config/locale/messages/en/landing.json:53-99` - Hero 和 Generator 文案（英文）
+- ✅ `src/config/locale/messages/es/landing.json:53-99` - Hero 和 Generator 文案（西班牙语）
+- ✅ `src/config/locale/messages/en/ai/image.json` - AI 翻译文件（英文）
+- ✅ `src/config/locale/messages/es/ai/image.json` - AI 翻译文件（西班牙语）
+- ✅ `src/shared/blocks/generator/image.tsx` - 代码重构（移除 text-to-image，添加选择器）
+
+**核心文案变更**:
+- Hero: "Transform your images with AI-powered editing"（强调编辑而非生成）
+- Generator: "Upload your image and describe your edits"（明确需要上传图片）
+- Button: "Edit Images Now"（而非 "Get Started"）
+- 添加 "Powered by Google Gemini" 品牌背书
+
+**代码实现**（阶段 2 - 已全部完成 ✅）:
+- ✅ 移除 Text-to-Image Tab（删除 Tabs 组件和相关逻辑）
+- ✅ 添加分辨率选择器 UI（1K/2K/4K 三档）
+- ✅ 添加纵横比选择器 UI（8 个选项：Original, 1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3）
+- ✅ 实现动态积分消耗逻辑（1K=2积分, 2K=3积分, 4K=6积分）
+- ✅ 参考图片改为必填（移除条件判断，始终显示 ImageUploader）
+- ✅ 删除不再使用的导入（Tabs, TabsList, TabsTrigger）
+- ✅ 简化 MODEL_OPTIONS（移除 scenes 字段）
+
+**技术细节**:
+- 新增 state: `resolution` (1k|2k|4k), `aspectRatio` (string)
+- 积分计算：使用 useEffect 监听 resolution 变化自动更新
+- API 请求：scene 固定为 'image-to-image'，添加 resolution 和 aspect_ratio 参数
+- UI 布局：分辨率和纵横比选择器使用 grid-cols-2 并排布局
+- 构建测试：✅ TypeScript 编译成功，无错误
+
+**翻译工作**（已全部完成 ✅）:
+- ✅ 英文定价页面（Basic/Standard/Pro 三档）
+- ✅ 西班牙语定价页面（完整 6 个套餐）
+- ✅ 英文 Landing 页面（Hero + Generator）
+- ✅ 西班牙语 Landing 页面（Hero + Generator）
+- ✅ AI 图片生成器翻译 - 英文（移除 text-to-image，添加分辨率/纵横比选项）
+- ✅ AI 图片生成器翻译 - 西班牙语（同步英文版）
+
+**竞品分析**:
+- 参考竞品价格：$5-40/月
+- 我们定位：$19-129/月（高端专业市场）
+- 差异化：专注编辑，不打价格战
+
+**决策理由**:
+- 专注细分市场，避免与 Midjourney 等大厂正面竞争
+- 突出 Nano Banana Pro 核心优势（角色一致性、场景保留）
+- 高端定价体现专业价值
+- 简化产品功能，降低用户决策成本
+
+---
+
+### 2025-11-25: 内容优化 - 对齐 Google Gemini 官方特性
+**变更类型**: Content/Feature
+**影响范围**: 前端 - Landing 页面
+**Git commit**: 待提交
+
+**变更内容**:
+- ✅ 更新 Footer 品牌描述（英文/西班牙语）
+  - 从 "NextJS boilerplate for building AI SaaS startups"
+  - 改为 "AI image editor powered by Google Gemini"
+- ✅ Features 特性优化
+  - 添加 "4K 分辨率输出" 说明
+  - 添加 "高保真文本呈现" 特性
+  - 完善 "Professional Quality" 描述
+
+**修改的文件**:
+- `src/config/locale/messages/en/landing.json:280` - Footer 描述（英文）
+- `src/config/locale/messages/es/landing.json:280` - Footer 描述（西班牙语）
+- `src/config/locale/messages/en/landing.json:172-174` - Features 特性（英文）
+- `src/config/locale/messages/es/landing.json:172-174` - Features 特性（西班牙语）
+
+**技术参考**:
+- 基于 Google Gemini 3.0 Pro Image（Nano Banana Pro）官方文档
+- 参考 https://kie.ai/nano-banana-pro 和 Google AI 官方文档
+- 支持 1K/2K/4K 三档分辨率
+- 支持 8 种纵横比（1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, Original）
+- 最多支持 8 张参考图片
+
+**待开发功能**（阶段 2）:
+- 添加分辨率选择器 UI（1K/2K/4K）
+- 添加纵横比选择器 UI（图标式布局）
+- 实现积分消耗逻辑（1K=2积分, 2K=4积分, 4K=8积分）
+
+**决策理由**:
+- 突出 Google Gemini 品牌背书
+- 强调核心差异化能力（4K 输出、高保真文本）
+- 为后续 UI 功能开发奠定内容基础
+
+---
 
 ### 2025-11-20: 语言配置优化 - 删除中文，添加西班牙语
 **变更类型**: Configuration/i18n
@@ -767,9 +1323,9 @@ Hero → ImageGenerator → Logos → Features → ...
 ```
 
 **SEO 更新**:
-- Title: "NanoBananaPro - AI Image Generator & Editor"
-- Description: "Create stunning AI-generated images with NanoBananaPro..."
-- Keywords: "AI image generator, AI image editor, image generation, AI art, text to image"
+- Title: "NanoBananaPro - AI Image Editor (Image-to-Image)"
+- Description: "Transform your images with AI-powered editing. Upload and describe your edits in natural language."
+- Keywords: "AI image editor, image to image, AI photo editor, image editing, character consistency, scene preservation"
 
 **构建状态**: ✅ 通过
 

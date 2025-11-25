@@ -36,7 +36,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/shared/components/ui/select';
-import { Tabs, TabsList, TabsTrigger } from '@/shared/components/ui/tabs';
 import { Textarea } from '@/shared/components/ui/textarea';
 import { useAppContext } from '@/shared/contexts/app';
 
@@ -71,8 +70,6 @@ interface BackendTask {
   taskResult: string | null;
 }
 
-type ImageGeneratorTab = 'text-to-image' | 'image-to-image';
-
 const POLL_INTERVAL = 5000;
 const GENERATION_TIMEOUT = 180000;
 const MAX_PROMPT_LENGTH = 2000;
@@ -81,8 +78,18 @@ const MODEL_OPTIONS = [
   {
     value: 'google/nano-banana-pro',
     label: 'Nano Banana Pro',
-    scenes: ['text-to-image', 'image-to-image'],
   },
+];
+
+const ASPECT_RATIO_OPTIONS = [
+  { value: 'original', label: 'Original', ratio: '1' },
+  { value: '16:9', label: '16:9', ratio: '16/9' },
+  { value: '9:16', label: '9:16', ratio: '9/16' },
+  { value: '1:1', label: '1:1', ratio: '1' },
+  { value: '3:4', label: '3:4', ratio: '3/4' },
+  { value: '4:3', label: '4:3', ratio: '4/3' },
+  { value: '3:2', label: '3:2', ratio: '3/2' },
+  { value: '2:3', label: '2:3', ratio: '2/3' },
 ];
 
 const PROVIDER_OPTIONS = [
@@ -147,15 +154,14 @@ function extractImageUrls(result: any): string[] {
 export function ImageGenerator({
   generator,
   allowMultipleImages = true,
-  maxImages = 9,
-  maxSizeMB = 5,
+  maxImages = 8,
+  maxSizeMB = 30,
   srOnlyTitle,
 }: ImageGeneratorProps) {
   const t = useTranslations('ai.image.generator');
 
-  const [activeTab, setActiveTab] =
-    useState<ImageGeneratorTab>('image-to-image');
-
+  const [resolution, setResolution] = useState<'1k' | '2k' | '4k'>('1k');
+  const [aspectRatio, setAspectRatio] = useState<string>('original');
   const [costCredits, setCostCredits] = useState<number>(2);
   const [provider, setProvider] = useState('replicate');
   const [model, setModel] = useState('google/nano-banana-pro');
@@ -187,17 +193,16 @@ export function ImageGenerator({
   const promptLength = prompt.trim().length;
   const remainingCredits = user?.credits?.remainingCredits ?? 0;
   const isPromptTooLong = promptLength > MAX_PROMPT_LENGTH;
-  const isTextToImageMode = activeTab === 'text-to-image';
 
+  // Calculate credits based on resolution
   useEffect(() => {
-    if (activeTab === 'text-to-image') {
-      setModel('google/nano-banana-pro');
-      setCostCredits(2);
-    } else {
-      setModel('google/nano-banana-pro');
-      setCostCredits(4);
-    }
-  }, [activeTab]);
+    const creditsMap = {
+      '1k': 2,
+      '2k': 3,
+      '4k': 6,
+    };
+    setCostCredits(creditsMap[resolution]);
+  }, [resolution]);
 
   const taskStatusLabel = useMemo(() => {
     if (!taskStatus) {
@@ -413,8 +418,8 @@ export function ImageGenerator({
       return;
     }
 
-    if (!isTextToImageMode && referenceImageUrls.length === 0) {
-      toast.error('Please upload reference images before generating.');
+    if (referenceImageUrls.length === 0) {
+      toast.error('Please upload your image before editing.');
       return;
     }
 
@@ -425,11 +430,11 @@ export function ImageGenerator({
     setGenerationStartTime(Date.now());
 
     try {
-      const options: any = {};
-
-      if (!isTextToImageMode) {
-        options.image_input = referenceImageUrls;
-      }
+      const options: any = {
+        image_input: referenceImageUrls,
+        resolution,
+        aspect_ratio: aspectRatio,
+      };
 
       const resp = await fetch('/api/ai/generate', {
         method: 'POST',
@@ -438,7 +443,7 @@ export function ImageGenerator({
         },
         body: JSON.stringify({
           mediaType: AIMediaType.IMAGE,
-          scene: isTextToImageMode ? 'text-to-image' : 'image-to-image',
+          scene: 'image-to-image',
           provider,
           model,
           prompt: trimmedPrompt,
@@ -528,58 +533,86 @@ export function ImageGenerator({
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6 pb-8">
-                <Tabs
-                  value={activeTab}
-                  onValueChange={(value) =>
-                    setActiveTab(value as ImageGeneratorTab)
-                  }
-                >
-                  <TabsList className="bg-primary/10 grid w-full grid-cols-2">
-                    <TabsTrigger value="image-to-image">
-                      {t('tabs.image-to-image')}
-                    </TabsTrigger>
-                    <TabsTrigger value="text-to-image">
-                      {t('tabs.text-to-image')}
-                    </TabsTrigger>
-                  </TabsList>
-                </Tabs>
-
                 <div className="space-y-2">
-                    <Label>{t('form.model')}</Label>
-                    <Select value={model} onValueChange={setModel}>
+                  <Label>{t('form.model')}</Label>
+                  <Select value={model} onValueChange={setModel}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder={t('form.select_model')} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {MODEL_OPTIONS.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Aspect Ratio Selector - Vertical List */}
+                  <div className="space-y-2">
+                    <Label>{t('form.aspect_ratio')}</Label>
+                    <Select value={aspectRatio} onValueChange={setAspectRatio}>
                       <SelectTrigger className="w-full">
-                        <SelectValue placeholder={t('form.select_model')} />
+                        <div className="flex items-center gap-2">
+                          <div
+                            className="w-4 border border-current rounded flex-shrink-0"
+                            style={{
+                              aspectRatio: ASPECT_RATIO_OPTIONS.find(o => o.value === aspectRatio)?.ratio || '1'
+                            }}
+                          />
+                          <span>{ASPECT_RATIO_OPTIONS.find(o => o.value === aspectRatio)?.label}</span>
+                        </div>
                       </SelectTrigger>
                       <SelectContent>
-                        {MODEL_OPTIONS.filter((option) =>
-                          option.scenes.includes(activeTab)
-                        ).map((option) => (
+                        {ASPECT_RATIO_OPTIONS.map((option) => (
                           <SelectItem key={option.value} value={option.value}>
-                            {option.label}
+                            <div className="flex items-center gap-2">
+                              <div
+                                className="w-6 border border-current rounded flex-shrink-0"
+                                style={{ aspectRatio: option.ratio }}
+                              />
+                              <span>{option.label}</span>
+                            </div>
                           </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
                   </div>
 
-                {!isTextToImageMode && (
-                  <div className="space-y-4">
-                    <ImageUploader
-                      title={t('form.reference_image')}
-                      allowMultiple={allowMultipleImages}
-                      maxImages={allowMultipleImages ? maxImages : 1}
-                      maxSizeMB={maxSizeMB}
-                      onChange={handleReferenceImagesChange}
-                      emptyHint={t('form.reference_image_placeholder')}
-                    />
-
-                    {hasReferenceUploadError && (
-                      <p className="text-destructive text-xs">
-                        {t('form.some_images_failed_to_upload')}
-                      </p>
-                    )}
+                  {/* Resolution Selector */}
+                  <div className="space-y-2">
+                    <Label>{t('form.resolution')}</Label>
+                    <Select value={resolution} onValueChange={(value: any) => setResolution(value)}>
+                      <SelectTrigger className="w-full">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1k">1K</SelectItem>
+                        <SelectItem value="2k">2K</SelectItem>
+                        <SelectItem value="4k">4K</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
-                )}
+                </div>
+
+                <div className="space-y-4">
+                  <ImageUploader
+                    title={t('form.reference_image')}
+                    allowMultiple={allowMultipleImages}
+                    maxImages={allowMultipleImages ? maxImages : 1}
+                    maxSizeMB={maxSizeMB}
+                    onChange={handleReferenceImagesChange}
+                    emptyHint={t('form.reference_image_placeholder')}
+                  />
+
+                  {hasReferenceUploadError && (
+                    <p className="text-destructive text-xs">
+                      {t('form.some_images_failed_to_upload')}
+                    </p>
+                  )}
+                </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="image-prompt">{t('form.prompt')}</Label>

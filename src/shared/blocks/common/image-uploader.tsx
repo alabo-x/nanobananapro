@@ -340,18 +340,18 @@ export function ImageUploader({
         ))}
 
         {items.length < maxCount && (
-          <div className="group border-border bg-muted/50 hover:border-border hover:bg-muted relative overflow-hidden rounded-xl border border-dashed p-1 shadow-sm transition">
+          <div className="group relative w-full overflow-hidden rounded-xl border border-dashed border-border bg-muted/50 p-1 shadow-sm hover:scale-[1.02] hover:border-primary hover:bg-muted hover:shadow-lg transition-all duration-200 ease-in-out">
             <div className="relative overflow-hidden rounded-lg">
               <button
                 type="button"
-                className="flex h-32 w-32 flex-col items-center justify-center gap-2"
+                className="flex h-40 w-full flex-col items-center justify-center gap-3"
                 onClick={openFilePicker}
               >
-                <div className="border-border flex h-10 w-10 items-center justify-center rounded-full border border-dashed">
-                  <IconUpload className="h-5 w-5" />
+                <div className="border-border flex h-12 w-12 items-center justify-center rounded-full border border-dashed transition-transform duration-200 group-hover:-translate-y-1">
+                  <IconUpload className="h-6 w-6" />
                 </div>
-                <span className="text-xs font-medium">Upload</span>
-                <span className="text-primary text-xs">Max {maxSizeMB}MB</span>
+                <span className="text-sm font-medium">Click or drag image</span>
+                <span className="text-muted-foreground text-xs">Supports: JPG, PNG, WebP</span>
               </button>
             </div>
           </div>
