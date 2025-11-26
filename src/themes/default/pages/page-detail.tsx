@@ -1,4 +1,4 @@
-import { Post as PostType } from '@/shared/types/blocks/blog';
+import { PageContent } from '@/shared/models/post';
 import { PageDetail } from '@/themes/default/blocks';
 
 export default async function PageDetailPage({
@@ -6,7 +6,7 @@ export default async function PageDetailPage({
   post,
 }: {
   locale?: string;
-  post: PostType;
+  post: PageContent;
 }) {
   return <PageDetail post={post} />;
 }

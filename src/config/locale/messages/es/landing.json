@@ -52,9 +52,9 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Nano Banana Pro",
+    "title": "Nano Banana Pro - Editor de Imágenes IA Profesional",
     "highlight_text": "",
-    "description": "Transforma tus imágenes con edición impulsada por IA. Consistencia perfecta de personajes y preservación de escenas. Resultados profesionales en segundos.",
+    "description": "Deja de gastar horas editando imágenes. La edición impulsada por IA entrega resultados profesionales en segundos - solo describe lo que quieres.",
     "announcement": {
       "badge": "Nuevo",
       "title": "🎨 Edición Profesional de Imágenes",
@@ -80,7 +80,7 @@
     "show_award": false,
     "feature_tags": [
       {
-        "title": "Generación en Un Clic",
+        "title": "Edición en Un Clic",
         "icon": "MousePointerClick"
       },
       {
@@ -95,14 +95,14 @@
   },
   "generator": {
     "id": "generator",
-    "title": "Editor de Imágenes Profesional",
-    "description": "Sube tu imagen y describe tus ediciones. Nuestra IA comprende instrucciones complejas y entrega resultados profesionales al instante. Impulsado por Google Gemini."
+    "title": "Prueba El Editor AI",
+    "description": "Transforma tus imágenes con lenguaje natural. Solo describe lo que quieres — resultados profesionales en segundos."
   },
   "showcase": {
     "id": "showcase",
     "title": "Galería",
-    "heading": "Creaciones AI Ultrarrápidas",
-    "description": "Mira lo que Nano Banana Pro crea en milisegundos",
+    "heading": "Ve el Poder de Edición",
+    "description": "Ejemplos reales de transformaciones Imagen a Imagen",
     "items": [
       {
         "title": "Resultados de Calidad Profesional",
@@ -150,7 +150,7 @@
     "items": [
       {
         "title": "Edición en Lenguaje Natural",
-        "description": "Edita imágenes usando simples indicaciones de texto. Describe lo que quieres y nuestra IA comprende instrucciones complejas al instante.",
+        "description": "Sube tus imágenes y edítalas usando simples indicaciones de texto. Especializado en transformación Imagen a Imagen - perfecto para mejorar imágenes existentes.",
         "icon": "MessageSquareText"
       },
       {
@@ -170,7 +170,7 @@
       },
       {
         "title": "Calidad Profesional",
-        "description": "Resultados de nivel estudio hasta resolución 4K. Renderizado de texto de alta fidelidad con tipografía perfecta. La edición impulsada por IA rivaliza con diseñadores experimentados.",
+        "description": "Resultados de nivel estudio hasta resolución 4K. Detalles de alta fidelidad y precisión de color perfecta. La edición impulsada por IA rivaliza con diseñadores experimentados.",
         "icon": "Award"
       },
       {
@@ -233,7 +233,7 @@
       {
         "name": "David Kim",
         "role": "Blogger de Viajes",
-        "quote": "¡No se necesitan habilidades de Photoshop! Puedo mejorar mis fotos de viaje con descripciones simples. A mis seguidores les encanta la nueva calidad.",
+        "quote": "¡No se necesitan habilidades de Photoshop! Puedo mejorar mis imágenes de viaje con descripciones simples. A mis seguidores les encanta la nueva calidad.",
         "image": {
           "src": "/imgs/avatars/6.png",
           "alt": "david"

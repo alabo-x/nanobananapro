@@ -1,7 +1,7 @@
 {
   "generator": {
-    "title": "Professional Image Editor",
-    "description": "Perfect character consistency and scene preservation. Upload your image, describe your edits in natural language, and get professional results instantly.",
+    "title": "Try The AI Editor",
+    "description": "Transform your images with natural language. Just describe what you want — professional results in seconds.",
     "form": {
       "provider": "Provider",
       "model": "AI Model Selection",

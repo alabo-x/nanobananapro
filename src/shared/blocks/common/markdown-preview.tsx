@@ -4,7 +4,6 @@
 import { useMemo } from 'react';
 import MarkdownIt from 'markdown-it';
 
-import 'github-markdown-css/github-markdown-light.css';
 import './markdown.css';
 
 export interface TocItem {

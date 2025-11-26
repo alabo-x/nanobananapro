@@ -52,9 +52,9 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Nano Banana Pro",
+    "title": "Nano Banana Pro - Professional AI Image Editor",
     "highlight_text": "",
-    "description": "Transform your images with AI-powered editing. Perfect character consistency and scene preservation. Professional results in seconds.",
+    "description": "Stop spending hours on image edits. AI-powered editing delivers professional results in seconds - just describe what you want.",
     "announcement": {
       "badge": "New",
       "title": "🎨 Professional Image Editing",
@@ -80,7 +80,7 @@
     "show_award": false,
     "feature_tags": [
       {
-        "title": "One-Click Generate",
+        "title": "One-Click Edit",
         "icon": "MousePointerClick"
       },
       {
@@ -95,14 +95,14 @@
   },
   "generator": {
     "id": "generator",
-    "title": "Professional Image Editor",
-    "description": "Upload your image and describe your edits. Our AI understands complex instructions and delivers professional results instantly. Powered by Google Gemini."
+    "title": "Try The AI Editor",
+    "description": "Transform your images with natural language. Just describe what you want — professional results in seconds."
   },
   "showcase": {
     "id": "showcase",
     "title": "Showcase",
-    "heading": "Lightning-Fast AI Creations",
-    "description": "See what Nano Banana Pro creates in milliseconds",
+    "heading": "See the Editing Power",
+    "description": "Real examples of Image-to-Image transformations",
     "items": [
       {
         "title": "Professional Quality Results",
@@ -150,7 +150,7 @@
     "items": [
       {
         "title": "Natural Language Editing",
-        "description": "Edit images using simple text prompts. Describe what you want, and our AI understands complex instructions instantly.",
+        "description": "Upload your images and edit them using simple text prompts. Specialized for Image-to-Image transformation - perfect for enhancing existing images.",
         "icon": "MessageSquareText"
       },
       {
@@ -170,7 +170,7 @@
       },
       {
         "title": "Professional Quality",
-        "description": "Studio-grade output up to 4K resolution. High-fidelity text rendering with perfect typography. AI-powered editing rivals experienced designers.",
+        "description": "Studio-grade output up to 4K resolution. High-fidelity details and perfect color accuracy. AI-powered editing rivals experienced designers.",
         "icon": "Award"
       },
       {
@@ -206,7 +206,7 @@
       {
         "name": "Jessica Brown",
         "role": "E-commerce Seller",
-        "quote": "I used to spend hours editing product photos. Now it takes seconds with natural language. My conversion rate increased by 40%!",
+        "quote": "I used to spend hours editing product images. Now it takes seconds with natural language. My conversion rate increased by 40%!",
         "image": {
           "src": "/imgs/avatars/3.png",
           "alt": "jessica"
@@ -233,7 +233,7 @@
       {
         "name": "David Kim",
         "role": "Travel Blogger",
-        "quote": "No Photoshop skills needed! I can enhance my travel photos with simple descriptions. My followers love the new quality.",
+        "quote": "No Photoshop skills needed! I can enhance my travel images with simple descriptions. My followers love the new quality.",
         "image": {
           "src": "/imgs/avatars/6.png",
           "alt": "david"
@@ -249,7 +249,7 @@
     "items": [
       {
         "question": "What is Nano Banana Pro?",
-        "answer": "Nano Banana Pro is an advanced AI image editor that transforms photos using natural language prompts. Simply describe your desired edits in plain text, and our AI understands complex instructions to deliver professional results instantly."
+        "answer": "Nano Banana Pro is an advanced AI image editor that transforms images using natural language prompts. Simply describe your desired edits in plain text, and our AI understands complex instructions to deliver professional results instantly."
       },
       {
         "question": "Do I need design skills or Photoshop experience?",

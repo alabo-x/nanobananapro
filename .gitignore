@@ -63,3 +63,6 @@ src/config/db/migrations
 .source
 
 .chats
+
+# playwright mcp screenshots
+.playwright-mcp

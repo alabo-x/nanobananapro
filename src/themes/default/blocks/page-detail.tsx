@@ -1,11 +1,11 @@
-import { CalendarIcon, TimerIcon } from 'lucide-react';
+import { CalendarIcon } from 'lucide-react';
 
 import { MarkdownPreview } from '@/shared/blocks/common';
-import { type Post as PostType } from '@/shared/types/blocks/blog';
+import { type PageContent } from '@/shared/models/post';
 
 import '@/config/style/docs.css';
 
-export async function PageDetail({ post }: { post: PostType }) {
+export async function PageDetail({ post }: { post: PageContent }) {
   return (
     <section id={post.id}>
       <div className="py-24 md:py-32">

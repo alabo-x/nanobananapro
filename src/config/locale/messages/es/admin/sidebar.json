@@ -37,22 +37,6 @@
           ]
         },
         {
-          "title": "Páginas y Contenido",
-          "icon": "FileText",
-          "children": [
-            {
-              "title": "Categorías",
-              "icon": "Folder",
-              "url": "/admin/categories"
-            },
-            {
-              "title": "Publicaciones",
-              "icon": "FileText",
-              "url": "/admin/posts"
-            }
-          ]
-        },
-        {
           "title": "Pagos y Créditos",
           "icon": "DollarSign",
           "children": [

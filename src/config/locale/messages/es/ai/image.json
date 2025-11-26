@@ -1,7 +1,7 @@
 {
   "generator": {
-    "title": "Editor de Imágenes Profesional",
-    "description": "Perfecta consistencia de personajes y preservación de escenas. Sube tu imagen, describe tus ediciones en lenguaje natural y obtén resultados profesionales al instante.",
+    "title": "Prueba El Editor AI",
+    "description": "Transforma tus imágenes con lenguaje natural. Solo describe lo que quieres — resultados profesionales en segundos.",
     "form": {
       "provider": "Proveedor",
       "model": "Selección de Modelo AI",

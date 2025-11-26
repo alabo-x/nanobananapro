@@ -1,15 +1,8 @@
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 
-export const docs = defineDocs({
-  dir: 'content/docs',
-});
-
+// Pages source (privacy-policy, terms-of-service)
 export const pages = defineDocs({
   dir: 'content/pages',
-});
-
-export const posts = defineDocs({
-  dir: 'content/posts',
 });
 
 export default defineConfig({
@@ -19,7 +12,6 @@ export default defineConfig({
         light: 'github-light',
         dark: 'github-dark',
       },
-      // Use defaultLanguage for unknown language codes
       defaultLanguage: 'plaintext',
     },
   },
