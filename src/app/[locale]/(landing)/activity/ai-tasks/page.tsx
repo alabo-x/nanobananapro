@@ -138,34 +138,10 @@ export default async function AiTasksPage({
       is_active: !type || type === 'all',
     },
     {
-      name: 'music',
-      title: t('list.tabs.music'),
-      url: '/activity/ai-tasks?type=music',
-      is_active: type === 'music',
-    },
-    {
       name: 'image',
       title: t('list.tabs.image'),
       url: '/activity/ai-tasks?type=image',
       is_active: type === 'image',
-    },
-    {
-      name: 'video',
-      title: t('list.tabs.video'),
-      url: '/activity/ai-tasks?type=video',
-      is_active: type === 'video',
-    },
-    {
-      name: 'audio',
-      title: t('list.tabs.audio'),
-      url: '/activity/ai-tasks?type=audio',
-      is_active: type === 'audio',
-    },
-    {
-      name: 'text',
-      title: t('list.tabs.text'),
-      url: '/activity/ai-tasks?type=text',
-      is_active: type === 'text',
     },
   ];
 

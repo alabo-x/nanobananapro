@@ -19,6 +19,27 @@
       "prompt_too_long": "Instructions are too long, please be more concise",
       "image_required": "Please upload an image first"
     },
+    "errors": {
+      "generation_timeout": "Image generation timed out. Please try again.",
+      "no_images_returned": "The provider returned no images. Please retry.",
+      "insufficient_credits": "Insufficient credits. Please top up to keep creating.",
+      "prompt_required": "Please enter a prompt before generating.",
+      "provider_not_configured": "Provider or model is not configured correctly.",
+      "image_required": "Please upload your image before editing.",
+      "query_task_failed": "Query task failed: {message}",
+      "generate_failed": "Failed to generate image: {message}",
+      "download_failed": "Failed to download image"
+    },
+    "success": {
+      "image_generated": "Image generated successfully",
+      "image_downloaded": "Image downloaded"
+    },
+    "status": {
+      "pending": "Waiting for the model to start",
+      "processing": "Generating your image...",
+      "completed": "Image generation completed",
+      "failed": "Generation failed"
+    },
     "resolution_options": {
       "1k": "1K",
       "2k": "2K",

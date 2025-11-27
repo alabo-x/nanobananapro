@@ -72,7 +72,10 @@ export function SignInForm({
           onResponse: (ctx) => {
             setLoading(false);
           },
-          onSuccess: (ctx) => {},
+          onSuccess: (ctx) => {
+            router.refresh();
+            router.push(callbackUrl);
+          },
           onError: (e: any) => {
             toast.error(e?.error?.message || 'sign in failed');
             setLoading(false);

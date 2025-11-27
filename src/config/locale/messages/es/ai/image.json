@@ -19,6 +19,27 @@
       "prompt_too_long": "Las instrucciones son demasiado largas, por favor sé más conciso",
       "image_required": "Por favor sube una imagen primero"
     },
+    "errors": {
+      "generation_timeout": "La generación de imagen expiró. Por favor intenta de nuevo.",
+      "no_images_returned": "El proveedor no devolvió imágenes. Por favor reintenta.",
+      "insufficient_credits": "Créditos insuficientes. Por favor recarga para seguir creando.",
+      "prompt_required": "Por favor ingresa una descripción antes de generar.",
+      "provider_not_configured": "El proveedor o modelo no está configurado correctamente.",
+      "image_required": "Por favor sube tu imagen antes de editar.",
+      "query_task_failed": "Error al consultar tarea: {message}",
+      "generate_failed": "Error al generar imagen: {message}",
+      "download_failed": "Error al descargar imagen"
+    },
+    "success": {
+      "image_generated": "Imagen generada exitosamente",
+      "image_downloaded": "Imagen descargada"
+    },
+    "status": {
+      "pending": "Esperando que el modelo inicie",
+      "processing": "Generando tu imagen...",
+      "completed": "Generación de imagen completada",
+      "failed": "Generación fallida"
+    },
     "resolution_options": {
       "1k": "1K",
       "2k": "2K",

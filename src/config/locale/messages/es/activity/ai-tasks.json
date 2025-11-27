@@ -17,11 +17,7 @@
     "image_expiry_warning": "Las imágenes generadas caducan en 24 horas. Por favor descárgalas inmediatamente desde la columna Resultado.",
     "tabs": {
       "all": "Todas",
-      "music": "Música",
-      "image": "Imagen",
-      "video": "Video",
-      "audio": "Audio",
-      "text": "Texto"
+      "image": "Imagen"
     },
     "buttons": {
       "view": "Ver Tarea",

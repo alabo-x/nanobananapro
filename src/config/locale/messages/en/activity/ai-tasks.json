@@ -17,11 +17,7 @@
     "image_expiry_warning": "Generated images expire after 24 hours. Please download them immediately from the Result column.",
     "tabs": {
       "all": "All",
-      "music": "Music",
-      "image": "Image",
-      "video": "Video",
-      "audio": "Audio",
-      "text": "Text"
+      "image": "Image"
     },
     "buttons": {
       "view": "View Task",

@@ -214,17 +214,17 @@ export function ImageGenerator({
 
     switch (taskStatus) {
       case AITaskStatus.PENDING:
-        return 'Waiting for the model to start';
+        return t('status.pending');
       case AITaskStatus.PROCESSING:
-        return 'Generating your image...';
+        return t('status.processing');
       case AITaskStatus.SUCCESS:
-        return 'Image generation completed';
+        return t('status.completed');
       case AITaskStatus.FAILED:
-        return 'Generation failed';
+        return t('status.failed');
       default:
         return '';
     }
-  }, [taskStatus]);
+  }, [taskStatus, t]);
 
   const handleReferenceImagesChange = useCallback(
     (items: ImageUploaderValue[]) => {
@@ -263,7 +263,7 @@ export function ImageGenerator({
           Date.now() - generationStartTime > GENERATION_TIMEOUT
         ) {
           resetTaskState();
-          toast.error('Image generation timed out. Please try again.');
+          toast.error(t('errors.generation_timeout'));
           return true;
         }
 
@@ -316,7 +316,7 @@ export function ImageGenerator({
 
         if (currentStatus === AITaskStatus.SUCCESS) {
           if (imageUrls.length === 0) {
-            toast.error('The provider returned no images. Please retry.');
+            toast.error(t('errors.no_images_returned'));
           } else {
             setGeneratedImages(
               imageUrls.map((url, index) => ({
@@ -327,7 +327,7 @@ export function ImageGenerator({
                 prompt: task.prompt ?? undefined,
               }))
             );
-            toast.success('Image generated successfully');
+            toast.success(t('success.image_generated'));
           }
 
           setProgress(100);
@@ -339,7 +339,7 @@ export function ImageGenerator({
           const errorMessage =
             parsedResult?.error ||
             parsedResult?.failure_reason ||
-            'Generate image failed';
+            t('status.failed');
           toast.error(errorMessage);
           resetTaskState();
 
@@ -352,7 +352,7 @@ export function ImageGenerator({
         return false;
       } catch (error: any) {
         console.error('Error polling image task:', error);
-        toast.error(`Query task failed: ${error.message}`);
+        toast.error(t('errors.query_task_failed', { message: error.message }));
         resetTaskState();
 
         fetchUserCredits();
@@ -360,7 +360,7 @@ export function ImageGenerator({
         return true;
       }
     },
-    [generationStartTime, resetTaskState]
+    [generationStartTime, resetTaskState, t]
   );
 
   useEffect(() => {
@@ -406,23 +406,23 @@ export function ImageGenerator({
     }
 
     if (remainingCredits < costCredits) {
-      toast.error('Insufficient credits. Please top up to keep creating.');
+      toast.error(t('errors.insufficient_credits'));
       return;
     }
 
     const trimmedPrompt = prompt.trim();
     if (!trimmedPrompt) {
-      toast.error('Please enter a prompt before generating.');
+      toast.error(t('errors.prompt_required'));
       return;
     }
 
     if (!provider || !model) {
-      toast.error('Provider or model is not configured correctly.');
+      toast.error(t('errors.provider_not_configured'));
       return;
     }
 
     if (referenceImageUrls.length === 0) {
-      toast.error('Please upload your image before editing.');
+      toast.error(t('errors.image_required'));
       return;
     }
 
@@ -474,7 +474,7 @@ export function ImageGenerator({
       await fetchUserCredits();
     } catch (error: any) {
       console.error('Failed to generate image:', error);
-      toast.error(`Failed to generate image: ${error.message}`);
+      toast.error(t('errors.generate_failed', { message: error.message }));
       resetTaskState();
     }
   };
@@ -500,10 +500,10 @@ export function ImageGenerator({
       link.click();
       document.body.removeChild(link);
       setTimeout(() => URL.revokeObjectURL(blobUrl), 200);
-      toast.success('Image downloaded');
+      toast.success(t('success.image_downloaded'));
     } catch (error) {
       console.error('Failed to download image:', error);
-      toast.error('Failed to download image');
+      toast.error(t('errors.download_failed'));
     } finally {
       setDownloadingImageId(null);
     }

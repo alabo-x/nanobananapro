@@ -15,7 +15,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### 下一步工作
 
-#### 当前阶段：核心功能测试
+#### 当前阶段：UX 优化
+- [x] **登录成功后页面不刷新** ✅
+  - 修复: 在 `onSuccess` 中添加 `router.refresh()` + `router.push(callbackUrl)`
+- [x] **AI 任务历史页面多余 Tabs** ✅
+  - 修复: 删除 music/video/audio/text，只保留 all 和 image
+  - 同步清理翻译文件 (en/es)
+- [x] **错误提示未国际化** ✅
+  - 修复: 添加 errors/success/status 翻译 key，替换 17 处硬编码消息
+  - 支持英文和西班牙语
+- [x] **积分刷新逻辑被注释** ✅ (无需修复)
+  - 原因: `fetchUserInfo()` 已返回 credits，取消注释会导致重复请求
+  - 生成图片后已在 `image.tsx:346,358,474` 正确调用刷新
+
+#### 核心功能测试
 - [ ] **核心功能测试**
   - 测试 Image-to-Image 编辑功能
   - 验证 Replicate API 集成
@@ -341,6 +354,39 @@ R2_DOMAIN="https://r2.yourdomain.com"
 ## 最近工作记录
 
 > 完整历史记录请查看 [CHANGELOG.md](./CHANGELOG.md)
+
+### 2025-11-27: 错误提示国际化
+**变更类型**: i18n/UX
+**影响范围**: 图片生成器组件
+
+**变更内容**:
+- ✅ 国际化 17 处硬编码英文消息（9 处错误、2 处成功、4 处状态、2 处带参数）
+- ✅ 添加翻译 key：errors/success/status 分类
+- ✅ 支持英文和西班牙语
+
+**修改文件**:
+- `src/shared/blocks/generator/image.tsx` - 替换所有 toast 和状态标签为 `t()` 调用
+- `src/config/locale/messages/en/ai/image.json` - 添加 errors/success/status 翻译
+- `src/config/locale/messages/es/ai/image.json` - 添加西班牙语翻译
+
+---
+
+### 2025-11-27: UX 优化 - 登录刷新 + AI 任务 Tabs 精简
+**变更类型**: Bugfix/UX
+**影响范围**: 登录流程 + AI 任务历史页面
+
+**变更内容**:
+- ✅ 修复登录成功后页面不刷新问题（添加 `router.refresh()` + `router.push(callbackUrl)`）
+- ✅ 删除 AI 任务历史页面多余 Tabs（music/video/audio/text），只保留 All 和 Image
+- ✅ 同步清理翻译文件中的多余 key
+
+**修改文件**:
+- `src/shared/blocks/sign/sign-in-form.tsx:75-78` - onSuccess 回调添加页面刷新和跳转
+- `src/app/[locale]/(landing)/activity/ai-tasks/page.tsx:133-146` - tabs 数组精简
+- `src/config/locale/messages/en/activity/ai-tasks.json:18-21` - 删除多余 tabs 翻译
+- `src/config/locale/messages/es/activity/ai-tasks.json:18-21` - 删除多余 tabs 翻译
+
+---
 
 ### 2025-11-27: 图片上传大小限制调整
 **变更类型**: Configuration
