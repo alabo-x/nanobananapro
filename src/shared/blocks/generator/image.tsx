@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
+  Clock,
   CreditCard,
   Download,
   ImageIcon,
@@ -155,7 +156,7 @@ export function ImageGenerator({
   generator,
   allowMultipleImages = true,
   maxImages = 8,
-  maxSizeMB = 30,
+  maxSizeMB = 10,
   srOnlyTitle,
 }: ImageGeneratorProps) {
   const t = useTranslations('ai.image.generator');
@@ -743,6 +744,12 @@ export function ImageGenerator({
                 </CardTitle>
               </CardHeader>
               <CardContent className="pb-8">
+                {generatedImages.length > 0 && (
+                  <div className="mb-4 flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200">
+                    <Clock className="h-4 w-4 flex-shrink-0" />
+                    <span>{t('image_expiry_warning')}</span>
+                  </div>
+                )}
                 {generatedImages.length > 0 ? (
                   <div className="grid gap-6 sm:grid-cols-2">
                     {generatedImages.map((image) => (

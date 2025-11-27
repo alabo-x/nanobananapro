@@ -1,3 +1,4 @@
+import { Clock } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 
 import { AITaskStatus } from '@/extensions/ai';
@@ -170,6 +171,10 @@ export default async function AiTasksPage({
 
   return (
     <div className="space-y-8">
+      <div className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200">
+        <Clock className="h-4 w-4 flex-shrink-0" />
+        <span>{t('list.image_expiry_warning')}</span>
+      </div>
       <TableCard title={t('list.title')} tabs={tabs} table={table} />
     </div>
   );

@@ -44,6 +44,7 @@
     "buy_credits": "Buy Credits",
     "progress": "Progress",
     "generated_images": "Output",
+    "image_expiry_warning": "Images expire after 24 hours. Download immediately to save.",
     "ready_to_generate": "Ready to Transform",
     "ready_for_generating": "Ready for Transforming",
     "no_images_generated": "Ready to Create",

@@ -14,6 +14,7 @@
   },
   "list": {
     "title": "AI Tasks",
+    "image_expiry_warning": "Generated images expire after 24 hours. Please download them immediately from the Result column.",
     "tabs": {
       "all": "All",
       "music": "Music",

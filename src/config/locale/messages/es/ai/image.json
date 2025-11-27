@@ -44,6 +44,7 @@
     "buy_credits": "Comprar Créditos",
     "progress": "Progreso",
     "generated_images": "Resultado",
+    "image_expiry_warning": "Las imágenes caducan en 24 horas. Descárgalas inmediatamente para guardarlas.",
     "ready_to_generate": "Listo para Transformar",
     "ready_for_generating": "Listo para Transformar",
     "no_images_generated": "Listo para Crear",

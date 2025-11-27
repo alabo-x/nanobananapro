@@ -5,8 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 项目快速概览
 
 ### 当前状态 (2025-11-27)
-- **项目阶段**: 🔧 SEO 结构化数据完成
-- **最新变更**: 添加 Schema.org 结构化数据（Organization + WebSite + SoftwareApplication + FAQPage）
+- **项目阶段**: 🔧 上传限制调整完成
+- **最新变更**: 图片上传大小限制从 30MB 调整为 10MB
 - **开发服务器**: http://localhost:3000
 - **管理员账户**: admin@nano-banana2.pro (super_admin)
 - **数据库表**: 16 个表
@@ -20,10 +20,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - 测试 Image-to-Image 编辑功能
   - 验证 Replicate API 集成
   - 测试图片上传和积分扣除逻辑
-- [ ] **历史记录图片失效提示**
-  - 在 UI 添加提示文案："历史记录仅保留元数据，图片可能 24h 后失效"
-  - 位置：历史记录页面或生成结果页
-  - 原因：Replicate 图片 URL 有效期 1-24 小时，当前未实现永久存储
+- [x] **历史记录图片失效提示** ✅
+  - 已在生成结果区域和历史记录页面添加 24 小时过期提示
+  - 使用 Clock 图标 + 黄色警告样式，支持深色模式
 
 ### 部署上线待办事项
 
@@ -342,6 +341,47 @@ R2_DOMAIN="https://r2.yourdomain.com"
 ## 最近工作记录
 
 > 完整历史记录请查看 [CHANGELOG.md](./CHANGELOG.md)
+
+### 2025-11-27: 图片上传大小限制调整
+**变更类型**: Configuration
+**影响范围**: 图片上传组件
+
+**变更内容**:
+- ✅ 将图片上传大小限制从 30MB 调整为 10MB
+- ✅ 降低服务器带宽压力，适合前期运营
+
+**修改文件**:
+- `src/shared/blocks/generator/image.tsx:159` - `maxSizeMB = 30` → `maxSizeMB = 10`
+
+**说明**:
+- 大多数手机照片在 2-8MB 范围，10MB 足够覆盖常见场景
+- 后期如需调整可直接修改此值
+
+---
+
+### 2025-11-27: 图片 24 小时过期提示
+**变更类型**: UX/Feature
+**影响范围**: 生成器组件 + 历史记录页面
+
+**变更内容**:
+- ✅ 在生成结果区域添加过期提示（图片生成后显示）
+- ✅ 在 AI 任务历史记录页面添加过期提示
+- ✅ 支持深色/浅色模式（amber 色系警告样式）
+- ✅ 中英西三语翻译完成
+
+**修改文件**:
+- `src/shared/blocks/generator/image.tsx` - 添加 Clock 图标和警告提示
+- `src/app/[locale]/(landing)/activity/ai-tasks/page.tsx` - 添加警告提示
+- `src/config/locale/messages/en/ai/image.json` - 添加 `image_expiry_warning`
+- `src/config/locale/messages/es/ai/image.json` - 添加 `image_expiry_warning`
+- `src/config/locale/messages/en/activity/ai-tasks.json` - 添加 `list.image_expiry_warning`
+- `src/config/locale/messages/es/activity/ai-tasks.json` - 添加 `list.image_expiry_warning`
+
+**提示文案**:
+- 生成器："Images expire after 24 hours. Download immediately to save."
+- 历史记录："Generated images expire after 24 hours. Please download them immediately from the Result column."
+
+---
 
 ### 2025-11-27: SEO 结构化数据实现
 **变更类型**: SEO/Feature
