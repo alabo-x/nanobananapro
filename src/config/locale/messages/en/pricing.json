@@ -5,230 +5,80 @@
   },
   "pricing": {
     "id": "pricing",
-    "sr_only_title": "NanoBananaPro Pricing",
-    "title": "Pricing",
-    "description": "Professional AI image editing powered by advanced AI models. Transform your images with simple text prompts.",
+    "sr_only_title": "Nano Banana 2 Pricing",
+    "title": "Choose Your Plan",
+    "description": "",
     "groups": [
       {
         "name": "monthly",
         "title": "Monthly",
-        "is_featured": true,
-        "label": "Flexible"
+        "is_featured": true
       },
       {
         "name": "yearly",
-        "title": "Annually",
-        "label": "Save 20%"
+        "title": "Yearly (Save 20%)"
       }
     ],
     "items": [
       {
-        "title": "Basic",
-        "description": "Perfect for casual users and personal projects.",
+        "title": "",
+        "description": "",
         "features_title": "Includes",
         "features": [
-          "600 credits per month",
-          "300 images at 1K / 200 at 2K / 100 at 4K",
-          "Image-to-image editing only",
-          "Standard generation speed",
-          "Email support",
-          "JPG & PNG downloads",
-          "Up to 8 reference images"
+          "120 credits, reset monthly",
+          "Up to 60 images/month",
+          "No watermarks",
+          "Commercial license"
         ],
         "interval": "month",
-        "amount": 1900,
+        "amount": 1990,
         "currency": "USD",
-        "price": "$19",
-        "original_price": "",
-        "unit": "/ month",
-        "is_featured": false,
-        "tip": "Great for personal image editing",
-        "button": {
-          "title": "Get Started",
-          "url": "/#pricing",
-          "icon": "RiFlashlightFill"
-        },
-        "product_id": "basic-monthly",
-        "product_name": "Basic Plan Monthly",
-        "credits": 600,
-        "valid_days": 30,
-        "group": "monthly",
-        "plan_name": "Basic"
-      },
-      {
-        "title": "Standard",
-        "description": "Best for content creators and professionals.",
-        "label": "Most Popular",
-        "features_title": "Everything in Basic, plus",
-        "features": [
-          "1800 credits per month",
-          "900 images at 1K / 600 at 2K / 300 at 4K",
-          "Image-to-image editing only",
-          "Priority generation queue",
-          "Batch image processing",
-          "Priority email support",
-          "All formats (JPG, PNG, WebP, RAW)",
-          "Advanced aspect ratio control"
-        ],
-        "interval": "month",
-        "amount": 4900,
-        "currency": "USD",
-        "price": "$49",
+        "price": "$19.90",
         "original_price": "",
         "unit": "/ month",
         "is_featured": true,
-        "tip": "Most popular for professionals",
+        "tip": "",
         "button": {
-          "title": "Get Started",
+          "title": "Subscribe Now",
           "url": "/#pricing",
           "icon": "RiFlashlightFill"
         },
-        "product_id": "standard-monthly",
-        "product_name": "Standard Plan Monthly",
-        "credits": 1800,
+        "product_id": "starter-monthly",
+        "product_name": "Monthly Plan",
+        "credits": 120,
         "valid_days": 30,
-        "group": "monthly",
-        "plan_name": "Standard"
+        "plan_name": "Monthly",
+        "group": "monthly"
       },
       {
-        "title": "Pro",
-        "description": "For agencies and high-volume creators.",
-        "features_title": "Everything in Standard, plus",
+        "title": "",
+        "description": "",
+        "features_title": "Includes",
         "features": [
-          "6000 credits per month",
-          "3000 images at 1K / 2000 at 2K / 1000 at 4K",
-          "Image-to-image editing only",
-          "Fastest generation speed",
-          "Unlimited batch processing",
-          "Dedicated account manager",
-          "All formats + RAW export",
-          "4K resolution included",
-          "Commercial license included",
-          "Professional editing suite"
+          "120 credits, reset monthly",
+          "Up to 60 images/month",
+          "No watermarks",
+          "Commercial license"
         ],
-        "interval": "month",
-        "amount": 12900,
+        "interval": "year",
+        "amount": 19104,
         "currency": "USD",
-        "price": "$129",
+        "price": "$15.92",
         "original_price": "",
         "unit": "/ month",
         "is_featured": false,
-        "tip": "Best value for agencies",
+        "tip": "",
         "button": {
-          "title": "Get Started",
+          "title": "Subscribe Now",
           "url": "/#pricing",
           "icon": "RiFlashlightFill"
         },
-        "product_id": "pro-monthly",
-        "product_name": "Pro Plan Monthly",
-        "credits": 6000,
-        "valid_days": 30,
-        "group": "monthly",
-        "plan_name": "Pro"
-      },
-      {
-        "title": "Basic",
-        "description": "Perfect for casual users and personal projects.",
-        "features_title": "Includes",
-        "features": [
-          "600 credits per month",
-          "300 images at 1K / 200 at 2K / 100 at 4K",
-          "Image-to-image editing only",
-          "Standard generation speed",
-          "Email support",
-          "JPG & PNG downloads",
-          "Up to 8 reference images"
-        ],
-        "interval": "year",
-        "amount": 15240,
-        "currency": "USD",
-        "price": "$12.7",
-        "original_price": "$19",
-        "unit": "/ month",
-        "is_featured": false,
-        "tip": "Save $76 per year",
-        "button": {
-          "title": "Get Started",
-          "url": "/#pricing",
-          "icon": "RiFlashlightFill"
-        },
-        "product_id": "basic-yearly",
-        "product_name": "Basic Plan Annually",
-        "credits": 7200,
+        "product_id": "premium-yearly",
+        "product_name": "Yearly Plan",
+        "credits": 1440,
         "valid_days": 365,
-        "group": "yearly",
-        "plan_name": "Basic"
-      },
-      {
-        "title": "Standard",
-        "description": "Best for content creators and professionals.",
-        "label": "Most Popular",
-        "features_title": "Everything in Basic, plus",
-        "features": [
-          "1800 credits per month",
-          "900 images at 1K / 600 at 2K / 300 at 4K",
-          "Image-to-image editing only",
-          "Priority generation queue",
-          "Batch image processing",
-          "Priority email support",
-          "All formats (JPG, PNG, WebP, RAW)",
-          "Advanced aspect ratio control"
-        ],
-        "interval": "year",
-        "amount": 39360,
-        "currency": "USD",
-        "price": "$32.8",
-        "original_price": "$49",
-        "unit": "/ month",
-        "is_featured": true,
-        "tip": "Save $196 per year - Best value",
-        "button": {
-          "title": "Get Started",
-          "url": "/#pricing",
-          "icon": "RiFlashlightFill"
-        },
-        "product_id": "standard-yearly",
-        "product_name": "Standard Plan Annually",
-        "credits": 21600,
-        "valid_days": 365,
-        "group": "yearly",
-        "plan_name": "Standard"
-      },
-      {
-        "title": "Pro",
-        "description": "For agencies and high-volume creators.",
-        "features_title": "Everything in Standard, plus",
-        "features": [
-          "6000 credits per month",
-          "3000 images at 1K / 2000 at 2K / 1000 at 4K",
-          "Image-to-image editing only",
-          "Fastest generation speed",
-          "Unlimited batch processing",
-          "Dedicated account manager",
-          "All formats + RAW export",
-          "4K resolution included",
-          "Commercial license included",
-          "Professional editing suite"
-        ],
-        "interval": "year",
-        "amount": 103680,
-        "currency": "USD",
-        "price": "$86.4",
-        "original_price": "$129",
-        "unit": "/ month",
-        "is_featured": false,
-        "tip": "Save $516 per year",
-        "button": {
-          "title": "Get Started",
-          "url": "/#pricing",
-          "icon": "RiFlashlightFill"
-        },
-        "product_id": "pro-yearly",
-        "product_name": "Pro Plan Annually",
-        "credits": 72000,
-        "valid_days": 365,
-        "group": "yearly",
-        "plan_name": "Pro"
+        "plan_name": "Yearly",
+        "group": "yearly"
       }
     ]
   },

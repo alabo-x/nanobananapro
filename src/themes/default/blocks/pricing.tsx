@@ -346,9 +346,24 @@ export function Pricing({
             <Tabs value={group} onValueChange={setGroup} className="">
               <TabsList>
                 {pricing.groups.map((item, i) => {
+                  // Parse title to highlight (Save XX%) in primary color
+                  const renderTitle = () => {
+                    const title = item.title || '';
+                    const match = title.match(/^(.*?)(\(.*?\))$/);
+                    if (match) {
+                      return (
+                        <>
+                          {match[1]}
+                          <span className="text-primary">{match[2]}</span>
+                        </>
+                      );
+                    }
+                    return title;
+                  };
+
                   return (
                     <TabsTrigger key={i} value={item.name || ''}>
-                      {item.title}
+                      {renderTitle()}
                       {item.label && (
                         <Badge className="ml-2">{item.label}</Badge>
                       )}
@@ -362,13 +377,13 @@ export function Pricing({
 
         <div
           className={cn(
-            'mt-0 grid w-full gap-6',
+            'mt-0 grid w-full items-start justify-center gap-6',
             {
-              'md:grid-cols-1':
+              'md:grid-cols-1 max-w-md mx-auto':
                 pricing.items?.filter(
                   (item) => !item.group || item.group === group
                 ).length === 1,
-              'md:grid-cols-2':
+              'md:grid-cols-2 max-w-3xl mx-auto':
                 pricing.items?.filter(
                   (item) => !item.group || item.group === group
                 ).length === 2,
@@ -412,11 +427,13 @@ export function Pricing({
                 )}
 
                 <CardHeader>
-                  <CardTitle className="font-medium">
-                    <h3 className="text-sm font-medium">{item.title}</h3>
-                  </CardTitle>
+                  {item.title && (
+                    <CardTitle className="font-medium">
+                      <h3 className="text-sm font-medium">{item.title}</h3>
+                    </CardTitle>
+                  )}
 
-                  <div className="my-3 flex items-baseline gap-2">
+                  <div className="my-3 flex flex-col items-center">
                     {displayedItem.original_price && (
                       <span className="text-muted-foreground text-sm line-through">
                         {displayedItem.original_price}
@@ -464,14 +481,32 @@ export function Pricing({
                     )}
                   </div>
 
-                  <CardDescription className="text-sm">
-                    {item.description}
-                  </CardDescription>
+                  {item.description && (
+                    <CardDescription className="text-sm">
+                      {item.description}
+                    </CardDescription>
+                  )}
                   {item.tip && (
                     <span className="text-muted-foreground text-sm">
                       {item.tip}
                     </span>
                   )}
+                </CardHeader>
+
+                <CardContent className="space-y-4">
+                  <hr className="border-dashed" />
+
+                  {item.features_title && (
+                    <p className="text-sm font-medium">{item.features_title}</p>
+                  )}
+                  <ul className="list-outside space-y-3 text-sm">
+                    {item.features?.map((item, index) => (
+                      <li key={index} className="flex items-center gap-2">
+                        <Check className="size-3" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
 
                   {isCurrentPlan ? (
                     <Button
@@ -479,7 +514,7 @@ export function Pricing({
                       className="mt-4 h-9 w-full px-4 py-2"
                       disabled
                     >
-                      <span className="hidden text-sm md:block">
+                      <span className="text-sm">
                         {t('current_plan')}
                       </span>
                     </Button>
@@ -511,22 +546,6 @@ export function Pricing({
                       )}
                     </Button>
                   )}
-                </CardHeader>
-
-                <CardContent className="space-y-4">
-                  <hr className="border-dashed" />
-
-                  {item.features_title && (
-                    <p className="text-sm font-medium">{item.features_title}</p>
-                  )}
-                  <ul className="list-outside space-y-3 text-sm">
-                    {item.features?.map((item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <Check className="size-3" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
                 </CardContent>
               </Card>
             );

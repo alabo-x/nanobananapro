@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { envConfigs } from '@/config';
+import { locales, defaultLocale } from '@/config/locale';
 
 // get metadata for page component
 export function getMetadata(
@@ -45,11 +46,10 @@ export function getMetadata(
       );
     }
 
-    // canonical url
-    const canonicalUrl = await getCanonicalUrl(
-      options.canonicalUrl || '',
-      locale || ''
-    );
+    // canonical url and hreflang
+    const canonicalPath = options.canonicalUrl || '/';
+    const canonicalUrl = await getCanonicalUrl(canonicalPath, locale || '');
+    const alternateLanguages = getAlternateLanguages(canonicalPath);
 
     const title =
       passedMetadata.title || translatedMetadata.title || defaultMetadata.title;
@@ -87,6 +87,7 @@ export function getMetadata(
         defaultMetadata.keywords,
       alternates: {
         canonical: canonicalUrl,
+        languages: alternateLanguages,
       },
 
       openGraph: {
@@ -128,28 +129,61 @@ async function getTranslatedMetadata(metadataKey: string, locale: string) {
   };
 }
 
-async function getCanonicalUrl(canonicalUrl: string, locale: string) {
-  if (!canonicalUrl) {
-    canonicalUrl = '/';
+async function getCanonicalUrl(canonicalPath: string, locale: string) {
+  // Handle full URLs
+  if (canonicalPath.startsWith('http')) {
+    return canonicalPath;
   }
 
-  if (canonicalUrl.startsWith('http')) {
-    // full url
-    canonicalUrl = canonicalUrl;
+  // Normalize path: ensure starts with /, remove trailing slash (except for root)
+  let path = canonicalPath;
+  if (!path.startsWith('/')) {
+    path = `/${path}`;
+  }
+  if (path !== '/' && path.endsWith('/')) {
+    path = path.slice(0, -1);
+  }
+
+  // Build full URL with locale prefix
+  const localePrefix = !locale || locale === defaultLocale ? '' : `/${locale}`;
+
+  // For root path, don't add extra slash
+  if (path === '/') {
+    return `${envConfigs.app_url}${localePrefix}`;
+  }
+
+  return `${envConfigs.app_url}${localePrefix}${path}`;
+}
+
+// Generate alternate language URLs for hreflang
+function getAlternateLanguages(canonicalPath: string): Record<string, string> {
+  // Normalize path
+  let path = canonicalPath;
+  if (!path.startsWith('/')) {
+    path = `/${path}`;
+  }
+  if (path !== '/' && path.endsWith('/')) {
+    path = path.slice(0, -1);
+  }
+
+  const languages: Record<string, string> = {};
+
+  // Add each locale
+  for (const locale of locales) {
+    const localePrefix = locale === defaultLocale ? '' : `/${locale}`;
+    if (path === '/') {
+      languages[locale] = `${envConfigs.app_url}${localePrefix}`;
+    } else {
+      languages[locale] = `${envConfigs.app_url}${localePrefix}${path}`;
+    }
+  }
+
+  // Add x-default pointing to default locale version
+  if (path === '/') {
+    languages['x-default'] = `${envConfigs.app_url}`;
   } else {
-    // relative path
-    if (!canonicalUrl.startsWith('/')) {
-      canonicalUrl = `/${canonicalUrl}`;
-    }
-
-    canonicalUrl = `${envConfigs.app_url}${
-      !locale || locale === 'en' ? '' : `/${locale}`
-    }${canonicalUrl}`;
-
-    if (locale !== 'en' && canonicalUrl.endsWith('/')) {
-      canonicalUrl = canonicalUrl.slice(0, -1);
-    }
+    languages['x-default'] = `${envConfigs.app_url}${path}`;
   }
 
-  return canonicalUrl;
+  return languages;
 }

@@ -1,6 +1,175 @@
-# Changelog - NanoBananaPro
+# Changelog - Nano Banana 2
 
 本文件记录项目的历史变更记录，从 CLAUDE.md 中迁移而来。
+
+---
+
+## 2025-11-27
+
+### 积分系统漏洞修复 - 前后端积分消耗不一致
+**变更类型**: Bugfix/Critical
+**影响范围**: 后端 API
+
+**问题描述**:
+- 后端 API 固定使用 `scene` 判断积分消耗（image-to-image = 4积分）
+- 完全忽略前端传递的 `resolution` 参数
+- 导致用户看到的积分与实际扣除不一致
+
+**影响范围**:
+| 分辨率 | 前端显示 | 后端实际扣除 | 差异 |
+|--------|----------|--------------|------|
+| 1K | 2 积分 | 4 积分 | 多扣 2 积分 |
+| 2K | 3 积分 | 4 积分 | 多扣 1 积分 |
+| 4K | 6 积分 | 4 积分 | 少扣 2 积分 |
+
+**修复内容**:
+```typescript
+// 修改前：固定值
+if (scene === 'image-to-image') {
+  costCredits = 4;
+}
+
+// 修改后：按分辨率计算
+const resolution = options?.resolution || '1k';
+const creditsMap: Record<string, number> = {
+  '1k': 2,
+  '2k': 3,
+  '4k': 6,
+};
+costCredits = creditsMap[resolution] || 2;
+```
+
+**修改的文件**:
+- `src/app/api/ai/generate/route.ts:42-63` - 积分计算逻辑重构
+
+---
+
+### Features 功能描述修正 - 移除误导性"批量编辑"文案
+**变更类型**: Content/Accuracy
+**影响范围**: 前端 - Features 板块
+
+**问题分析**:
+- "Multi-Format Support" 描述声称支持"批量编辑"，但实际功能不支持
+- 用户可能误解为"上传10张图片 → 得到10张编辑后的图片"
+- 实际功能：多张参考图片用于增强AI理解，每次请求输出单张图片
+
+**修改内容**:
+| 语言 | 修改前 | 修改后 |
+|------|--------|--------|
+| 英文 | Multi-Format Support | One-Click Perfection |
+| 西班牙语 | Soporte Multi-Formato | Perfección en Un Clic |
+
+**描述变更**:
+- 修改前："Process multiple images simultaneously. Support for batch editing and various image formats."
+- 修改后："Get professional results in a single attempt. No more endless iterations - describe once, done."
+
+**图标变更**: `Images` → `MousePointerClick`
+
+**修改的文件**:
+- `src/config/locale/messages/en/landing.json:176-179`
+- `src/config/locale/messages/es/landing.json:176-179`
+
+---
+
+## 2025-11-26
+
+### 代码库全面清理 - 删除博客残留和未使用依赖
+**变更类型**: Cleanup/Performance
+**影响范围**: 全栈
+
+**清理背景**:
+- 之前删除了博客、文档功能，但残留代码和依赖未完全清理
+- 存在未使用的 npm 依赖和 UI 组件，影响打包体积
+
+**删除的 npm 依赖** (10个，约 500KB):
+- `@dnd-kit/core`, `@dnd-kit/modifiers`, `@dnd-kit/sortable`, `@dnd-kit/utilities`
+- `@tanstack/react-table`
+- `github-markdown-css`
+- `swiper`
+- `embla-carousel-auto-scroll`, `embla-carousel-react`
+- `recharts`
+
+**删除的文件和目录**:
+- `src/shared/components/ui/carousel.tsx` - 未使用的轮播组件
+- `src/shared/components/ui/chart.tsx` - 未使用的图表组件
+- `src/themes/default/blocks/blog.tsx` - 博客列表组件
+- `src/themes/default/blocks/blog-detail.tsx` - 博客详情组件
+- `src/themes/default/pages/blog.tsx` - 博客页面
+- `src/themes/default/pages/blog-detail.tsx` - 博客详情页面
+- `src/shared/types/blocks/blog.d.ts` - 博客类型定义
+- `src/app/[locale]/(admin)/admin/posts/` - 后台文章管理
+- `src/app/[locale]/(admin)/admin/categories/` - 后台分类管理
+- `content/docs/` - 文档内容目录
+- `content/posts/` - 博客内容目录
+- `public/uploads/` - 本地上传目录（改用云存储）
+
+**修改的文件**:
+- `package.json` - 移除 10 个未使用依赖
+- `source.config.ts` - 移除 docs 和 posts 配置
+- `src/core/docs/source.ts` - 精简为只保留 pagesSource
+- `src/shared/models/post.tsx` - 精简为只保留 getLocalPage
+- `src/themes/default/blocks/index.tsx` - 移除 blog 导出
+- `src/config/locale/messages/en/admin/sidebar.json` - 移除 Posts/Categories 菜单
+- `src/config/locale/messages/es/admin/sidebar.json` - 移除 Posts/Categories 菜单
+
+**保留的关键功能**:
+- `content/pages/` - 隐私政策、服务条款等静态页面
+- `pagesSource` - fumadocs 页面加载器
+- `getLocalPage` - 获取静态页面内容的函数
+
+**构建验证**: ✅ TypeScript 编译成功
+
+---
+
+### SEO 技术优化 - sitemap 动态生成 + hreflang 支持
+**变更类型**: SEO/Technical
+**影响范围**: 全站 SEO 配置
+
+**优化内容**:
+1. **sitemap.xml 动态生成**
+   - 新建 `src/app/sitemap.ts` 替代静态 `public/sitemap.xml`
+   - 自动覆盖所有可索引页面（首页、价格页）
+   - 支持多语言（en、es）
+
+2. **hreflang 支持**
+   - 修改 `src/shared/lib/seo.ts` 添加 `alternates.languages`
+   - 自动生成双向链接 + x-default
+
+3. **canonical URL 统一**
+   - 统一格式：不带尾部斜杠
+   - 英文：`https://nano-banana2.pro`、`https://nano-banana2.pro/pricing`
+   - 西班牙语：`https://nano-banana2.pro/es`、`https://nano-banana2.pro/es/pricing`
+
+4. **robots.txt 优化**
+   - 添加 Sitemap 声明
+   - 添加 API 路由禁止爬取
+
+**修改的文件**:
+- `src/shared/lib/seo.ts` - 添加 alternates.languages
+- `src/app/layout.tsx` - 移除静态 hreflang 标签
+- `src/app/[locale]/(landing)/page.tsx` - 添加 generateMetadata
+- `src/app/sitemap.ts` - 新建
+- `public/sitemap.xml` - 删除
+- `public/robots.txt` - 添加 Sitemap 声明
+
+---
+
+### 品牌词全站替换 - NanoBananaPro → Nano Banana 2
+**变更类型**: Branding
+**影响范围**: 全站
+
+**替换规则**:
+- 品牌显示名：`Nano Banana 2`（有空格）
+- 邮箱域名：`@nano-banana2.pro`
+- 技术标识符：`nano-banana2`
+
+**修改的文件** (10+):
+- `package.json` - name, homepage, repository
+- `src/config/index.ts` - app_name 默认值
+- `landing.json` (en/es) - 所有品牌名和邮箱
+- `common.json` (en/es) - Meta 信息
+- `pricing.json` (en/es) - 套餐名称
+- `admin/sidebar.json` (en/es) - Logo 标题
 
 ---
 

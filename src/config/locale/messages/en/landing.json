@@ -2,10 +2,10 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "NanoBananaPro",
+      "title": "Nano Banana 2",
       "logo": {
         "src": "/logo.png",
-        "alt": "NanoBananaPro"
+        "alt": "Nano Banana 2"
       },
       "url": "/"
     },
@@ -52,7 +52,7 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Nano Banana Pro - Professional AI Image Editor",
+    "title": "Nano Banana 2 - Professional AI Image Editor",
     "highlight_text": "",
     "description": "Stop spending hours on image edits. AI-powered editing delivers professional results in seconds - just describe what you want.",
     "announcement": {
@@ -88,7 +88,7 @@
         "icon": "MessageSquareText"
       },
       {
-        "title": "HD Output",
+        "title": "4K Output",
         "icon": "ImageUp"
       }
     ]
@@ -139,13 +139,13 @@
     ],
     "cta": {
       "text": "Experience the power yourself",
-      "button": "Try Nano Banana Pro",
+      "button": "Try Nano Banana 2",
       "url": "/#generator"
     }
   },
   "features": {
     "id": "features",
-    "title": "Why Choose Nano Banana Pro?",
+    "title": "Why Choose Nano Banana 2?",
     "description": "The most powerful AI image editor with natural language understanding. Transform your images effortlessly.",
     "items": [
       {
@@ -174,21 +174,21 @@
         "icon": "Award"
       },
       {
-        "title": "Multi-Format Support",
-        "description": "Process multiple images simultaneously. Support for batch editing and various image formats.",
-        "icon": "Images"
+        "title": "One-Click Perfection",
+        "description": "Get professional results in a single attempt. No more endless iterations - describe once, done.",
+        "icon": "MousePointerClick"
       }
     ]
   },
   "testimonials": {
     "id": "testimonials",
     "title": "What Creators Say",
-    "description": "Hear from content creators and professionals who transform their images daily with Nano Banana Pro.",
+    "description": "Hear from content creators and professionals who transform their images daily with Nano Banana 2.",
     "items": [
       {
         "name": "Sarah Miller",
         "role": "Social Media Manager",
-        "quote": "Perfect for creating consistent brand visuals. I can edit dozens of images in minutes with simple text prompts. Game changer for social media!",
+        "quote": "Perfect for creating consistent brand visuals. The natural language editing is so intuitive - I just describe what I want and get exactly that. Game changer for social media!",
         "image": {
           "src": "/imgs/avatars/1.png",
           "alt": "sarah"
@@ -215,7 +215,7 @@
       {
         "name": "Michael Torres",
         "role": "Marketing Professional",
-        "quote": "Batch editing is a lifesaver for campaigns. Process 50+ images at once while maintaining quality. Saves our team countless hours.",
+        "quote": "The professional quality output is impressive for our campaigns. Product images look studio-grade now, and clients love the consistency across all our marketing materials.",
         "image": {
           "src": "/imgs/avatars/4.png",
           "alt": "michael"
@@ -244,28 +244,28 @@
   "faq": {
     "id": "faq",
     "title": "Frequently Asked Questions",
-    "description": "Everything you need to know about Nano Banana Pro. Can't find the answer? Contact us.",
-    "tip": "Can't find what you're looking for? Contact our <a href='mailto:support@nanobananapro.com' class='text-primary font-medium hover:underline'>support team</a>",
+    "description": "Everything you need to know about Nano Banana 2. Can't find the answer? Contact us.",
+    "tip": "Can't find what you're looking for? Contact our <a href='mailto:support@nano-banana2.pro' class='text-primary font-medium hover:underline'>support team</a>",
     "items": [
       {
-        "question": "What is Nano Banana Pro?",
-        "answer": "Nano Banana Pro is an advanced AI image editor that transforms images using natural language prompts. Simply describe your desired edits in plain text, and our AI understands complex instructions to deliver professional results instantly."
+        "question": "What is Nano Banana 2?",
+        "answer": "Nano Banana 2 is an advanced AI image editor that transforms images using natural language prompts. Simply describe your desired edits in plain text, and our AI understands complex instructions to deliver professional results instantly."
       },
       {
         "question": "Do I need design skills or Photoshop experience?",
-        "answer": "Not at all! That's the beauty of Nano Banana Pro. You don't need any design experience or technical skills. Just describe what you want in simple words, and our AI handles all the complex editing work for you."
+        "answer": "Not at all! That's the beauty of Nano Banana 2. You don't need any design experience or technical skills. Just describe what you want in simple words, and our AI handles all the complex editing work for you."
       },
       {
         "question": "What types of edits can it handle?",
-        "answer": "Nano Banana Pro can handle a wide range of edits including background changes, object placement, face completion, character modifications, style transfers, and scene blending. It excels at maintaining character consistency and creating photorealistic results."
+        "answer": "Nano Banana 2 can handle a wide range of edits including background changes, object placement, face completion, character modifications, style transfers, and scene blending. It excels at maintaining character consistency and creating photorealistic results."
       },
       {
         "question": "How is it better than other AI editors?",
-        "answer": "Nano Banana Pro offers superior character consistency, scene preservation, and one-shot editing. Unlike other tools, it maintains perfect facial features across edits and seamlessly blends changes with original backgrounds. You get professional results in a single attempt."
+        "answer": "Nano Banana 2 offers superior character consistency, scene preservation, and one-shot editing. Unlike other tools, it maintains perfect facial features across edits and seamlessly blends changes with original backgrounds. You get professional results in a single attempt."
       },
       {
         "question": "Can I use it for commercial projects?",
-        "answer": "Yes! Nano Banana Pro is perfect for commercial use. Create AI-generated content, social media campaigns, product photography, and marketing materials. Many professionals use it for creating consistent AI influencers and UGC content."
+        "answer": "Yes! Nano Banana 2 is perfect for commercial use. Create AI-generated content, social media campaigns, product photography, and marketing materials. Many professionals use it for creating consistent AI influencers and UGC content."
       },
       {
         "question": "How do I get started?",
@@ -276,11 +276,11 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "NanoBananaPro",
+      "title": "Nano Banana 2",
       "description": "AI image editor powered by Google Gemini. Transform images with natural language prompts. Professional results in seconds.",
       "logo": {
         "src": "/logo.png",
-        "alt": "NanoBananaPro"
+        "alt": "Nano Banana 2"
       },
       "url": "/"
     },
@@ -313,7 +313,7 @@
         {
           "title": "Email",
           "icon": "Mail",
-          "url": "mailto:support@nanobananapro.com",
+          "url": "mailto:support@nano-banana2.pro",
           "target": "_self"
         }
       ]

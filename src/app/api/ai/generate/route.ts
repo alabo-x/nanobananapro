@@ -39,22 +39,25 @@ export async function POST(request: Request) {
       throw new Error('no auth, please sign in');
     }
 
-    // todo: get cost credits from settings
+    // Calculate cost credits based on resolution
     let costCredits = 2;
 
     if (mediaType === AIMediaType.IMAGE) {
-      // generate image
-      if (scene === 'image-to-image') {
-        costCredits = 4;
-      } else if (scene === 'text-to-image') {
-        costCredits = 2;
-      } else {
+      // Get resolution from options (default: 1k)
+      const resolution = options?.resolution || '1k';
+
+      // Credits map: 1K=2, 2K=3, 4K=6
+      const creditsMap: Record<string, number> = {
+        '1k': 2,
+        '2k': 3,
+        '4k': 6,
+      };
+      costCredits = creditsMap[resolution] || 2;
+
+      // Validate scene
+      if (scene !== 'image-to-image') {
         throw new Error('invalid scene');
       }
-    } else if (mediaType === AIMediaType.MUSIC) {
-      // generate music
-      costCredits = 10;
-      scene = 'text-to-music';
     } else {
       throw new Error('invalid mediaType');
     }

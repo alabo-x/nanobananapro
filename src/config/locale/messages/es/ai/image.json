@@ -1,6 +1,6 @@
 {
   "generator": {
-    "title": "Prueba El Editor AI",
+    "title": "Editor de Imágenes Profesional",
     "description": "Transforma tus imágenes con lenguaje natural. Solo describe lo que quieres — resultados profesionales en segundos.",
     "form": {
       "provider": "Proveedor",
@@ -20,9 +20,9 @@
       "image_required": "Por favor sube una imagen primero"
     },
     "resolution_options": {
-      "1k": "1K (Calidad Estándar)",
-      "2k": "2K (Alta Calidad)",
-      "4k": "4K (Ultra Calidad)"
+      "1k": "1K",
+      "2k": "2K",
+      "4k": "4K"
     },
     "aspect_ratio_options": {
       "original": "Original",

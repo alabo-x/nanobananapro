@@ -1,7 +1,13 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getThemePage } from '@/core/theme';
+import { getMetadata } from '@/shared/lib/seo';
 import { Landing } from '@/shared/types/blocks/landing';
+
+// Generate metadata with hreflang for homepage
+export const generateMetadata = getMetadata({
+  canonicalUrl: '/',
+});
 
 export default async function LandingPage({
   params,

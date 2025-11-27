@@ -1,7 +1,16 @@
+# Nano Banana Pro - robots.txt
+
 User-agent: *
+Allow: /
 Disallow: /*?*q=
 Disallow: /privacy-policy
 Disallow: /terms-of-service
 Disallow: /settings/*
 Disallow: /activity/*
 Disallow: /admin/*
+Disallow: /api/*
+Disallow: /sign-in
+Disallow: /sign-up
+
+# Sitemap
+Sitemap: https://nano-banana2.pro/sitemap.xml

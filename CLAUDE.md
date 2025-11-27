@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目快速概览
 
-### 当前状态 (2025-11-26)
-- **项目阶段**: 🎨 核心功能标题优化完成
-- **最新变更**: 核心功能标题改为 "Try The AI Editor" + .gitignore 配置
+### 当前状态 (2025-11-27)
+- **项目阶段**: 🔧 定价重构完成（第三版）+ 存储架构文档化
+- **最新变更**: 定价调整为 $19.90/月 + $191.04/年（20% off），特性文案优化
 - **开发服务器**: http://localhost:3000
-- **管理员账户**: admin@nanobananapro.com (super_admin)
+- **管理员账户**: admin@nano-banana2.pro (super_admin)
 - **数据库表**: 16 个表
 - **构建状态**: ✅ 生产构建成功（TypeScript 编译通过）
-- **产品定位**: 专业图片编辑工具（高端市场 $19-129/月）
+- **产品定位**: 专业图片编辑工具（$19.90-191.04）
 
 ### 下一步工作
 
@@ -20,6 +20,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - 测试 Image-to-Image 编辑功能
   - 验证 Replicate API 集成
   - 测试图片上传和积分扣除逻辑
+- [ ] **历史记录图片失效提示**
+  - 在 UI 添加提示文案："历史记录仅保留元数据，图片可能 24h 后失效"
+  - 位置：历史记录页面或生成结果页
+  - 原因：Replicate 图片 URL 有效期 1-24 小时，当前未实现永久存储
 
 ### 部署上线待办事项
 
@@ -37,15 +41,214 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - [ ] 补充案例图片
 - [ ] 品牌资产更新（Logo、Favicon、OG 图片）
 
+#### 部署后验证（上线后立即执行）
+- [ ] **检查 sitemap.xml 是否正常生成**
+  ```bash
+  curl https://nano-banana2.pro/sitemap.xml
+  # 预期：返回包含 4 个 URL 的 XML（en/es 首页 + en/es 价格页）
+  ```
+- [ ] **检查 robots.txt 是否正确**
+  ```bash
+  curl https://nano-banana2.pro/robots.txt
+  # 预期：包含 Sitemap 声明和 Disallow 规则
+  ```
+- [ ] **检查首页 hreflang 标签（HTML head 中）**
+  ```bash
+  # 英文首页
+  curl -s https://nano-banana2.pro | grep -i hreflang
+  # 预期：rel="alternate" hreflang="en"、hreflang="es"、hreflang="x-default"
+
+  # 西班牙语首页
+  curl -s https://nano-banana2.pro/es | grep -i hreflang
+  # 预期：同样的三个 hreflang 标签
+  ```
+- [ ] **提交 sitemap 到 Google Search Console**
+  - 登录 https://search.google.com/search-console
+  - 添加站点 nano-banana2.pro（如尚未添加）
+  - 进入 Sitemaps → 提交 `https://nano-banana2.pro/sitemap.xml`
+
 ### 已完成事项
+- [x] Testimonials 评价修正 - 移除批量编辑虚假描述，改为自然语言编辑和专业品质输出
+- [x] 定价页面 UI 优化 - 价格居中、按钮移到 Features 下方、Tab 强调色 (Save 20%)、标题改为 "Choose Your Plan"
+- [x] 定价页面重构（对标 aiimageeditor.ai）- 无套餐名、统一 Features、年付显示月均价 $15.92
+- [x] 定价 Features 文案优化 - 新增无水印、商用许可，移除分辨率技术描述，强调高质量图片
+- [x] 定价卡片样式优化 - 移除标签（Most Popular/Best Value），限制卡片宽度（max-w-md）居中显示
+- [x] 定价页面 Tabs 恢复 - Monthly/Yearly (Save 20%) 切换
+- [x] 定价重构（第三版）- Starter $19.90/月 120积分、Premium $191.04/年 1440积分（20% off）
+- [x] 存储架构文档化 - 记录 Replicate 图片 URL 过期问题和 R2 存储配置
+- [x] 特性文案优化 - 突出图片数量、商用授权、客服支持，移除技术性描述
+- [x] 积分逻辑恢复 - 恢复分辨率定价（1K=2积分, 2K=3积分, 4K=6积分），前后端同步更新
+- [x] Features 功能描述修正 - "Multi-Format Support" → "One-Click Perfection"（移除误导性批量编辑文案）
+- [x] SEO 技术优化 - sitemap 动态生成、hreflang 支持、canonical URL 统一
+- [x] 品牌词全站替换 - NanoBananaPro → Nano Banana 2，邮箱 @nano-banana2.pro
 - [x] 核心功能标题优化 - "Professional Image Editor" → "Try The AI Editor"
-- [x] .gitignore 配置 - 添加 .playwright-mcp 忽略规则
 - [x] 代码清理 - 删除 10 个未使用 npm 依赖 + 博客残留代码
 - [x] 调整 Hero/Features/Testimonials/FAQ 内容
 - [x] Showcase 板块开发
 - [x] 资源清理（~23MB）
 - [x] 删除博客和文档功能
-- [x] Footer 优化
+
+---
+
+## 翻译文件修改规范（重要）
+
+### ⚠️ 同名配置项区分原则
+
+修改翻译文件时，**必须区分同名配置项的不同用途**：
+
+| 文件类型 | 路径 | 用途 | 示例 |
+|----------|------|------|------|
+| **页面级配置** | `landing.json` | 页面板块的 section 标题 | `generator.title` → 板块大标题 |
+| **组件级配置** | `ai/*.json` | 组件内部的标题和文案 | `generator.title` → 卡片内小标题 |
+
+### 修改前必做检查
+
+```bash
+# 1. 检查所有出现位置
+grep -rn "要修改的文案" src/config/locale/messages/
+
+# 2. 理解每个文件的用途
+# - landing.json → 页面级板块配置
+# - ai/*.json → 组件级功能配置
+# - 两者可能有同名字段但用途不同
+```
+
+### 修改后必做验证
+
+- 用浏览器截图确认每个修改位置的实际效果
+- 不同位置的同名字段可能需要不同的值
+
+### 历史教训
+
+- **错误案例**：修改 `generator.title` 时，同时改了 `landing.json` 和 `ai/image.json`，但它们分别控制板块标题和卡片内标题
+- **正确做法**：先 grep 检查所有出现位置，理解用途后再针对性修改
+
+---
+
+## 积分系统规范（重要）
+
+### ⚠️ 分辨率定价规则
+
+**当前规则**（2025-11-27 恢复）：
+- **1K 分辨率**: 2 积分/张
+- **2K 分辨率**: 3 积分/张
+- **4K 分辨率**: 6 积分/张
+
+### 定价结构（重要）
+
+**核心理解**：
+- 只有 **1 个套餐**，无名字
+- 用户通过 **Tab 切换**（Monthly / Yearly）选择付费周期
+- **功能完全相同**，只是付费周期不同
+- 没有人群区分，没有服务等级差异
+
+### 价格显示逻辑（重要，支付时勿犯错）
+
+| 付费方式 | 页面显示价格 | 实际扣费金额 |
+|----------|--------------|--------------|
+| 月付 | $19.90 / month | $19.90/月 |
+| 年付 | ~~$19.90~~ $15.92 / month | $191.04/年 |
+
+**关键**：年付显示月均价格 $15.92（$191.04 ÷ 12），方便用户对比，但实际扣费是 $191.04/年
+
+### 积分数量
+
+| 付费方式 | 积分 | 1K 图片 | 2K 图片 | 4K 图片 |
+|----------|------|---------|---------|---------|
+| 月付 | 120/月 | 60 张 | 40 张 | 20 张 |
+| 年付 | 1440/年 | 720 张 | 480 张 | 240 张 |
+
+### 套餐特性（统一显示）
+
+- 120 credits, reset monthly
+- Up to 60 images/month
+- No watermarks
+- Commercial license
+
+### 成本分析
+
+| 套餐 | 全部 1K | 全部 4K | 毛利率 |
+|------|---------|---------|--------|
+| Starter $19.90 | 60张×$0.12=$7.2 | 20张×$0.24=$4.8 | 64%-76% |
+| Premium $191.04/年 | 720张×$0.12=$86.4 | 240张×$0.24=$57.6 | 55%-70% |
+
+**设计原则**：年费降20%引导长期订阅，保持健康毛利率
+
+### 代码位置
+
+| 位置 | 文件 | 说明 |
+|------|------|------|
+| **前端** | `src/shared/blocks/generator/image.tsx:166,194-202` | `useState + useEffect` 动态计算 |
+| **后端** | `src/app/api/ai/generate/route.ts:42-63` | `creditsMap` 查表计算 |
+| **定价** | `src/config/locale/messages/en/pricing.json` | 套餐配置 |
+
+### 修改积分规则时的检查清单
+
+```bash
+# 1. 检查前端积分逻辑
+grep -n "creditsMap" src/shared/blocks/generator/image.tsx
+
+# 2. 检查后端积分逻辑
+grep -n "creditsMap" src/app/api/ai/generate/route.ts
+
+# 3. 检查定价页面描述
+grep -n "credits" src/config/locale/messages/en/pricing.json
+```
+
+**三处必须保持一致**：
+- 前端 `creditsMap = { '1k': 2, '2k': 3, '4k': 6 }`
+- 后端 `creditsMap = { '1k': 2, '2k': 3, '4k': 6 }`
+- 定价页 `"1K: 2 credits, 2K: 3 credits, 4K: 6 credits"`
+
+---
+
+## 图片存储架构（重要）
+
+### 当前架构
+
+| 图片类型 | 存储位置 | 说明 |
+|----------|----------|------|
+| **AI 生成的图片** | Replicate 服务器 | URL 格式: `https://replicate.delivery/...` |
+| **用户上传的参考图** | Cloudflare R2 / AWS S3 | 需配置环境变量 |
+
+### ⚠️ 关键限制
+
+**AI 生成图片的 URL 会过期**（约 1-24 小时）：
+- 数据库 `aiTask.taskResult` 存储 Replicate 返回的 URL
+- 用户生成后需要**立即下载**，否则图片会丢失
+- 当前**没有**实现图片永久存储功能
+
+### 存储服务配置
+
+**Cloudflare R2 配置**（推荐）：
+```bash
+R2_ACCOUNT_ID="your_account_id"
+R2_ACCESS_KEY="your_access_key"
+R2_SECRET_KEY="your_secret_key"
+R2_BUCKET_NAME="nanobananapro-uploads"
+R2_DOMAIN="https://r2.yourdomain.com"
+```
+
+**费用**：
+- 免费额度：10GB 存储 + 无出口流量费
+- 超出：$0.015/GB/月
+
+### 代码位置
+
+| 功能 | 文件 |
+|------|------|
+| 存储服务接口 | `src/extensions/storage/index.ts` |
+| R2 Provider | `src/extensions/storage/r2.ts` |
+| S3 Provider | `src/extensions/storage/s3.ts` |
+| 上传 API | `src/app/api/storage/upload-image/route.ts` |
+| AI 生成结果 | `src/extensions/ai/replicate.ts:93-128` |
+
+### 后续优化方向
+
+如需实现**图片永久保存**功能：
+1. 在 AI 生成完成后，下载图片到 R2
+2. 修改 `query/route.ts`，返回 R2 URL 而非 Replicate URL
+3. 预估成本：100 用户约 $0.03/月，1000 用户约 $1.65/月
 
 ---
 
@@ -140,73 +343,41 @@ R2_DOMAIN="https://r2.yourdomain.com"
 
 > 完整历史记录请查看 [CHANGELOG.md](./CHANGELOG.md)
 
-### 2025-11-26: 代码库全面清理 - 删除博客残留和未使用依赖
-**变更类型**: Cleanup/Performance
-**影响范围**: 全栈
+### 2025-11-27: 定价重构（第三版）+ 存储架构文档化 + 卡片布局修复
+**变更类型**: Feature + Documentation + Bugfix
+**影响范围**: 定价页面、文档
 
-**清理背景**:
-- 之前删除了博客、文档功能，但残留代码和依赖未完全清理
-- 存在未使用的 npm 依赖和 UI 组件，影响打包体积
+**变更内容**:
+- ✅ 定价调整: $19.90/月 120积分 → $191.04/年 1440积分（20% off）
+- ✅ 特性文案优化: 突出图片数量、商用授权、客服支持
+- ✅ 存储架构文档化: 记录 Replicate 图片 URL 过期限制（1-24小时）
+- ✅ 添加 R2 存储配置说明和成本分析
+- ✅ **修复定价卡片布局**: 移除 `groups` 和 `group` 字段，两张卡片并排显示
 
-**删除的 npm 依赖** (10个，约 500KB):
-- `@dnd-kit/core`, `@dnd-kit/modifiers`, `@dnd-kit/sortable`, `@dnd-kit/utilities`
-- `@tanstack/react-table`
-- `github-markdown-css`
-- `swiper`
-- `embla-carousel-auto-scroll`, `embla-carousel-react`
-- `recharts`
+**修改文件**:
+- `src/config/locale/messages/en/pricing.json`
+- `src/config/locale/messages/es/pricing.json`
+- `CLAUDE.md`（新增存储架构章节）
 
-**删除的文件和目录**:
-- `src/shared/components/ui/carousel.tsx` - 未使用的轮播组件
-- `src/shared/components/ui/chart.tsx` - 未使用的图表组件
-- `src/themes/default/blocks/blog.tsx` - 博客列表组件
-- `src/themes/default/blocks/blog-detail.tsx` - 博客详情组件
-- `src/themes/default/pages/blog.tsx` - 博客页面
-- `src/themes/default/pages/blog-detail.tsx` - 博客详情页面
-- `src/shared/types/blocks/blog.d.ts` - 博客类型定义
-- `src/app/[locale]/(admin)/admin/posts/` - 后台文章管理
-- `src/app/[locale]/(admin)/admin/categories/` - 后台分类管理
-- `content/docs/` - 文档内容目录
-- `content/posts/` - 博客内容目录
-- `public/uploads/` - 本地上传目录（改用云存储）
+**定价卡片布局说明**:
+- 移除 `groups` 配置（不需要 Monthly/Annually tabs 切换）
+- 移除 items 中的 `group` 字段
+- 组件自动根据 items 数量显示为 2 列布局
 
-**修改的文件**:
-- `package.json` - 移除 10 个未使用依赖
-- `source.config.ts` - 移除 docs 和 posts 配置，只保留 pages
-- `src/core/docs/source.ts` - 移除 docsSource 和 postsSource，只保留 pagesSource
-- `src/shared/models/post.tsx` - 精简为只保留 getLocalPage 和 PageContent 类型
-- `src/themes/default/blocks/index.tsx` - 移除 blog 导出
-- `src/themes/default/blocks/page-detail.tsx` - 更新类型引用
-- `src/themes/default/pages/page-detail.tsx` - 更新类型引用
-- `src/shared/blocks/common/markdown-preview.tsx` - 移除 github-markdown-css 导入
-- `src/config/locale/messages/en/admin/sidebar.json` - 移除 Posts/Categories 菜单
-- `src/config/locale/messages/es/admin/sidebar.json` - 移除 Posts/Categories 菜单
+### 2025-11-27: 积分系统漏洞修复 + Features 功能描述修正
+- **修复积分消耗前后端不一致漏洞**：后端 API 现在正确读取 `resolution` 参数计算积分
+- 移除 Features 误导性"批量编辑"文案
+- 修改文件: `generate/route.ts`, `landing.json` (en/es)
 
-**保留的关键功能**:
-- `content/pages/` - 隐私政策、服务条款等静态页面（使用 fumadocs）
-- `pagesSource` - fumadocs 页面加载器
-- `getLocalPage` - 获取静态页面内容的函数
+### 2025-11-26: 代码库全面清理 + SEO 技术优化
+- 删除 10 个未使用 npm 依赖 + 博客残留代码
+- sitemap 动态生成 + hreflang 支持 + canonical URL 统一
+- 品牌词全站替换 (Nano Banana 2)
 
-**构建验证**: ✅ TypeScript 编译成功，12 个静态页面生成
-
----
-
-### 2025-11-25: ImageGenerator 核心组件完整 UI/UX 优化
-**变更类型**: Feature/UX/Content
-**影响范围**: 前端 - ImageGenerator 组件 + ImageUploader 组件
-
-**完成的优化** (共 9 项):
-1. Prompt 标签专业化: "Prompt"
-2. 生成按钮: "Create • {credits} Credits"
-3. 空状态: "Ready to Create"
-4. 图片限制修正: maxImages=8, maxSizeMB=30
-5. 上传区域样式和动画增强
-
-**修改的文件**:
-- `src/config/locale/messages/en/ai/image.json`
-- `src/config/locale/messages/es/ai/image.json`
-- `src/shared/blocks/generator/image.tsx`
-- `src/shared/blocks/common/image-uploader.tsx`
+### 2025-11-25: ImageGenerator 核心组件 UI/UX 优化
+- Prompt 标签、生成按钮、空状态文案专业化
+- 图片限制修正: maxImages=8, maxSizeMB=30
+- 上传区域样式和动画增强
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "generator": {
-    "title": "Try The AI Editor",
+    "title": "Professional Image Editor",
     "description": "Transform your images with natural language. Just describe what you want — professional results in seconds.",
     "form": {
       "provider": "Provider",
@@ -20,9 +20,9 @@
       "image_required": "Please upload an image first"
     },
     "resolution_options": {
-      "1k": "1K (Standard Quality)",
-      "2k": "2K (High Quality)",
-      "4k": "4K (Ultra Quality)"
+      "1k": "1K",
+      "2k": "2K",
+      "4k": "4K"
     },
     "aspect_ratio_options": {
       "original": "Original",

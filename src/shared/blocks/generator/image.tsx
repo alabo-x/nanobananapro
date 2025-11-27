@@ -162,6 +162,7 @@ export function ImageGenerator({
 
   const [resolution, setResolution] = useState<'1k' | '2k' | '4k'>('1k');
   const [aspectRatio, setAspectRatio] = useState<string>('original');
+  // Dynamic cost based on resolution: 1K=2, 2K=3, 4K=6 credits
   const [costCredits, setCostCredits] = useState<number>(2);
   const [provider, setProvider] = useState('replicate');
   const [model, setModel] = useState('google/nano-banana-pro');
@@ -190,19 +191,20 @@ export function ImageGenerator({
     setIsMounted(true);
   }, []);
 
-  const promptLength = prompt.trim().length;
-  const remainingCredits = user?.credits?.remainingCredits ?? 0;
-  const isPromptTooLong = promptLength > MAX_PROMPT_LENGTH;
-
-  // Calculate credits based on resolution
+  // Update credits cost when resolution changes
   useEffect(() => {
-    const creditsMap = {
+    const creditsMap: Record<string, number> = {
       '1k': 2,
       '2k': 3,
       '4k': 6,
     };
-    setCostCredits(creditsMap[resolution]);
+    setCostCredits(creditsMap[resolution] || 2);
   }, [resolution]);
+
+  const promptLength = prompt.trim().length;
+  const remainingCredits = user?.credits?.remainingCredits ?? 0;
+  const isPromptTooLong = promptLength > MAX_PROMPT_LENGTH;
+
 
   const taskStatusLabel = useMemo(() => {
     if (!taskStatus) {

@@ -2,10 +2,10 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "NanoBananaPro",
+      "title": "Nano Banana 2",
       "logo": {
         "src": "/logo.png",
-        "alt": "NanoBananaPro"
+        "alt": "Nano Banana 2"
       },
       "url": "/"
     },
@@ -52,7 +52,7 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Nano Banana Pro - Editor de Imágenes IA Profesional",
+    "title": "Nano Banana 2 - Editor de Imágenes IA Profesional",
     "highlight_text": "",
     "description": "Deja de gastar horas editando imágenes. La edición impulsada por IA entrega resultados profesionales en segundos - solo describe lo que quieres.",
     "announcement": {
@@ -88,7 +88,7 @@
         "icon": "MessageSquareText"
       },
       {
-        "title": "Salida HD",
+        "title": "Salida 4K",
         "icon": "ImageUp"
       }
     ]
@@ -139,13 +139,13 @@
     ],
     "cta": {
       "text": "Experimenta el poder tú mismo",
-      "button": "Prueba Nano Banana Pro",
+      "button": "Prueba Nano Banana 2",
       "url": "/#generator"
     }
   },
   "features": {
     "id": "features",
-    "title": "¿Por Qué Elegir Nano Banana Pro?",
+    "title": "¿Por Qué Elegir Nano Banana 2?",
     "description": "El editor de imágenes AI más potente con comprensión de lenguaje natural. Transforma tus imágenes sin esfuerzo.",
     "items": [
       {
@@ -174,21 +174,21 @@
         "icon": "Award"
       },
       {
-        "title": "Soporte Multi-Formato",
-        "description": "Procesa múltiples imágenes simultáneamente. Soporte para edición por lotes y varios formatos de imagen.",
-        "icon": "Images"
+        "title": "Perfección en Un Clic",
+        "description": "Obtén resultados profesionales en un solo intento. Sin iteraciones interminables - describe una vez, listo.",
+        "icon": "MousePointerClick"
       }
     ]
   },
   "testimonials": {
     "id": "testimonials",
     "title": "Lo Que Dicen Los Creadores",
-    "description": "Escucha a creadores de contenido y profesionales que transforman sus imágenes diariamente con Nano Banana Pro.",
+    "description": "Escucha a creadores de contenido y profesionales que transforman sus imágenes diariamente con Nano Banana 2.",
     "items": [
       {
         "name": "Sarah Miller",
         "role": "Gerente de Redes Sociales",
-        "quote": "Perfecto para crear visuales de marca consistentes. Puedo editar docenas de imágenes en minutos con simples indicaciones de texto. ¡Cambia el juego para redes sociales!",
+        "quote": "Perfecto para crear visuales de marca consistentes. La edición con lenguaje natural es muy intuitiva - solo describo lo que quiero y obtengo exactamente eso. ¡Cambia el juego para redes sociales!",
         "image": {
           "src": "/imgs/avatars/1.png",
           "alt": "sarah"
@@ -215,7 +215,7 @@
       {
         "name": "Michael Torres",
         "role": "Profesional de Marketing",
-        "quote": "La edición por lotes salva vidas para campañas. Procesa más de 50 imágenes a la vez manteniendo la calidad. Ahorra incontables horas a nuestro equipo.",
+        "quote": "La calidad profesional del resultado es impresionante para nuestras campañas. Las imágenes de productos lucen de nivel estudio, y los clientes aman la consistencia en todos nuestros materiales de marketing.",
         "image": {
           "src": "/imgs/avatars/4.png",
           "alt": "michael"
@@ -244,28 +244,28 @@
   "faq": {
     "id": "faq",
     "title": "Preguntas Frecuentes",
-    "description": "Todo lo que necesitas saber sobre Nano Banana Pro. ¿No encuentras la respuesta? Contáctanos.",
-    "tip": "¿No encuentras lo que buscas? Contacta a nuestro <a href='mailto:support@nanobananapro.com' class='text-primary font-medium hover:underline'>equipo de soporte</a>",
+    "description": "Todo lo que necesitas saber sobre Nano Banana 2. ¿No encuentras la respuesta? Contáctanos.",
+    "tip": "¿No encuentras lo que buscas? Contacta a nuestro <a href='mailto:support@nano-banana2.pro' class='text-primary font-medium hover:underline'>equipo de soporte</a>",
     "items": [
       {
-        "question": "¿Qué es Nano Banana Pro?",
-        "answer": "Nano Banana Pro es un editor de imágenes AI avanzado que transforma fotos usando indicaciones en lenguaje natural. Simplemente describe tus ediciones deseadas en texto simple, y nuestra IA comprende instrucciones complejas para entregar resultados profesionales al instante."
+        "question": "¿Qué es Nano Banana 2?",
+        "answer": "Nano Banana 2 es un editor de imágenes AI avanzado que transforma fotos usando indicaciones en lenguaje natural. Simplemente describe tus ediciones deseadas en texto simple, y nuestra IA comprende instrucciones complejas para entregar resultados profesionales al instante."
       },
       {
         "question": "¿Necesito habilidades de diseño o experiencia con Photoshop?",
-        "answer": "¡Para nada! Esa es la belleza de Nano Banana Pro. No necesitas ninguna experiencia en diseño ni habilidades técnicas. Solo describe lo que quieres con palabras simples, y nuestra IA maneja todo el trabajo de edición complejo por ti."
+        "answer": "¡Para nada! Esa es la belleza de Nano Banana 2. No necesitas ninguna experiencia en diseño ni habilidades técnicas. Solo describe lo que quieres con palabras simples, y nuestra IA maneja todo el trabajo de edición complejo por ti."
       },
       {
         "question": "¿Qué tipos de ediciones puede manejar?",
-        "answer": "Nano Banana Pro puede manejar una amplia gama de ediciones incluyendo cambios de fondo, colocación de objetos, completado de rostros, modificaciones de personajes, transferencias de estilo y mezcla de escenas. Sobresale en mantener consistencia de personajes y crear resultados fotorrealistas."
+        "answer": "Nano Banana 2 puede manejar una amplia gama de ediciones incluyendo cambios de fondo, colocación de objetos, completado de rostros, modificaciones de personajes, transferencias de estilo y mezcla de escenas. Sobresale en mantener consistencia de personajes y crear resultados fotorrealistas."
       },
       {
         "question": "¿Cómo es mejor que otros editores AI?",
-        "answer": "Nano Banana Pro ofrece consistencia de personajes superior, preservación de escena y edición en un solo intento. A diferencia de otras herramientas, mantiene características faciales perfectas a través de las ediciones y mezcla cambios perfectamente con fondos originales. Obtienes resultados profesionales en un solo intento."
+        "answer": "Nano Banana 2 ofrece consistencia de personajes superior, preservación de escena y edición en un solo intento. A diferencia de otras herramientas, mantiene características faciales perfectas a través de las ediciones y mezcla cambios perfectamente con fondos originales. Obtienes resultados profesionales en un solo intento."
       },
       {
         "question": "¿Puedo usarlo para proyectos comerciales?",
-        "answer": "¡Sí! Nano Banana Pro es perfecto para uso comercial. Crea contenido generado con IA, campañas de redes sociales, fotografía de productos y materiales de marketing. Muchos profesionales lo usan para crear influencers AI consistentes y contenido UGC."
+        "answer": "¡Sí! Nano Banana 2 es perfecto para uso comercial. Crea contenido generado con IA, campañas de redes sociales, fotografía de productos y materiales de marketing. Muchos profesionales lo usan para crear influencers AI consistentes y contenido UGC."
       },
       {
         "question": "¿Cómo empiezo?",
@@ -276,11 +276,11 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "NanoBananaPro",
+      "title": "Nano Banana 2",
       "description": "Editor de imágenes AI impulsado por Google Gemini. Transforma imágenes con indicaciones de lenguaje natural. Resultados profesionales en segundos.",
       "logo": {
         "src": "/logo.png",
-        "alt": "NanoBananaPro"
+        "alt": "Nano Banana 2"
       },
       "url": "/"
     },
@@ -313,7 +313,7 @@
         {
           "title": "Correo",
           "icon": "Mail",
-          "url": "mailto:support@nanobananapro.com",
+          "url": "mailto:support@nano-banana2.pro",
           "target": "_self"
         }
       ]
