@@ -7,6 +7,11 @@ import { ThemeProvider } from '@/core/theme/provider';
 import { Toaster } from '@/shared/components/ui/sonner';
 import { AppContextProvider } from '@/shared/contexts/app';
 import { getMetadata } from '@/shared/lib/seo';
+import {
+  getOrganizationSchema,
+  getWebSiteSchema,
+  generateJsonLd,
+} from '@/shared/lib/structured-data';
 
 export const generateMetadata = getMetadata();
 
@@ -31,6 +36,16 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       <ThemeProvider>
         <AppContextProvider>
+          {/* 全局结构化数据 (Organization + WebSite) */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: generateJsonLd([
+                getOrganizationSchema(),
+                getWebSiteSchema(),
+              ]),
+            }}
+          />
           {children}
           <Toaster position="top-center" richColors />
         </AppContextProvider>

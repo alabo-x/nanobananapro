@@ -5,8 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 项目快速概览
 
 ### 当前状态 (2025-11-27)
-- **项目阶段**: 🔧 定价重构完成（第三版）+ 存储架构文档化
-- **最新变更**: 定价调整为 $19.90/月 + $191.04/年（20% off），特性文案优化
+- **项目阶段**: 🔧 SEO 结构化数据完成
+- **最新变更**: 添加 Schema.org 结构化数据（Organization + WebSite + SoftwareApplication + FAQPage）
 - **开发服务器**: http://localhost:3000
 - **管理员账户**: admin@nano-banana2.pro (super_admin)
 - **数据库表**: 16 个表
@@ -34,7 +34,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - [ ] **配置生产环境变量**（AUTH_URL、NEXT_PUBLIC_APP_URL）
 - [x] 更新社交媒体链接
 - [x] 优化价格页面
-- [ ] 性能监控和 SEO 优化
+- [x] 性能监控和 SEO 优化（结构化数据已完成，Analytics 在管理后台配置）
 
 #### 重要但非阻塞（上线后优化）
 - [ ] 支付网关配置（Stripe、PayPal）
@@ -342,6 +342,33 @@ R2_DOMAIN="https://r2.yourdomain.com"
 ## 最近工作记录
 
 > 完整历史记录请查看 [CHANGELOG.md](./CHANGELOG.md)
+
+### 2025-11-27: SEO 结构化数据实现
+**变更类型**: SEO/Feature
+**影响范围**: 全站 SEO
+
+**变更内容**:
+- ✅ 新建 `src/shared/lib/structured-data.ts` 结构化数据工具文件
+- ✅ 实现 4 种 Schema.org 结构化数据：
+  - **Organization**: 组织信息（全局）
+  - **WebSite**: 网站信息（全局）
+  - **SoftwareApplication**: 软件应用信息（首页）
+  - **FAQPage**: 常见问题（首页，从 landing.json 动态读取）
+- ✅ 修改 `layout.tsx` 注入全局结构化数据
+- ✅ 修改 `page.tsx` 注入首页结构化数据
+- ✅ 价格使用 AggregateOffer: lowPrice=$15.92, highPrice=$19.90
+
+**修改文件**:
+- `src/shared/lib/structured-data.ts`（新建）
+- `src/app/[locale]/layout.tsx`
+- `src/app/[locale]/(landing)/page.tsx`
+
+**SEO 效果**:
+- Google Rich Results / Rich Snippets 支持
+- FAQ 结构化数据可在搜索结果中展示问答
+- SoftwareApplication 可展示应用信息和价格
+
+---
 
 ### 2025-11-27: 定价重构（第三版）+ 存储架构文档化 + 卡片布局修复
 **变更类型**: Feature + Documentation + Bugfix
