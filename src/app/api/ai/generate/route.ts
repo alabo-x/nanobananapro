@@ -43,8 +43,9 @@ export async function POST(request: Request) {
     let costCredits = 2;
 
     if (mediaType === AIMediaType.IMAGE) {
-      // Get resolution from options (default: 1k)
-      const resolution = options?.resolution || '1k';
+      // Get resolution from options and normalize to lowercase for creditsMap lookup
+      // Note: Frontend sends uppercase (1K, 2K, 4K) for Replicate API, but creditsMap uses lowercase
+      const resolution = (options?.resolution || '1k').toLowerCase();
 
       // Credits map: 1K=2, 2K=3, 4K=6
       const creditsMap: Record<string, number> = {

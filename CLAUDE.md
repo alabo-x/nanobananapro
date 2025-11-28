@@ -50,6 +50,32 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - 已在生成结果区域和历史记录页面添加 24 小时过期提示
   - 使用 Clock 图标 + 黄色警告样式，支持深色模式
 
+#### 代码问题待修复 (2025-11-28 检查)
+
+**🔴 严重问题（影响核心功能）**：
+- [ ] **存储服务未配置时会崩溃** - `storage/index.ts:94-96`
+  - 问题：如果 R2/S3 未配置，用户上传图片时抛出 'No storage provider configured'
+  - 建议：返回友好错误提示或使用本地存储 fallback
+
+**🟡 中等问题（潜在风险）**：
+- [ ] **缺少 Webhook 回调处理** - 无 `/api/ai/notify/` 路由
+  - 问题：任务状态完全依赖前端轮询，Replicate 回调 URL 形同虚设
+  - 建议：创建 webhook 路由接收 Replicate 回调
+- [ ] **AI 服务始终重新初始化** - `services/ai.ts:30`
+  - 问题：`if (true)` 导致每次请求都重新加载配置，效率低
+  - 建议：改为 `if (!aiService)` 实现单例缓存
+- [ ] **API 无速率限制** - `generate/route.ts`
+  - 问题：恶意用户可快速消耗积分或滥用 API
+  - 建议：添加每分钟/每小时请求限制
+
+**🟢 低风险问题（代码质量）**：
+- [ ] **未使用的导入** - `generate/route.ts:6`
+  - 问题：`consumeCredits` 导入但未直接使用（实际在 createAITask 中调用）
+  - 建议：移除导入或添加注释说明
+- [ ] **硬编码的超时时间** - `image.tsx:74-75`
+  - 问题：POLL_INTERVAL=5000ms, GENERATION_TIMEOUT=180000ms 应可配置
+  - 建议：移至配置文件或环境变量
+
 ### 部署上线待办事项
 
 #### 必须完成（上线前）
@@ -65,6 +91,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - [ ] 支付网关配置（Stripe、PayPal）
 - [ ] 补充案例图片
 - [ ] 品牌资产更新（Logo、Favicon、OG 图片）
+
+#### 代码质量优化 ✅ (2025-11-28 完成)
+- [x] **无障碍问题修复**（3 处图标按钮添加 aria-label）
+  - `src/shared/components/ai-elements/conversation.tsx:94` - "Scroll to bottom"
+  - `src/shared/blocks/common/locale-selector.tsx:69` - "Switch language"
+  - `src/shared/blocks/common/image-uploader.tsx:335` - "Remove image"
+- [x] **ESLint 配置完成**
+  - 创建 `eslint.config.mjs`（ESLint 9 flat config 格式）
+  - 安装依赖：`@eslint/js`, `typescript-eslint`, `eslint-plugin-react`, `eslint-plugin-react-hooks`, `@next/eslint-plugin-next`, `globals`
+  - `pnpm lint` 运行结果：0 错误，169 警告
+- [x] **React Hooks 规则违规修复** ✅
+  - 修复 6 处 `useLocale()` 条件调用问题（5 个文件）
+  - `rules-of-hooks` 从 warn 改为 error，防止新违规
+- [x] **Replicate API 参数修复** ✅
+  - resolution 大小写映射：'1k' → '1K'
+  - aspect_ratio 值映射：'original' → 'match_input_image'
 
 #### 部署后验证（上线后立即执行）
 - [ ] **检查 sitemap.xml 是否正常生成**
@@ -388,6 +430,81 @@ R2_DOMAIN="https://r2.yourdomain.com"
 ## 最近工作记录
 
 > 完整历史记录请查看 [CHANGELOG.md](./CHANGELOG.md)
+
+### 2025-11-28: 后端计费 resolution 大小写修复
+**变更类型**: Bugfix (严重)
+**影响范围**: 积分计费逻辑
+
+**问题描述**:
+- 前端发送大写 resolution（'1K', '2K', '4K'）给 Replicate API
+- 后端 creditsMap 用小写 key（'1k', '2k', '4k'）
+- 导致 `creditsMap['2K']` = undefined → 默认 2 积分
+- **2K/4K 都被错误计费为 2 积分！**
+
+**修复方案**:
+- 后端计费时将 resolution 转为小写匹配
+- 不影响发送给 Replicate 的原始参数（保持大写）
+
+**修改文件**:
+- `src/app/api/ai/generate/route.ts:48` - 添加 `.toLowerCase()`
+
+**API 参数确认** (google/nano-banana-pro):
+- resolution: 必须大写 `1K`, `2K`, `4K`
+- aspect_ratio: 接受 `match_input_image`（默认）
+
+---
+
+### 2025-11-28: React Hooks + Replicate API 参数修复
+**变更类型**: Bugfix
+**影响范围**: 核心功能（AI 图片生成）+ 登录/注册流程
+
+**变更内容**:
+- ✅ 修复 6 处 React Hooks 规则违规（`useLocale()` 条件调用）
+- ✅ 前端 resolution 转大写发送给 Replicate（'1k' → '1K'）
+- ✅ 前端 aspect_ratio 'original' 映射为 'match_input_image'
+- ✅ ESLint `rules-of-hooks` 从 warn 改为 error
+
+**修改文件**:
+- `src/shared/blocks/sign/sign-in-form.tsx` - useLocale 移到组件顶部
+- `src/shared/blocks/sign/sign-in.tsx` - useLocale 移到组件顶部
+- `src/shared/blocks/sign/sign-up.tsx` - useLocale 移到组件顶部
+- `src/shared/blocks/sign/social-providers.tsx` - useLocale 移到组件顶部
+- `src/shared/blocks/table/time.tsx` - useLocale 移到条件返回之前
+- `src/shared/blocks/generator/image.tsx` - 添加 resolution/aspect_ratio 映射
+- `eslint.config.mjs` - rules-of-hooks: 'warn' → 'error'
+
+**技术说明**:
+- React Hooks 必须在组件顶层调用，不能在条件语句中
+- Replicate API 要求 resolution 大写：'1K', '2K', '4K'
+- Replicate API 要求 aspect_ratio 使用 'match_input_image' 而非 'original'
+
+---
+
+### 2025-11-28: 代码质量优化 - 无障碍 + ESLint 配置
+**变更类型**: Accessibility/DevOps
+**影响范围**: 无障碍体验 + 开发工具链
+
+**变更内容**:
+- ✅ 修复 3 处无障碍问题（图标按钮添加 aria-label）
+  - `conversation.tsx:94` - "Scroll to bottom"
+  - `locale-selector.tsx:69` - "Switch language"
+  - `image-uploader.tsx:335` - "Remove image"
+- ✅ 创建 ESLint 9 flat config 配置文件 (`eslint.config.mjs`)
+- ✅ 安装 ESLint 相关依赖（6 个包）
+- ✅ `pnpm lint` 验证通过（0 错误，169 警告）
+
+**修改文件**:
+- `src/shared/components/ai-elements/conversation.tsx`
+- `src/shared/blocks/common/locale-selector.tsx`
+- `src/shared/blocks/common/image-uploader.tsx`
+- `eslint.config.mjs`（新建）
+
+**ESLint 配置说明**:
+- 使用 ESLint 9 flat config 格式
+- 集成 TypeScript、React、React Hooks、Next.js 规则
+- 部分规则设为 warn（项目原有代码问题，后续逐步修复）
+
+---
 
 ### 2025-11-28: SEO 全站修复 - hreflang/canonical/noIndex
 **变更类型**: SEO/Feature

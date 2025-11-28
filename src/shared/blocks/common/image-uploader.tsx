@@ -332,6 +332,7 @@ export function ImageUploader({
                 variant="destructive"
                 className="absolute top-2 right-2 h-7 w-7 opacity-0 transition-opacity group-hover:opacity-100"
                 onClick={() => handleRemove(item.id)}
+                aria-label="Remove image"
               >
                 <IconX className="h-4 w-4" />
               </Button>

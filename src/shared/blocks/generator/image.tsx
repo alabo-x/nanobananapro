@@ -433,10 +433,15 @@ export function ImageGenerator({
     setGenerationStartTime(Date.now());
 
     try {
+      // Map resolution to uppercase for Replicate API (1k -> 1K, 2k -> 2K, 4k -> 4K)
+      const apiResolution = resolution.toUpperCase();
+      // Map 'original' to 'match_input_image' for Replicate API
+      const apiAspectRatio = aspectRatio === 'original' ? 'match_input_image' : aspectRatio;
+
       const options: any = {
         image_input: referenceImageUrls,
-        resolution,
-        aspect_ratio: aspectRatio,
+        resolution: apiResolution,
+        aspect_ratio: apiAspectRatio,
       };
 
       const resp = await fetch('/api/ai/generate', {

@@ -12,17 +12,18 @@ export function Time({
   metadata?: Record<string, any>;
   className?: string;
 }) {
+  // Hook must be called before any conditional returns
+  let locale = useLocale();
+  if (locale === 'zh') {
+    locale = 'zh-cn';
+  }
+
   if (!value) {
     if (placeholder) {
       return <div className={className}>{placeholder}</div>;
     }
 
     return null;
-  }
-
-  let locale = useLocale();
-  if (locale === 'zh') {
-    locale = 'zh-cn';
   }
 
   return (

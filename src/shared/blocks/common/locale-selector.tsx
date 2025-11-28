@@ -66,7 +66,7 @@ export function LocaleSelector({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         {type === 'icon' ? (
-          <Button variant="ghost" size="icon" className="h-auto w-auto p-0">
+          <Button variant="ghost" size="icon" className="h-auto w-auto p-0" aria-label="Switch language">
             <Languages size={18} />
           </Button>
         ) : (
