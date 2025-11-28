@@ -2,6 +2,13 @@ import { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 
 import { ConsoleLayout } from '@/shared/blocks/console/layout';
+import { getMetadata } from '@/shared/lib/seo';
+
+// 统一 noIndex，避免继承首页 canonical
+export const generateMetadata = getMetadata({
+  canonicalUrl: '/activity',
+  noIndex: true,
+});
 
 export default async function ActivityLayout({
   children,

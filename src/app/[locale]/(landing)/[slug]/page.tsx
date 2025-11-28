@@ -2,22 +2,20 @@ import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getThemePage } from '@/core/theme';
-import { envConfigs } from '@/config';
 import { getLocalPage } from '@/shared/models/post';
+import { getAlternateLanguages, getCanonicalUrl } from '@/shared/lib/seo';
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
+  const { locale, slug } = await params;
   const t = await getTranslations('common.metadata');
 
-  const { locale, slug } = await params;
-
-  const canonicalUrl =
-    locale !== envConfigs.locale
-      ? `${envConfigs.app_url}/${locale}/${slug}`
-      : `${envConfigs.app_url}/${slug}`;
+  const canonicalPath = `/${slug}`;
+  const canonicalUrl = await getCanonicalUrl(canonicalPath, locale);
+  const alternateLanguages = getAlternateLanguages(canonicalPath);
 
   const page = await getLocalPage({ slug, locale });
   if (!page) {
@@ -26,6 +24,7 @@ export async function generateMetadata({
       description: t('description'),
       alternates: {
         canonical: canonicalUrl,
+        languages: alternateLanguages,
       },
     };
   }
@@ -35,6 +34,7 @@ export async function generateMetadata({
     description: page.description,
     alternates: {
       canonical: canonicalUrl,
+      languages: alternateLanguages,
     },
   };
 }

@@ -1,9 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 
-import { envConfigs } from '@/config';
-import { defaultLocale } from '@/config/locale';
 import { SignUp } from '@/shared/blocks/sign/sign-up';
 import { getConfigs } from '@/shared/models/config';
+import { getAlternateLanguages, getCanonicalUrl } from '@/shared/lib/seo';
 
 export async function generateMetadata({
   params,
@@ -17,10 +16,12 @@ export async function generateMetadata({
   return {
     title: `${t('sign.sign_up_title')} - ${t('metadata.title')}`,
     alternates: {
-      canonical:
-        locale !== defaultLocale
-          ? `${envConfigs.app_url}/${locale}/sign-up`
-          : `${envConfigs.app_url}/sign-up`,
+      canonical: await getCanonicalUrl('/sign-up', locale),
+      languages: getAlternateLanguages('/sign-up'),
+    },
+    robots: {
+      index: false,
+      follow: false,
     },
   };
 }

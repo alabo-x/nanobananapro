@@ -129,11 +129,29 @@ async function getTranslatedMetadata(metadataKey: string, locale: string) {
   };
 }
 
+// Get base URL with a production check
+function getBaseUrl(): string {
+  const baseUrl = envConfigs.app_url;
+
+  if (
+    process.env.NODE_ENV === 'production' &&
+    (!baseUrl || baseUrl === 'http://localhost:3000')
+  ) {
+    console.error(
+      '[SEO Warning] NEXT_PUBLIC_APP_URL not configured properly for production. Canonical and hreflang URLs will be incorrect.'
+    );
+  }
+
+  return baseUrl || 'http://localhost:3000';
+}
+
 async function getCanonicalUrl(canonicalPath: string, locale: string) {
   // Handle full URLs
   if (canonicalPath.startsWith('http')) {
     return canonicalPath;
   }
+
+  const baseUrl = getBaseUrl();
 
   // Normalize path: ensure starts with /, remove trailing slash (except for root)
   let path = canonicalPath;
@@ -149,14 +167,16 @@ async function getCanonicalUrl(canonicalPath: string, locale: string) {
 
   // For root path, don't add extra slash
   if (path === '/') {
-    return `${envConfigs.app_url}${localePrefix}`;
+    return `${baseUrl}${localePrefix}`;
   }
 
-  return `${envConfigs.app_url}${localePrefix}${path}`;
+  return `${baseUrl}${localePrefix}${path}`;
 }
 
 // Generate alternate language URLs for hreflang
 function getAlternateLanguages(canonicalPath: string): Record<string, string> {
+  const baseUrl = getBaseUrl();
+
   // Normalize path
   let path = canonicalPath;
   if (!path.startsWith('/')) {
@@ -172,18 +192,20 @@ function getAlternateLanguages(canonicalPath: string): Record<string, string> {
   for (const locale of locales) {
     const localePrefix = locale === defaultLocale ? '' : `/${locale}`;
     if (path === '/') {
-      languages[locale] = `${envConfigs.app_url}${localePrefix}`;
+      languages[locale] = `${baseUrl}${localePrefix}`;
     } else {
-      languages[locale] = `${envConfigs.app_url}${localePrefix}${path}`;
+      languages[locale] = `${baseUrl}${localePrefix}${path}`;
     }
   }
 
   // Add x-default pointing to default locale version
   if (path === '/') {
-    languages['x-default'] = `${envConfigs.app_url}`;
+    languages['x-default'] = `${baseUrl}`;
   } else {
-    languages['x-default'] = `${envConfigs.app_url}${path}`;
+    languages['x-default'] = `${baseUrl}${path}`;
   }
 
   return languages;
 }
+
+export { getCanonicalUrl, getAlternateLanguages };

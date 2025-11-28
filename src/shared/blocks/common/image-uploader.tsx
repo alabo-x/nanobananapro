@@ -351,7 +351,7 @@ export function ImageUploader({
                   <IconUpload className="h-6 w-6" />
                 </div>
                 <span className="text-sm font-medium">Click or drag image</span>
-                <span className="text-muted-foreground text-xs">Supports: JPG, PNG, WebP</span>
+                <span className="text-muted-foreground text-xs">JPG, PNG, WebP (max {maxSizeMB}MB)</span>
               </button>
             </div>
           </div>

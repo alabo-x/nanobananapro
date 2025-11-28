@@ -5,6 +5,13 @@ import { requireAdminAccess } from '@/core/rbac/permission';
 import { LocaleDetector } from '@/shared/blocks/common';
 import { DashboardLayout } from '@/shared/blocks/dashboard/layout';
 import { Sidebar as SidebarType } from '@/shared/types/blocks/dashboard';
+import { getMetadata } from '@/shared/lib/seo';
+
+// 统一 noIndex，避免继承首页 canonical
+export const generateMetadata = getMetadata({
+  canonicalUrl: '/admin',
+  noIndex: true,
+});
 
 /**
  * Admin layout to manage datas

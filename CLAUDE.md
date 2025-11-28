@@ -4,9 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目快速概览
 
-### 当前状态 (2025-11-27)
-- **项目阶段**: 🔧 上传限制调整完成
-- **最新变更**: 图片上传大小限制从 30MB 调整为 10MB
+### 当前状态 (2025-11-28)
+- **项目阶段**: 🚧 开发中（未部署）
+- **部署状态**: ❌ 未上线（新站，从未部署过）
+- **Google 索引**: 无（首次部署后需提交 sitemap）
+- **最新变更**: SEO hreflang/canonical/noIndex 全站修复完成
 - **开发服务器**: http://localhost:3000
 - **管理员账户**: admin@nano-banana2.pro (super_admin)
 - **数据库表**: 16 个表
@@ -27,6 +29,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - [x] **积分刷新逻辑被注释** ✅ (无需修复)
   - 原因: `fetchUserInfo()` 已返回 credits，取消注释会导致重复请求
   - 生成图片后已在 `image.tsx:346,358,474` 正确调用刷新
+
+#### SEO hreflang/canonical 修复 ✅ (2025-11-28 完成)
+> 全站 SEO 元数据修复完成
+
+**已修复**：
+- [x] `seo.ts` 新增 `getBaseUrl()` + 导出 `getCanonicalUrl`/`getAlternateLanguages` helper
+- [x] `[slug]/page.tsx` 补充 hreflang
+- [x] `sign-in/sign-up` 多语言 title + hreflang + noIndex
+- [x] `activity/settings/admin` layout 统一 noIndex
+- [x] `sitemap.ts` 生产校验 + 开发 fallback
+- [x] `robots.txt` 改为动态生成（删除静态文件，新建 `app/robots.ts`）
 
 #### 核心功能测试
 - [ ] **核心功能测试**
@@ -78,6 +91,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - 登录 https://search.google.com/search-console
   - 添加站点 nano-banana2.pro（如尚未添加）
   - 进入 Sitemaps → 提交 `https://nano-banana2.pro/sitemap.xml`
+
+#### 首次部署后立即执行（新站专属）
+> ⚠️ 这是新站，从未部署过。完成首次部署后必须执行以下操作：
+
+- [ ] **提交 sitemap 到 Google Search Console**
+- [ ] **验证 hreflang 和 canonical 正确性**
+  ```bash
+  # 检查首页 hreflang
+  curl -s https://nano-banana2.pro | grep -i hreflang
+  # 检查定价页 canonical
+  curl -s https://nano-banana2.pro/pricing | grep -i canonical
+  ```
+- [ ] **确认 noIndex 页面未被索引**
+  ```bash
+  # 检查登录页 robots meta
+  curl -s https://nano-banana2.pro/sign-in | grep -i "noindex"
+  ```
+- [ ] **更新 CLAUDE.md 项目状态**
+  - 将"部署状态"改为 ✅ 已上线
+  - 记录首次部署日期
+  - 移除此"新站专属"章节或标记为已完成
 
 ### 已完成事项
 - [x] Testimonials 评价修正 - 移除批量编辑虚假描述，改为自然语言编辑和专业品质输出
@@ -354,6 +388,52 @@ R2_DOMAIN="https://r2.yourdomain.com"
 ## 最近工作记录
 
 > 完整历史记录请查看 [CHANGELOG.md](./CHANGELOG.md)
+
+### 2025-11-28: SEO 全站修复 - hreflang/canonical/noIndex
+**变更类型**: SEO/Feature
+**影响范围**: 全站 SEO 元数据
+
+**变更内容**:
+- seo.ts 增强：新增 `getBaseUrl()`，生产未配域名时输出警告，导出 `getCanonicalUrl`/`getAlternateLanguages` helper
+- [slug] 静态内容页：补充 hreflang
+- sign-in/sign-up 认证页：多语言 title + hreflang + noIndex
+- activity/settings/admin 布局：统一 noIndex，避免继承首页 canonical
+- sitemap.ts：云部署检测 + 本地构建警告（不阻塞）+ 生产部署未配置时抛错
+- robots.ts：移除静态文件，改为动态生成，同样的云部署检测逻辑
+
+**云部署检测逻辑**:
+检测 `VERCEL`、`CF_PAGES`、`NETLIFY`、`AWS_LAMBDA_FUNCTION_NAME` 环境变量判断是否在云平台部署。
+- 本地 `pnpm build`：只打印警告，允许构建通过
+- 云平台部署：如果 `NEXT_PUBLIC_APP_URL` 未配置或为 localhost，抛出错误阻止部署
+
+**修改文件**:
+- `src/shared/lib/seo.ts` - 新增 getBaseUrl + 导出 helper
+- `src/app/[locale]/(landing)/[slug]/page.tsx` - 补充 hreflang
+- `src/app/[locale]/(auth)/sign-in/page.tsx` - 多语言 + noIndex
+- `src/app/[locale]/(auth)/sign-up/page.tsx` - 多语言 + noIndex
+- `src/app/[locale]/(landing)/activity/layout.tsx` - 添加 noIndex
+- `src/app/[locale]/(landing)/settings/layout.tsx` - 添加 noIndex
+- `src/app/[locale]/(admin)/layout.tsx` - 添加 noIndex
+- `src/app/sitemap.ts` - 生产校验 + 开发 fallback
+- `public/robots.txt` - 删除
+- `src/app/robots.ts` - 新建，动态生成
+
+**上线后验证**:
+```bash
+# 检查 sitemap
+curl https://nano-banana2.pro/sitemap.xml
+
+# 检查 robots.txt
+curl https://nano-banana2.pro/robots.txt
+
+# 检查登录页 noindex
+curl -s https://nano-banana2.pro/sign-in | grep -i "noindex"
+
+# 检查内容页 hreflang
+curl -s https://nano-banana2.pro/privacy-policy | grep -i hreflang
+```
+
+---
 
 ### 2025-11-27: 错误提示国际化
 **变更类型**: i18n/UX
