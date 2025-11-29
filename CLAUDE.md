@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **项目阶段**: 🚧 开发中（未部署）
 - **部署状态**: ❌ 未上线（新站，从未部署过）
 - **Google 索引**: 无（首次部署后需提交 sitemap）
-- **最新变更**: Showcase 文案优化（Copy Prompt 按钮 + 标题更新）
+- **最新变更**: 移动端布局对齐修复（统一 container 容器）
 - **开发服务器**: http://localhost:3000
 - **管理员账户**: admin@nano-banana2.pro (super_admin)
 - **数据库表**: 16 个表
@@ -430,6 +430,34 @@ R2_DOMAIN="https://r2.yourdomain.com"
 ## 最近工作记录
 
 > 完整历史记录请查看 [CHANGELOG.md](./CHANGELOG.md)
+
+### 2025-11-29: 移动端布局对齐修复 - 统一 container 容器
+**变更类型**: Bugfix/UI
+**影响范围**: Hero + FAQ 板块
+
+**问题描述**:
+各板块使用不同的容器宽度和 padding，导致移动端左右边距不一致：
+- Header/ImageGenerator/Features/Testimonials/Showcase/Footer 使用 `.container`（max-w-7xl px-4 md:px-8）
+- Hero 使用自定义 `max-w-5xl px-4`（没有 container 包裹）
+- FAQ 使用自定义 `mx-auto max-w-full px-4 md:max-w-3xl md:px-8`
+
+**修复方案**:
+统一使用 `.container` 包裹，内部保留各自的 max-w 限制内容宽度
+
+**变更内容**:
+- ✅ Hero: 添加 `.container` 外层包裹，移除内层 px-4
+- ✅ FAQ: 改用 `.container` 替换自定义容器
+
+**修改文件**:
+- `src/themes/default/blocks/hero.tsx:77-148` - 添加 container 包裹
+- `src/themes/default/blocks/faq.tsx:15-60` - 改用 container 包裹
+
+**效果**:
+- 移动端所有板块左右边距统一（px-4 = 16px）
+- 桌面端所有板块左右边距统一（md:px-8 = 32px）
+- 内容区宽度保持各板块原有设计
+
+---
 
 ### 2025-11-29: Showcase 文案优化 - Copy Prompt 按钮 + 标题更新
 **变更类型**: UX/Feature

@@ -19,9 +19,9 @@ export default async function LandingPage({
     <>
       {page.hero && <Hero hero={page.hero} />}
       <ImageGenerator generator={page.generator} />
+      {page.showcase && <Showcase showcase={page.showcase} />}
       {page.features && <Features features={page.features} />}
       {page.testimonials && <Testimonials testimonials={page.testimonials} />}
-      {page.showcase && <Showcase showcase={page.showcase} />}
       {page.faq && <FAQ faq={page.faq} />}
     </>
   );

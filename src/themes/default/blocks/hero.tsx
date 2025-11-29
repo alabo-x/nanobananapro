@@ -74,7 +74,8 @@ export function Hero({
           </motion.div>
         )}
 
-        <div className="relative mx-auto max-w-5xl px-4 text-center">
+        <div className="container">
+          <div className="relative mx-auto max-w-5xl text-center">
           <motion.div {...createFadeInVariant(0.15)}>
             {texts && texts.length > 0 ? (
               <h1 className="text-foreground text-5xl font-semibold text-balance sm:text-7xl">
@@ -100,14 +101,14 @@ export function Hero({
           {hero.buttons && (
             <motion.div
               {...createFadeInVariant(0.45)}
-              className="flex items-center justify-center gap-4"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               {hero.buttons.map((button, idx) => (
                 <Button
                   asChild
                   size={button.size || 'lg'}
                   variant={button.variant || 'default'}
-                  className="px-6 text-base"
+                  className="w-full sm:w-auto px-6 text-base"
                   key={idx}
                 >
                   <Link
@@ -143,6 +144,7 @@ export function Hero({
               ))}
             </motion.div>
           )}
+          </div>
         </div>
       </section>
 

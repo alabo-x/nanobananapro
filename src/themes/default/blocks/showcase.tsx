@@ -204,27 +204,29 @@ export function Showcase({
               <p className="text-sm md:text-base text-muted-foreground italic leading-relaxed mb-4">
                 {currentItem?.description}
               </p>
-              <button
-                onClick={copyPrompt}
-                className={cn(
-                  "inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-colors",
-                  copied
-                    ? "bg-primary/10 text-primary"
-                    : "bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {copied ? (
-                  <>
-                    <Check className="h-4 w-4" />
-                    <span>Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="h-4 w-4" />
-                    <span>Copy Prompt</span>
-                  </>
-                )}
-              </button>
+              <div className="flex justify-end">
+                <button
+                  onClick={copyPrompt}
+                  className={cn(
+                    "inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-colors",
+                    copied
+                      ? "bg-primary/10 text-primary"
+                      : "bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {copied ? (
+                    <>
+                      <Check className="h-4 w-4" />
+                      <span>Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-4 w-4" />
+                      <span>Copy Prompt</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
 
             {/* Dot Indicators */}
