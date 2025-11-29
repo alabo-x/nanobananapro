@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目快速概览
 
-### 当前状态 (2025-11-28)
+### 当前状态 (2025-11-29)
 - **项目阶段**: 🚧 开发中（未部署）
 - **部署状态**: ❌ 未上线（新站，从未部署过）
 - **Google 索引**: 无（首次部署后需提交 sitemap）
-- **最新变更**: SEO hreflang/canonical/noIndex 全站修复完成
+- **最新变更**: Showcase 文案优化（Copy Prompt 按钮 + 标题更新）
 - **开发服务器**: http://localhost:3000
 - **管理员账户**: admin@nano-banana2.pro (super_admin)
 - **数据库表**: 16 个表
@@ -89,7 +89,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 #### 重要但非阻塞（上线后优化）
 - [ ] 支付网关配置（Stripe、PayPal）
-- [ ] 补充案例图片
+- [x] 补充案例图片（6 张新图 + 轮播布局）
 - [ ] 品牌资产更新（Logo、Favicon、OG 图片）
 
 #### 代码质量优化 ✅ (2025-11-28 完成)
@@ -430,6 +430,107 @@ R2_DOMAIN="https://r2.yourdomain.com"
 ## 最近工作记录
 
 > 完整历史记录请查看 [CHANGELOG.md](./CHANGELOG.md)
+
+### 2025-11-29: Showcase 文案优化 - Copy Prompt 按钮 + 标题更新
+**变更类型**: UX/Feature
+**影响范围**: 首页 Showcase 板块
+
+**变更内容**:
+- ✅ 移除 Prompt 前的 Quote 引号图标
+- ✅ 添加 "Copy Prompt" 复制按钮（点击后显示 "Copied!"）
+- ✅ 使用 Clipboard API 实现复制功能，带老旧浏览器 fallback
+- ✅ 更新 6 个 Showcase 标题（中英西三语）
+
+**标题更新对照**:
+| 原标题 | 新标题 |
+|--------|--------|
+| Product Scene Variations | Multi-Scene Product Generation |
+| Ad Concept Transfer | Ad Concept Remix |
+| Photo to Illustration | Vintage Recipe Illustration from Photo |
+| Lifestyle Mockup | Minimalist MacBook Lifestyle Mockup |
+| Product Deconstruction | Shoe Design Deconstruction |
+| Character Sketch Process | Character Sketch Iteration |
+
+**修改文件**:
+- `src/themes/default/blocks/showcase.tsx` - 添加 Copy 功能，移除 Quote 图标
+- `src/config/locale/messages/en/landing.json` - 更新 6 个英文标题
+- `src/config/locale/messages/es/landing.json` - 更新 6 个西班牙语标题
+
+---
+
+### 2025-11-29: Showcase 轮播交互优化 + Layout Shift 修复 + 滑动动画
+**变更类型**: UX/Feature/Bugfix
+**影响范围**: 首页 Showcase 板块
+
+**变更内容**:
+- ✅ 添加图片滑动过渡动画（500ms CSS keyframes slide-in）
+- ✅ 添加触摸滑动支持（移动端左右滑动切换）
+- ✅ 防止快速点击导致动画重叠（isAnimating 状态锁）
+- ✅ **修复 Layout Shift 问题**：Prompt 移到图片下方
+
+**滑动动画实现**:
+- 使用 CSS keyframes 实现左右滑入效果（替代原 opacity fade）
+- `slideInFromRight`：下一张从右侧滑入
+- `slideInFromLeft`：上一张从左侧滑入
+- 使用 `animationKey` 状态强制 React 重新挂载动画元素
+
+**布局调整**（基于 Civitai 调研）:
+- 原布局：Header → Prompt → Image → Title → Dots
+- 新布局：Header → Image → Title → Prompt → Dots
+- 原因：用户先看图片，再看文字说明（视觉优先原则）
+
+**Layout Shift 问题**:
+- 问题：Prompt 长度不同（2-5 行），导致图片和导航按钮位置跳动 60-70px
+- 方案：将 Prompt 移到图片下方，图片容器 `aspect-video` 固定高度
+- 效果：导航按钮位置完全稳定，无任何跳动
+
+**修改文件**:
+- `src/themes/default/blocks/showcase.tsx`
+  - 调整 JSX 元素顺序（Image → Title → Prompt）
+  - 新增 `isAnimating`, `slideDirection`, `animationKey` 状态
+  - 新增 CSS keyframes 动画（内联 style jsx global）
+  - 新增触摸滑动事件处理
+
+**技术细节**:
+- 滑动阈值：50px（小于此距离不触发切换）
+- 动画时长：500ms + ease-out 缓动
+- 支持循环滑动（第 1 张左滑到第 6 张，第 6 张右滑到第 1 张）
+- 动画完成后通过 useEffect 重置状态
+
+---
+
+### 2025-11-28: Showcase 板块轮播布局重构
+**变更类型**: Feature/UI
+**影响范围**: 首页 Showcase 展示板块
+
+**变更内容**:
+- ✅ 重构 Showcase 组件为轮播（Carousel）布局
+- ✅ 替换 6 张新案例图片（PNG → WebP，压缩 92%）
+- ✅ 添加 Prompt 引用框（斜体 + Quote 图标）
+- ✅ 图片比例从 1:1 改为 16:9（aspect-video）
+- ✅ 左右导航箭头 + 圆点指示器 + 计数器
+- ✅ 中英西三语翻译同步更新
+
+**修改文件**:
+- `src/themes/default/blocks/showcase.tsx` - 完全重写为轮播组件
+- `src/config/locale/messages/en/landing.json` - 6 个新 showcase items
+- `src/config/locale/messages/es/landing.json` - 西班牙语翻译
+- `public/imgs/cases/` - 删除 4 张旧图，添加 6 张新图（WebP 格式）
+
+**新图片列表**:
+1. `ai-image-editor-product-mockup.webp` - 产品场景变体
+2. `ai-image-editor-ad-transfer.webp` - 广告概念迁移
+3. `ai-image-editor-photo-to-illustration.webp` - 照片转插画
+4. `ai-image-editor-lifestyle-mockup.webp` - 生活方式 Mockup
+5. `ai-image-editor-product-deconstruction.webp` - 产品解构
+6. `ai-image-editor-character-sketch.webp` - 角色草图过程
+
+**技术细节**:
+- 使用 React useState + useCallback 管理轮播状态
+- Lucide 图标：ChevronLeft, ChevronRight, Quote
+- 响应式设计：桌面端箭头在图片外侧，移动端在内侧
+
+---
 
 ### 2025-11-28: 后端计费 resolution 大小写修复
 **变更类型**: Bugfix (严重)

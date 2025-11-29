@@ -105,35 +105,51 @@
     "description": "Ejemplos reales de transformaciones Imagen a Imagen",
     "items": [
       {
-        "title": "Resultados de Calidad Profesional",
-        "description": "Edición de retratos de nivel estudio con iluminación y detalles perfectos",
+        "title": "Generación de Producto Multi-Escena",
+        "description": "Usa la imagen adjunta como referencia estética. Crea 4 mockups diferentes de latas en el mismo estilo, pero ubicados en diferentes entornos y mostrados desde diferentes ángulos.",
         "image": {
-          "src": "/imgs/cases/ai-image-editor-professional-portrait.webp",
-          "alt": "Retrato profesional generado con IA con iluminación de estudio"
+          "src": "/imgs/cases/ai-image-editor-product-mockup.webp",
+          "alt": "Mockups de producto generados con IA mostrando lata de bebida en 4 entornos diferentes"
         }
       },
       {
-        "title": "Visualización de Interiores Impresionante",
-        "description": "Transformación fotorrealista de espacios para proyectos arquitectónicos",
+        "title": "Remix de Concepto Publicitario",
+        "description": "Recrea este concepto publicitario usando mi producto en lugar del suyo. Mantén el mismo ambiente, iluminación, composición y vibra general. Elimina toda la marca del competidor. Reemplaza el producto con el de mi imagen subida y adapta todos los elementos de fondo, accesorios y texturas para que sean visualmente relevantes a la marca, perfil de sabor y estética de mi producto, no de la marca original. Mantén el fotorrealismo y proporciones precisas del producto.",
         "image": {
-          "src": "/imgs/cases/ai-image-editor-interior-design.webp",
-          "alt": "Diseño de interior moderno de sala editado con IA"
+          "src": "/imgs/cases/ai-image-editor-ad-transfer.webp",
+          "alt": "Transferencia de concepto publicitario con IA reemplazando producto manteniendo el ambiente original"
         }
       },
       {
-        "title": "Fotografía de Producto Perfecta",
-        "description": "Tomas profesionales listas para e-commerce con fondos impecables",
+        "title": "Ilustración de Receta Vintage desde Foto",
+        "description": "Convierte este ramen en una página de receta linda con ilustraciones al estilo de un libro de cocina vintage dibujado a mano. Ingredientes cuidadosamente dibujados con etiquetas, medidas y utensilios como tazones, batidores o cucharas deben rodear el punto focal de la composición. Para crear un ambiente hogareño y nostálgico, usa sombreado texturizado, colores pastel cálidos y contornos finos tipo tinta. Añade la receta escrita a mano, incluyendo ingredientes y direcciones orgánicamente en el diseño. Asegúrate de que la página tenga un tono artístico y educativo.",
         "image": {
-          "src": "/imgs/cases/ai-image-editor-fashion-photography.webp",
-          "alt": "Fotografía de moda mejorada con IA para e-commerce"
+          "src": "/imgs/cases/ai-image-editor-photo-to-illustration.webp",
+          "alt": "Transformación con IA de foto de comida a ilustración de libro de cocina vintage dibujado a mano"
         }
       },
       {
-        "title": "Diseño de Personajes Consistente",
-        "description": "Mantén la consistencia perfecta del personaje en todas las ediciones y escenas",
+        "title": "Mockup Minimalista de MacBook Lifestyle",
+        "description": "Crea un mockup de MacBook ubicado en una habitación minimalista. Usa la imagen adjunta en la pantalla del portátil. Una mujer está sentada en el escritorio, usando la computadora, mostrada desde atrás.",
         "image": {
-          "src": "/imgs/cases/ai-image-editor-character-design.webp",
-          "alt": "Diseño de personajes AI con modelado 3D y renderizado consistente"
+          "src": "/imgs/cases/ai-image-editor-lifestyle-mockup.webp",
+          "alt": "Mockup de estilo de vida creado con IA con MacBook en espacio de trabajo minimalista"
+        }
+      },
+      {
+        "title": "Deconstrucción de Diseño de Zapato",
+        "description": "Crea una imagen de los diferentes patrones que componen este zapato. Dispónlos individualmente sobre una superficie neutral.",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-product-deconstruction.webp",
+          "alt": "Deconstrucción de producto generada con IA mostrando componentes del zapato dispuestos"
+        }
+      },
+      {
+        "title": "Iteración de Boceto de Personaje",
+        "description": "Crea 8 bocetos iniciales diferentes que lleven a este personaje final.",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-character-sketch.webp",
+          "alt": "Proceso de diseño de personaje generado con IA desde bocetos hasta render 3D final"
         }
       }
     ],

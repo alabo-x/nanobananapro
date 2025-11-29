@@ -47,6 +47,24 @@ pre {
       transform: translateY(0);
     }
   }
+  --animate-slide-in-from-right: slideInFromRight 500ms ease-out forwards;
+  @keyframes slideInFromRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  --animate-slide-in-from-left: slideInFromLeft 500ms ease-out forwards;
+  @keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
   --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
     infinite;
   @keyframes ripple {

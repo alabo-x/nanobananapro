@@ -105,35 +105,51 @@
     "description": "Real examples of Image-to-Image transformations",
     "items": [
       {
-        "title": "Professional Quality Results",
-        "description": "Studio-grade portrait editing with perfect lighting and details",
+        "title": "Multi-Scene Product Generation",
+        "description": "Use the attached image as an aesthetic reference. Create 4 different can mockups in the same style, but placed in different environments and shown from different angles.",
         "image": {
-          "src": "/imgs/cases/ai-image-editor-professional-portrait.webp",
-          "alt": "AI-generated professional portrait with studio lighting"
+          "src": "/imgs/cases/ai-image-editor-product-mockup.webp",
+          "alt": "AI-generated product mockups showing beverage can in 4 different environments"
         }
       },
       {
-        "title": "Stunning Interior Visualization",
-        "description": "Photorealistic space transformation for architectural projects",
+        "title": "Ad Concept Remix",
+        "description": "Recreate this ad concept using my product instead of theirs. Keep the same mood, lighting, composition, and overall vibe. Remove all competitor branding. Replace the product with the one from my uploaded image and adapt all background elements, props, and surrounding textures to be visually relevant to my product's brand, flavor profile, and aesthetic — not the original brand's. Maintain photorealism and accurate product proportions.",
         "image": {
-          "src": "/imgs/cases/ai-image-editor-interior-design.webp",
-          "alt": "AI-edited modern living room interior design"
+          "src": "/imgs/cases/ai-image-editor-ad-transfer.webp",
+          "alt": "AI-powered advertisement concept transfer replacing product while keeping original mood"
         }
       },
       {
-        "title": "Perfect Product Photography",
-        "description": "E-commerce ready professional shots with seamless backgrounds",
+        "title": "Vintage Recipe Illustration from Photo",
+        "description": "Turn this ramen into a cute recipe page with illustrations in the style of a vintage cookbook that was hand-drawn. A carefully drawn ingredients with labels, measures, and implements like bowls, whisks, or spoons should surround the composition's focal point. To create a homey, nostalgic vibe, use textured shading, warm pastel colors, and fine, ink-like outlines. Add recipe writing in the handwritten manner, including the ingredients and directions organically into the layout. Make sure the page has an artistic and educational tone, combining the beauty of colorful illustrations with a cookbook aesthetic.",
         "image": {
-          "src": "/imgs/cases/ai-image-editor-fashion-photography.webp",
-          "alt": "AI-enhanced fashion photography for e-commerce"
+          "src": "/imgs/cases/ai-image-editor-photo-to-illustration.webp",
+          "alt": "AI transformation of food photo into vintage hand-drawn cookbook illustration"
         }
       },
       {
-        "title": "Consistent Character Design",
-        "description": "Maintain perfect character consistency across all edits and scenes",
+        "title": "Minimalist MacBook Lifestyle Mockup",
+        "description": "Create a MacBook mockup placed in a minimalist room. Use the attached image on the laptop screen. A woman is sitting at the desk, using the computer, shown from behind.",
         "image": {
-          "src": "/imgs/cases/ai-image-editor-character-design.webp",
-          "alt": "AI character design with consistent 3D modeling and rendering"
+          "src": "/imgs/cases/ai-image-editor-lifestyle-mockup.webp",
+          "alt": "AI-created lifestyle mockup with MacBook in minimalist workspace"
+        }
+      },
+      {
+        "title": "Shoe Design Deconstruction",
+        "description": "Create an image of the different patterns that makes up this shoe. Lay them out individually against a neutral surface.",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-product-deconstruction.webp",
+          "alt": "AI-generated product deconstruction showing shoe components laid out"
+        }
+      },
+      {
+        "title": "Character Sketch Iteration",
+        "description": "Create 8 different initial sketches leading to this final character.",
+        "image": {
+          "src": "/imgs/cases/ai-image-editor-character-sketch.webp",
+          "alt": "AI-generated character design process from sketches to final 3D render"
         }
       }
     ],
