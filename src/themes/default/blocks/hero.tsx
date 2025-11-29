@@ -46,7 +46,7 @@ export function Hero({
     <>
       <section
         id={hero.id}
-        className={`min-h-[calc(100vh-64px)] pt-14 lg:pt-18 flex flex-col items-center justify-center ${hero.className} ${className}`}
+        className={`min-h-[calc(100vh-64px)] pt-14 lg:pt-18 pb-16 md:pb-24 flex flex-col items-center justify-center ${hero.className} ${className}`}
       >
         {hero.announcement && (
           <motion.div {...createFadeInVariant(0)}>
