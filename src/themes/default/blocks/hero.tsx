@@ -46,7 +46,7 @@ export function Hero({
     <>
       <section
         id={hero.id}
-        className={`min-h-[calc(100vh-64px)] flex flex-col items-center justify-center ${hero.className} ${className}`}
+        className={`min-h-[calc(100vh-64px)] pt-14 lg:pt-18 flex flex-col items-center justify-center ${hero.className} ${className}`}
       >
         {hero.announcement && (
           <motion.div {...createFadeInVariant(0)}>
@@ -78,7 +78,7 @@ export function Hero({
           <div className="relative mx-auto max-w-5xl text-center">
           <motion.div {...createFadeInVariant(0.15)}>
             {texts && texts.length > 0 ? (
-              <h1 className="text-foreground text-5xl font-semibold text-balance sm:text-7xl">
+              <h1 className="text-foreground text-3xl font-semibold text-balance sm:text-5xl lg:text-7xl">
                 {texts[0]}
                 <Highlighter action="underline" color="#FF9800">
                   {highlightText}
@@ -86,7 +86,7 @@ export function Hero({
                 {texts[1]}
               </h1>
             ) : (
-              <h1 className="text-foreground text-5xl font-semibold text-balance sm:text-7xl">
+              <h1 className="text-foreground text-3xl font-semibold text-balance sm:text-5xl lg:text-7xl">
                 {hero.title}
               </h1>
             )}
@@ -94,7 +94,7 @@ export function Hero({
 
           <motion.p
             {...createFadeInVariant(0.3)}
-            className="text-muted-foreground mt-6 mb-10 text-xl text-balance"
+            className="text-muted-foreground mt-6 mb-10 text-base sm:text-xl text-balance"
             dangerouslySetInnerHTML={{ __html: hero.description ?? '' }}
           />
 

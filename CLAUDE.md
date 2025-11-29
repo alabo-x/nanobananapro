@@ -431,6 +431,30 @@ R2_DOMAIN="https://r2.yourdomain.com"
 
 > 完整历史记录请查看 [CHANGELOG.md](./CHANGELOG.md)
 
+### 2025-11-29: Hero 移动端布局修复
+**变更类型**: Bugfix/UI
+**影响范围**: Hero 板块移动端显示
+
+**问题描述**:
+1. 横幅与导航栏重叠：Hero 没有 padding-top 为 fixed header 留空间
+2. 标题字体过大：text-5xl (48px) 导致每行只显示 1-2 个单词，换行极不协调
+3. 描述字体偏大：text-xl (20px) 在小屏幕上阅读体验差
+
+**修复方案**:
+- 添加 `pt-14 lg:pt-18` 为 header 留出空间
+- 标题：`text-5xl sm:text-7xl` → `text-3xl sm:text-5xl lg:text-7xl`
+- 描述：`text-xl` → `text-base sm:text-xl`
+
+**修改文件**:
+- `src/themes/default/blocks/hero.tsx:49,81,89,97`
+
+**效果**:
+- 横幅不再与导航栏重叠
+- 移动端标题 30px，每行可显示更多字符，换行更自然
+- 移动端描述 16px，阅读更舒适
+
+---
+
 ### 2025-11-29: 品牌配色更新 - 紫色改金黄色
 **变更类型**: UI/Branding
 **影响范围**: 全站主题配色
