@@ -66,3 +66,7 @@ src/config/db/migrations
 
 # playwright mcp screenshots
 .playwright-mcp
+
+# 私人文档（禁止提交）
+交流文档.md
+CHECKLIST.md
