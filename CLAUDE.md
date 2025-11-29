@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **项目阶段**: 🚧 开发中（未部署）
 - **部署状态**: ❌ 未上线（新站，从未部署过）
 - **Google 索引**: 无（首次部署后需提交 sitemap）
-- **最新变更**: 移动端布局对齐修复（统一 container 容器）
+- **最新变更**: 品牌配色更新（紫色 → 金黄色，与 Logo 统一）
 - **开发服务器**: http://localhost:3000
 - **管理员账户**: admin@nano-banana2.pro (super_admin)
 - **数据库表**: 16 个表
@@ -430,6 +430,33 @@ R2_DOMAIN="https://r2.yourdomain.com"
 ## 最近工作记录
 
 > 完整历史记录请查看 [CHANGELOG.md](./CHANGELOG.md)
+
+### 2025-11-29: 品牌配色更新 - 紫色改金黄色
+**变更类型**: UI/Branding
+**影响范围**: 全站主题配色
+
+**变更内容**:
+- ✅ 主色（Primary）从紫色改为金黄色，与 Logo 香蕉黄统一
+- ✅ 强调色（Accent）改为原始香蕉黄 `#fedf17`
+- ✅ 顶部加载条颜色从紫色 `#6466F1` 改为金黄色 `#E5C100`
+- ✅ 浅色模式和深色模式配色同步更新
+
+**配色方案**:
+| 用途 | 浅色模式 | 深色模式 |
+|------|----------|----------|
+| Primary | `oklch(0.78 0.18 95)` | `oklch(0.82 0.17 95)` |
+| Accent | `oklch(0.92 0.195 102)` | `oklch(0.88 0.18 102)` |
+
+**修改文件**:
+- `src/config/style/theme.css` - 全站主题配色变量
+- `src/app/layout.tsx:123` - 顶部加载条颜色
+
+**效果**:
+- 按钮、链接、焦点环等交互元素变为金黄色
+- 品牌识别度提升，与 Logo 视觉统一
+- 深色模式下金黄色适当提亮，保持可读性
+
+---
 
 ### 2025-11-29: 移动端布局对齐修复 - 统一 container 容器
 **变更类型**: Bugfix/UI
