@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目快速概览
 
-### 当前状态 (2025-11-29)
+### 当前状态 (2025-11-30)
 - **项目阶段**: 🚧 开发中（未部署）
 - **部署状态**: ❌ 未上线（新站，从未部署过）
 - **Google 索引**: 无（首次部署后需提交 sitemap）
-- **最新变更**: 品牌配色更新（紫色 → 金黄色，与 Logo 统一）
+- **最新变更**: Showcase 板块全面优化（新图片 + 响应式布局 + 移动端手势）
 - **开发服务器**: http://localhost:3000
 - **管理员账户**: admin@nano-banana2.pro (super_admin)
 - **数据库表**: 16 个表
@@ -430,6 +430,36 @@ R2_DOMAIN="https://r2.yourdomain.com"
 ## 最近工作记录
 
 > 完整历史记录请查看 [CHANGELOG.md](./CHANGELOG.md)
+
+### 2025-11-30: Showcase 板块全面优化
+**变更类型**: Feature/UI/UX
+**影响范围**: 首页 Showcase 展示板块
+
+**变更内容**:
+- ✅ 更换 6 张新案例图片（PNG → WebP 无损转换）
+- ✅ 图片比例优化：`aspect-square` → `aspect-[1080/780]`（横向矩形，更紧凑）
+- ✅ 容器宽度调整：`max-w-4xl` → `max-w-3xl`（Card 内容一屏可见）
+- ✅ 移动端隐藏导航按钮，使用滑动手势切换
+- ✅ PC端导航按钮恢复到 Card 外侧，位置稳定不跳动
+
+**图片文件**:
+- `ai-image-editor-product-mockup.webp` - 多场景产品生成
+- `ai-image-editor-ad-transfer.webp` - 广告概念迁移
+- `ai-image-editor-photo-to-illustration.webp` - 照片转插画
+- `ai-image-editor-lifestyle-mockup.webp` - 生活方式 Mockup
+- `ai-image-editor-product-deconstruction.webp` - 产品解构
+- `ai-image-editor-character-sketch.webp` - 角色草图过程
+
+**修改文件**:
+- `src/themes/default/blocks/showcase.tsx` - 布局重构 + 响应式优化
+- `public/imgs/cases/*.webp` - 6 张新图片
+
+**效果**:
+- Card 内容（标题+图片+提示词）在一屏内完整显示
+- 移动端图片不被按钮遮挡，滑动体验流畅
+- PC端按钮位置稳定，切换图片时不跳动
+
+---
 
 ### 2025-11-29: Hero 移动端布局修复
 **变更类型**: Bugfix/UI
